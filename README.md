@@ -16,10 +16,9 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
 #### Essential Commands
 
-| SL  | Command | Functionality                                        |
-| :-: | :------: | :--------------------------------------------------- |
-|  1  |    ```docker --version```     | It is used to key-value pair (mapping) presentation   |
-
+| SL  |      Command       | Functionality                                       |
+| :-: | :----------------: | :-------------------------------------------------- |
+|  1  | `docker --version` | It is used to key-value pair (mapping) presentation |
 
 ## Courtesy of Jakir,
 
