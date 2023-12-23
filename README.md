@@ -14,6 +14,20 @@ Docker is a platform and set of tools designed to facilitate the creation, deplo
 
 Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a powerful and flexible platform for container orchestration, allowing you to deploy and manage applications seamlessly across a cluster of machines.
 
+#### CLIs in Docker-Kubernetes
+
+1. AWS CLI
+
+   - Control multiple AWS services from this command line.
+
+2. kubectl
+   - Control the kubernetes clusters & objects;
+3. eksctl
+   - creating-deleting clusters on AWS EKS.
+   - create, autoscale & delete the node groups.
+   - create fargate profiles.
+   - it is powerfull tool for managing EKS clusters on AWS.
+
 #### Essential Commands
 
 | SL  |      Command       | Functionality                                       |
