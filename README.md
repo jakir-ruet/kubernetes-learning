@@ -33,7 +33,7 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
 #### Essential Commands of Docker
 
-| SL  | Command            | Functionality                  |
+| SL  | Command            | Explanation                    |
 | :-: | :----------------- | :----------------------------- |
 |  1  | `docker --version` | Checking the versionof docker  |
 |  2  | `docker login`     | We can access using credential |
