@@ -58,6 +58,12 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
    - create, autoscale & delete the node groups.
    - create fargate profiles.
    - it is powerfull tool for managing EKS clusters on AWS.
+   - <a href="https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-eksctl.html">How to Install?</a>
+   - If you do not already have Homebrew installed on macOS, install it with the following command. `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+   - Install the Weaveworks Homebrew tap. `brew tap weaveworks/tap` or `brew install weaveworks/tap/eksctl`
+   - Test that your installation was successful with the following command. You must have eksctl 0.34.0 version or later. `eksctl version`
+   - If it shows the following output then installation is done.
+   - `0.167.0`
 
 #### Essential Commands
 
