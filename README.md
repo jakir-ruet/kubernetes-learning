@@ -14,6 +14,34 @@ Docker is a platform and set of tools designed to facilitate the creation, deplo
 
 Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a powerful and flexible platform for container orchestration, allowing you to deploy and manage applications seamlessly across a cluster of machines.
 
+#### Docker Installation
+
+- <a href="https://docs.docker.com/get-docker/">How to Install?</a>
+
+#### How to pull from Docker Hub
+
+- `docker pull jakirbd/doc-kub-first-app:latest`
+
+#### Run the downloaded docker image & access to the application
+
+- `docker run --name AppName -p 3000:80 -d UserName/AppName:TagName OutputUrl`
+- `docker run --name doc-kub-first-app -p 3000:80 -d jakirbd/doc-kub-first-app:latest`
+
+#### Copy the docker image name from Docker hub
+
+- `docker run --name doc-kub-first-app -p 3000:80 -d jakirbd/doc-kub-first-app:latest`
+
+#### Essential Commands of Docker
+
+| SL  | Command            | Functionality                                       |
+| :-: | :----------------- | :-------------------------------------------------- |
+|  1  | `docker --version` | It is used to key-value pair (mapping) presentation |
+|  2  | `docker login`     | We can access using credential                      |
+|  3  | `docker ps`        | Show only running container                         |
+|  4  | `docker ps -a`     | Show all container                                  |
+|  4  | `docker ps -a -q`  | Show all container with id                          |
+|  5  | `docker images`    | Show all images                                     |
+
 #### CLIs in Docker-Kubernetes
 
 1. AWS CLI
@@ -64,12 +92,6 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
    - Test that your installation was successful with the following command. You must have eksctl 0.34.0 version or later. `eksctl version`
    - If it shows the following output then installation is done.
    - `0.167.0`
-
-#### Essential Commands
-
-| SL  |      Command       | Functionality                                       |
-| :-: | :----------------: | :-------------------------------------------------- |
-|  1  | `docker --version` | It is used to key-value pair (mapping) presentation |
 
 ## Courtesy of Jakir,
 
