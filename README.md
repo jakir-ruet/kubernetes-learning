@@ -20,6 +20,8 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
    - Control multiple AWS services from this command line.
    - <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">How to Install?</a>
+   - Let's me check `aws --version`
+   - If its okay then we will see `aws-cli/2.15.4 Python/3.11.6 Darwin/23.2.0 exe/x86_64 prompt/off`
 
 2. kubectl
    - Control the kubernetes clusters & objects;
