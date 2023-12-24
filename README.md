@@ -22,6 +22,21 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
    - <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">How to Install?</a>
    - Let's me check `aws --version`
    - If its okay then we will see `aws-cli/2.15.4 Python/3.11.6 Darwin/23.2.0 exe/x86_64 prompt/off`
+   - Configuration using security credential
+     - Go to AWS Management Console > Services > IAM
+     - Select the IAM User Name: You User Name [***NB***: You must use IAM's Information only not Root User]
+     - Click on `Security credentials`
+     - Click on `Create access key`
+     - Copy Access ID & Secret access key
+     - Go to your Terminal and implement as below format
+     - `aws configure`
+     - AWS Access Key ID [None]: Put your ID here and press Enter.
+     - AWS Secret Access Key [None]: Put your secret key here and press Enter
+     - Default region name [None]: us-east-1
+     - Default output format [None]: json
+   - Let's me check wheather configuration done.
+     - `aws ec2 describe-vpcs`
+     - If it is done then we will see the details of default vpc.
 
 2. kubectl
    - Control the kubernetes clusters & objects;
