@@ -31,15 +31,52 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
 #### Essential Commands of Docker
 
-| SL  | Command                           | Explanation                        |
-| :-: | :-------------------------------- | :--------------------------------- |
-|  1  | `docker --version`                | Checking the versionof docker      |
-|  2  | `docker login`                    | We can access using credential     |
-|  3  | `docker ps`                       | Show only running container        |
-|  4  | `docker ps -a`                    | Show all container                 |
-|  5  | `docker ps -a -q`                 | Show all container with id (quiet) |
-|  6  | `docker images`                   | Show all images                    |
-|  7  | `docker exec -it AppName /bin/sh` | Container connect to terminal      |
+| SL  | Command            | Explanation                    |
+| :-: | :----------------- | :----------------------------- |
+|  1  | `docker --version` | Checking the version of docker |
+|  2  | `docker login`     | We can access using credential |
+|  2  | `docker logout`    | We can logout                  |
+
+#### Essential command of images
+
+| SL  | Command                           | Explanation                                      |
+| :-: | :-------------------------------- | :----------------------------------------------- |
+|  1  | `docker image`                    | Show the command details                         |
+|  2  | `docker images/ls`                | Show image list                                  |
+|  3  | `docker pull ImageName`           | Pull/Download the image                          |
+|  4  | `docker pull ImageName:TagName`   | Pull/Download the image with tag name            |
+|  5  | `docker ps or docker ps -a`       | Check the running container or all container     |
+|  6  | `docker run -p 8000:80 ImageName` | Publish the image to container                   |
+|  7  | `docker pull ImageName:TagName`   | Pull/Download the image with tag name            |
+|  8  | `docker pull ImageName:TagName`   | Pull/Download the image with tag name            |
+|  9  | `docker pull ImageName:TagName`   | Pull/Download the image with tag name            |
+| 10  | `docker image history ImageId`    | History of image                                 |
+| 11  | `docker image inspect ImageId`    | Inspections the image                            |
+| 12  | `docker image prune -a`           | Remove all unused images, not just dangling ones |
+| 13  | `docker rmi ImageId`              | Image remove                                     |
+
+#### Essential command of container
+
+| SL  | Command                                     | Explanation                                            |
+| :-: | :------------------------------------------ | :----------------------------------------------------- |
+|  1  | `docker container`                          | Show the command details                               |
+|  2  | `docker container ls`                       | Show the enlisted container                            |
+|  3  | `docker ps`                                 | Show only running container                            |
+|  4  | `docker ps -a`                              | Show all container                                     |
+|  5  | `docker ps -a -q`                           | Show all container with id (quiet)                     |
+|  6  | `docker run -p 3000:80 nginx/node/https`    | Will be Run & Publish a new container for each publish |
+|  7  | `docker run -p 3000:80 BaseImageId`         | Will be Run & Publish a new container for each publish |
+|  8  | `docker rename OldContName NewContName`     | Renaming the container                                 |
+|  9  | `docker run -p 3000:80 -d BaseImageId`      | Publish the container as detach                        |
+| 10  | `docker run -p 3000:80 -d --rm BaseImageId` | Container is Remove after stop the container           |
+| 11  | `docker exec -it ContainerName /bin/sh`     | Container connect to terminal                          |
+| 12  | `docker container prune`                    | Remove all container                                   |
+| 13  | `docker start ContainerName`                | Container start                                        |
+| 14  | `docker stop ContainerName`                 | Container stop                                         |
+| 15  | `docker restart ContainerName`              | Container restart                                      |
+| 16  | `docker rm ContainerName`                   | Container remove                                       |
+
+\* If using the image's default name (nginx/node/https) then will create a new container in each publish.
 
 #### CLIs in Docker-Kubernetes
 
