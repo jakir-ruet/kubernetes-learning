@@ -24,23 +24,22 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
 #### Run the downloaded docker image & access to the application
 
-- `docker run --name AppName -p 3000:80 -d UserName/AppName:TagName OutputUrl`
+- `docker run --name AppName -p 3000:80 -d UserName/AppName:TagName`
 - `docker run --name doc-kub-first-app -p 3000:80 -d jakirbd/doc-kub-first-app:latest`
-
-#### Copy the docker image name from Docker hub
-
-- `docker run --name doc-kub-first-app -p 3000:80 -d jakirbd/doc-kub-first-app:latest`
+- `docker exec -it AppName /bin/sh`
+- `docker exec -it doc-kub-first-app /bin/sh`
 
 #### Essential Commands of Docker
 
-| SL  | Command            | Explanation                    |
-| :-: | :----------------- | :----------------------------- |
-|  1  | `docker --version` | Checking the versionof docker  |
-|  2  | `docker login`     | We can access using credential |
-|  3  | `docker ps`        | Show only running container    |
-|  4  | `docker ps -a`     | Show all container             |
-|  5  | `docker ps -a -q`  | Show all container with id     |
-|  6  | `docker images`    | Show all images                |
+| SL  | Command                           | Explanation                        |
+| :-: | :-------------------------------- | :--------------------------------- |
+|  1  | `docker --version`                | Checking the versionof docker      |
+|  2  | `docker login`                    | We can access using credential     |
+|  3  | `docker ps`                       | Show only running container        |
+|  4  | `docker ps -a`                    | Show all container                 |
+|  5  | `docker ps -a -q`                 | Show all container with id (quiet) |
+|  6  | `docker images`                   | Show all images                    |
+|  7  | `docker exec -it AppName /bin/sh` | Container connect to terminal      |
 
 #### CLIs in Docker-Kubernetes
 
