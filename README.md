@@ -76,8 +76,6 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 | 15  | `docker restart ContainerName`              | Container restart                                      |
 | 16  | `docker rm ContainerName`                   | Container remove                                       |
 
-\* If using the image's default name (nginx/node/https) then will create a new container in each publish.
-
 #### CLIs in Docker-Kubernetes
 
 1. AWS CLI
