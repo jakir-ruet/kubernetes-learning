@@ -39,8 +39,8 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 |  2  | `docker login`     | We can access using credential                      |
 |  3  | `docker ps`        | Show only running container                         |
 |  4  | `docker ps -a`     | Show all container                                  |
-|  4  | `docker ps -a -q`  | Show all container with id                          |
-|  5  | `docker images`    | Show all images                                     |
+|  5  | `docker ps -a -q`  | Show all container with id                          |
+|  6  | `docker images`    | Show all images                                     |
 
 #### CLIs in Docker-Kubernetes
 
