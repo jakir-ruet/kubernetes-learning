@@ -39,7 +39,20 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
      - If it is done then we will see the details of the default vpc.
 
 2. kubectl
-   - Control the kubernetes clusters & objects;
+
+   - Control the kubernetes clusters & objects.
+   - <a href="https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html">How to Install?</a>
+   - `mkdir kubectlbinary`
+   - `cd kubectlbinary`
+   - `curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.3/2023-11-14/bin/darwin/amd64/kubectl`
+   - Assign the exexute permissions `chmod +x ./kubectl`
+   - Set the path by copying to user home directory `mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH` & `echo 'export PATH=$HOME/bin:$PATH' >> ~/.bash_profile`
+
+- Let's me check whether the configuration is done. `kubectl version --client`
+- If it shows the following output then installation is done.
+  - `Client Version: v1.28.2`
+  - `Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3`
+
 3. eksctl
    - creating-deleting clusters on AWS EKS.
    - create, autoscale & delete the node groups.
