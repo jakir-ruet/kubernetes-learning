@@ -18,7 +18,7 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
 There are fundamentally two types of processes in Unix based OS:
 
-##### Foreground processes:
+#### Foreground processes:
 
 These are initialized and controlled through a terminal session (referred to as interactive processes). In other words, there has to be a user connected to the system to start such processes; they haven’t started automatically as part of the system functions/services.
 
