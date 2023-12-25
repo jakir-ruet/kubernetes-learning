@@ -102,6 +102,10 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 | 24  | `docker logs ContainerName`                                          | See the logs details                                   |
 | 25  | `docker logs -f ContainerName`                                       | See the future logs details                            |
 
+#### Data (Storage)
+
+- <a href="https://docs.docker.com/storage/">Manage data in Docker</a>
+
 #### CLIs in Docker-Kubernetes
 
 1. AWS CLI
