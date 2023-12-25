@@ -102,8 +102,34 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 | 24  | `docker logs ContainerName`                                          | See the logs details                                   |
 | 25  | `docker logs -f ContainerName`                                       | See the future logs details                            |
 
-#### Data (Storage)
+#### Data-Storage
 
+##### Data
+
+- Application Data (Code, Environment)
+
+  - written by developer
+  - added to image & container in build phase.
+  - read-only/fixed once image is build
+
+- Temporary App Data (Enter user input)
+
+  - fetched/produced in running container
+  - stored in memory or temporary files
+  - read + write possible temporary stored in containers
+
+- Permanent App Data (User accounts)
+
+  - fetched/produced in running container
+  - stored in files or a database, must not lost container stop/restart
+  - read + write possible permanent containers & volumes
+
+##### Storage
+
+- Volumes (managed by docker)
+  - Anonymous Volumes
+  - Named Volumes
+- Bind Mounts (managed by we)
 - <a href="https://docs.docker.com/storage/">Manage data in Docker</a>
 
 #### CLIs in Docker-Kubernetes
