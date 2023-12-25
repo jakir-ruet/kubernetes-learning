@@ -55,40 +55,52 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Essential command of images
 
-| SL  | Command                                 | Explanation                                            |
-| :-: | :-------------------------------------- | :----------------------------------------------------- |
-|  1  | `docker image`                          | Show the command details                               |
-|  2  | `docker images or docker ls`            | Show image list                                        |
-|  3  | `docker pull ImageName`                 | Pull/Download the image                                |
-|  4  | `docker pull ImageName:TagName`         | Pull/Download the image with tag name                  |
-|  5  | `docker run ImageName (node/nginx)`     | Will be Run & Publish a new container for each publish |
-|  6  | `docker run -it ImageName (node/nginx)` | Enter into the interactive mode                        |
-|  7  | `docker build .`                        | Build the images as well as container                  |
-|  8  | `docker image history ImageId`          | History of image                                       |
-|  9  | `docker image inspect ImageId`          | Inspections the image                                  |
-| 10  | `docker image prune -a`                 | Remove all unused images, not just dangling ones       |
-| 11  | `docker rmi ImageId`                    | Image remove                                           |
+| SL  | Command                                          | Explanation                                                 |
+| :-: | :----------------------------------------------- | :---------------------------------------------------------- |
+|  1  | `docker image`                                   | Show the command details                                    |
+|  2  | `docker images or docker ls`                     | Show image list                                             |
+|  3  | `docker pull ImageName`                          | Pull/Download the image                                     |
+|  4  | `docker pull ImageName:TagName`                  | Pull/Download the image with tag name                       |
+|  5  | `docker run ImageName (node/nginx)`              | Will be Run & Publish a new container for each publish      |
+|  6  | `docker run -it ImageName (node/nginx)`          | Enter into the interactive mode                             |
+|  7  | `docker build .`                                 | Build the images as well as container (own image)           |
+|  8  | `docker build -t doc-kub-first-app:latest .`     | Build the images with tag (name/version/others) (own image) |
+|  9  | `docker image tag ImgId UserName/ImgName:latest` | Image renaming/taging (own image)                           |
+| 10  | `docker push jakirbd/my-node-server`             | Pushing the image (own image)                               |
+| 11  | `docker image history ImageId`                   | History of image                                            |
+| 12  | `docker image inspect ImageId`                   | Inspections the image                                       |
+| 13  | `docker image prune -a`                          | Remove all unused images, not just dangling ones            |
+| 14  | `docker rmi ImageId`                             | Image remove                                                |
 
 #### Essential command of container
 
-| SL  | Command                                     | Explanation                                            |
-| :-: | :------------------------------------------ | :----------------------------------------------------- |
-|  1  | `docker container`                          | Show the command details                               |
-|  2  | `docker container ls`                       | Show the enlisted container                            |
-|  3  | `docker ps`                                 | Show only running container                            |
-|  4  | `docker ps -a`                              | Show all container                                     |
-|  5  | `docker ps -a -q`                           | Show all container with id (quiet)                     |
-|  6  | `docker run -p 3000:80 nginx/node/https`    | Will be Run & Publish a new container for each publish |
-|  7  | `docker run -p 3000:80 BaseImageId`         | Will be Run & Publish a new container for each publish |
-|  8  | `docker rename OldContName NewContName`     | Renaming the container                                 |
-|  9  | `docker run -p 3000:80 -d BaseImageId`      | Publish the container as detach                        |
-| 10  | `docker run -p 3000:80 -d --rm BaseImageId` | Container is Remove after stop the container           |
-| 11  | `docker exec -it ContainerName /bin/sh`     | Container connect to terminal                          |
-| 12  | `docker container prune`                    | Remove all container                                   |
-| 13  | `docker start ContainerName`                | Container start                                        |
-| 14  | `docker stop ContainerName`                 | Container stop                                         |
-| 15  | `docker restart ContainerName`              | Container restart                                      |
-| 16  | `docker rm ContainerName`                   | Container remove                                       |
+| SL  | Command                                                              | Explanation                                            |
+| :-: | :------------------------------------------------------------------- | :----------------------------------------------------- |
+|  1  | `docker container`                                                   | Show the command details                               |
+|  2  | `docker container ls`                                                | Show the enlisted container                            |
+|  3  | `docker ps`                                                          | Show only running container                            |
+|  4  | `docker ps -a`                                                       | Show all container                                     |
+|  5  | `docker ps -a -q`                                                    | Show all container with id (quiet)                     |
+|  6  | `docker run -p 3000:80 nginx/node/https`                             | Will be Run & Publish a new container for each publish |
+|  7  | `docker run -p 3000:80 BaseImageId`                                  | Will be Run & Publish a new container for each publish |
+|  8  | `docker rename OldContName NewContName`                              | Renaming the container                                 |
+|  9  | `docker run -p 3000:80 -d --name NewContName OldContName`            | Renaming & publishing container                        |
+| 10  | `docker run -p 3000:80 -d --rm --name NewContName OldContName`       | Renaming, removing & publishing container              |
+| 11  | `docker run -p 3000:80 -d --rm --name NewContName OldContName:lates` | Renaming, removing & publishing using tag container    |
+| 12  | `docker run -p 3000:80 -d BaseImageId`                               | Publish the container as detach                        |
+| 13  | `docker run -p 3000:80 -d --rm BaseImageId`                          | Container is Remove after stop the container           |
+| 14  | `docker exec -it ContainerName /bin/sh`                              | Container connect to terminal using shell              |
+| 15  | `docker exec -it ContainerName /bin/bash`                            | Container connect to terminal using bash               |
+| 16  | `docker exec -it ContainerName /bash`                                | Container connect to terminal using bash               |
+| 17  | `docker cp index.html my-nginx-server:/usr/share/nginx/html`         | Moving the source file local pc to docker nginx server |
+| 18  | `docker container prune`                                             | Remove all container                                   |
+| 19  | `docker start ContainerName`                                         | Container start                                        |
+| 20  | `docker stop ContainerName`                                          | Container stop                                         |
+| 21  | `docker restart ContainerName`                                       | Container restart                                      |
+| 22  | `docker rm ContainerName`                                            | Container remove after stop it                         |
+| 23  | `docker attach ContainerName`                                        | Attach the container                                   |
+| 24  | `docker logs ContainerName`                                          | See the logs details                                   |
+| 25  | `docker logs -f ContainerName`                                       | See the future logs details                            |
 
 #### CLIs in Docker-Kubernetes
 
