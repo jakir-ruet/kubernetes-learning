@@ -14,6 +14,22 @@ Docker is a platform and set of tools designed to facilitate the creation, deplo
 
 Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a powerful and flexible platform for container orchestration, allowing you to deploy and manage applications seamlessly across a cluster of machines.
 
+### Types of Processes:
+
+There are fundamentally two types of processes in Unix based OS:
+
+##### Foreground processes:
+
+These are initialized and controlled through a terminal session (referred to as interactive processes). In other words, there has to be a user connected to the system to start such processes; they haven’t started automatically as part of the system functions/services.
+
+#### Background processes:
+
+Are processes not connected to a terminal (referred to as non-interactive/automatic processes); they don’t expect any user input.
+
+### Attached-Detached
+
+We can run container in attached mode (in the foreground) or in detached mode (in the background). By default, Docker runs the container in attached mode. In the attached mode, Docker can start the process in the container and attach the console to the process's standard input, standard output, and standard error.
+
 #### Docker Installation
 
 - <a href="https://docs.docker.com/get-docker/">How to Install?</a>
@@ -35,25 +51,23 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 | :-: | :----------------- | :----------------------------- |
 |  1  | `docker --version` | Checking the version of docker |
 |  2  | `docker login`     | We can access using credential |
-|  2  | `docker logout`    | We can logout                  |
+|  3  | `docker logout`    | We can logout                  |
 
 #### Essential command of images
 
-| SL  | Command                           | Explanation                                      |
-| :-: | :-------------------------------- | :----------------------------------------------- |
-|  1  | `docker image`                    | Show the command details                         |
-|  2  | `docker images/ls`                | Show image list                                  |
-|  3  | `docker pull ImageName`           | Pull/Download the image                          |
-|  4  | `docker pull ImageName:TagName`   | Pull/Download the image with tag name            |
-|  5  | `docker ps or docker ps -a`       | Check the running container or all container     |
-|  6  | `docker run -p 8000:80 ImageName` | Publish the image to container                   |
-|  7  | `docker pull ImageName:TagName`   | Pull/Download the image with tag name            |
-|  8  | `docker pull ImageName:TagName`   | Pull/Download the image with tag name            |
-|  9  | `docker pull ImageName:TagName`   | Pull/Download the image with tag name            |
-| 10  | `docker image history ImageId`    | History of image                                 |
-| 11  | `docker image inspect ImageId`    | Inspections the image                            |
-| 12  | `docker image prune -a`           | Remove all unused images, not just dangling ones |
-| 13  | `docker rmi ImageId`              | Image remove                                     |
+| SL  | Command                                 | Explanation                                            |
+| :-: | :-------------------------------------- | :----------------------------------------------------- |
+|  1  | `docker image`                          | Show the command details                               |
+|  2  | `docker images or docker ls`            | Show image list                                        |
+|  3  | `docker pull ImageName`                 | Pull/Download the image                                |
+|  4  | `docker pull ImageName:TagName`         | Pull/Download the image with tag name                  |
+|  5  | `docker run ImageName (node/nginx)`     | Will be Run & Publish a new container for each publish |
+|  6  | `docker run -it ImageName (node/nginx)` | Enter into the interactive mode                        |
+|  7  | `docker build .`                        | Build the images as well as container                  |
+|  8  | `docker image history ImageId`          | History of image                                       |
+|  9  | `docker image inspect ImageId`          | Inspections the image                                  |
+| 10  | `docker image prune -a`                 | Remove all unused images, not just dangling ones       |
+| 11  | `docker rmi ImageId`                    | Image remove                                           |
 
 #### Essential command of container
 
