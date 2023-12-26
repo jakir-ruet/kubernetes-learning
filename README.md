@@ -47,11 +47,11 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Essential Commands of Docker
 
-| SL  | Command            | Explanation                    |
-| :-: | :----------------- | :----------------------------- |
-|  1  | `docker --version` | Checking the version of docker |
-|  2  | `docker login`     | We can access using credential |
-|  3  | `docker logout`    | We can logout                  |
+| SL  | Command                 | Explanation                    |
+| :-: | :---------------------- | :----------------------------- |
+|  1  | `docker --version (-v)` | Checking the version of docker |
+|  2  | `docker login`          | We can access using credential |
+|  3  | `docker logout`         | We can logout                  |
 
 #### Essential command of images
 
@@ -131,6 +131,17 @@ We can run container in attached mode (in the foreground) or in detached mode (i
   - Named Volumes
 - Bind Mounts (managed by we)
 - <a href="https://docs.docker.com/storage/">Manage data in Docker</a>
+
+#### Essential command of volume
+
+| SL  | Command                             | Explanation                 |
+| :-: | :---------------------------------- | :-------------------------- |
+|  1  | `docker volume create`              | Create a anonymous volume   |
+|  2  | `docker volume create my-sweet-vol` | Create a volume             |
+|  3  | `docker volume ls`                  | Check the volume list       |
+|  4  | `docker volume inspect VolName`     | Inspect the volume          |
+|  5  | `docker volume rm VolName`          | Remove the volume           |
+|  6  | `docker volume prune`               | Remove the anonymous volume |
 
 #### CLIs in Docker-Kubernetes
 
