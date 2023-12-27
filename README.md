@@ -73,35 +73,35 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Essential command of container
 
-| SL  | Command                                                              | Explanation                                            |
-| :-: | :------------------------------------------------------------------- | :----------------------------------------------------- |
-|  1  | `docker container`                                                   | Show the command details                               |
-|  2  | `docker container ls`                                                | Show the enlisted container                            |
-|  3  | `docker ps`                                                          | Show only running container                            |
-|  4  | `docker ps -a`                                                       | Show all container                                     |
-|  5  | `docker ps -a -q`                                                    | Show all container with id (quiet)                     |
-|  6  | `docker build .`                                                     | Build a container                                      |
-|  7  | `docker build -t TagName .`                                          | Build a container with tag                             |
-|  8  | `docker run -p 3000:80 nginx/node/https`                             | Will be Run & Publish a new container for each publish |
-|  7  | `docker run -p 3000:80 BaseImageId`                                  | Will be Run & Publish a new container for each publish |
-|  9  | `docker rename OldContName NewContName`                              | Renaming the container                                 |
-| 10  | `docker run -p 3000:80 -d --name NewContName OldContName`            | Renaming & publishing container                        |
-| 11  | `docker run -p 3000:80 -d --rm --name NewContName OldContName`       | Renaming, removing & publishing container              |
-| 12  | `docker run -p 3000:80 -d --rm --name NewContName OldContName:lates` | Renaming, removing & publishing using tag container    |
-| 13  | `docker run -p 3000:80 -d BaseImageId`                               | Publish the container as detach                        |
-| 14  | `docker run -p 3000:80 -d --rm BaseImageId`                          | Container is Remove after stop the container           |
-| 15  | `docker exec -it ContainerName /bin/sh`                              | Container connect to terminal using shell              |
-| 16  | `docker exec -it ContainerName /bin/bash`                            | Container connect to terminal using bash               |
-| 17  | `docker exec -it ContainerName /bash`                                | Container connect to terminal using bash               |
-| 18  | `docker cp index.html my-nginx-server:/usr/share/nginx/html`         | Moving the source file local pc to docker nginx server |
-| 19  | `docker container prune`                                             | Remove all container                                   |
-| 20  | `docker start ContainerName`                                         | Container start                                        |
-| 21  | `docker stop ContainerName`                                          | Container stop                                         |
-| 22  | `docker restart ContainerName`                                       | Container restart                                      |
-| 23  | `docker rm ContainerName`                                            | Container remove after stop it                         |
-| 24  | `docker attach ContainerName`                                        | Attach the container                                   |
-| 25  | `docker logs ContainerName`                                          | See the logs details                                   |
-| 26  | `docker logs -f ContainerName`                                       | See the future logs details                            |
+| SL  | Command                                                               | Explanation                                            |
+| :-: | :-------------------------------------------------------------------- | :----------------------------------------------------- |
+|  1  | `docker container`                                                    | Show the command details                               |
+|  2  | `docker container ls`                                                 | Show the enlisted container                            |
+|  3  | `docker ps`                                                           | Show only running container                            |
+|  4  | `docker ps -a`                                                        | Show all container                                     |
+|  5  | `docker ps -a -q`                                                     | Show all container with id (quiet)                     |
+|  6  | `docker build .`                                                      | Build a container                                      |
+|  7  | `docker build -t TagName .`                                           | Build a container with tag                             |
+|  8  | `docker run -p 3000:80 nginx/node/https`                              | Will be Run & Publish a new container for each publish |
+|  7  | `docker run -p 3000:80 BaseImageId`                                   | Will be Run & Publish a new container for each publish |
+|  9  | `docker rename OldContName NewContName`                               | Renaming the container                                 |
+| 10  | `docker run -p 3000:80 -d --name NewContName OldContName`             | Renaming & publishing container                        |
+| 11  | `docker run -p 3000:80 -d --rm --name NewContName OldContName`        | Renaming, removing & publishing container              |
+| 12  | `docker run -p 3000:80 -d --rm --name NewContName OldContName:latest` | Renaming, removing & publishing using tag container    |
+| 13  | `docker run -p 3000:80 -d BaseImageId`                                | Publish the container as detach                        |
+| 14  | `docker run -p 3000:80 -d --rm BaseImageId`                           | Container is Remove after stop the container           |
+| 15  | `docker exec -it ContainerName /bin/sh`                               | Container connect to terminal using shell              |
+| 16  | `docker exec -it ContainerName /bin/bash`                             | Container connect to terminal using bash               |
+| 17  | `docker exec -it ContainerName /bash`                                 | Container connect to terminal using bash               |
+| 18  | `docker cp index.html my-nginx-server:/usr/share/nginx/html`          | Moving the source file local pc to docker nginx server |
+| 19  | `docker container prune`                                              | Remove all container                                   |
+| 20  | `docker start ContainerName`                                          | Container start                                        |
+| 21  | `docker stop ContainerName`                                           | Container stop                                         |
+| 22  | `docker restart ContainerName`                                        | Container restart                                      |
+| 23  | `docker rm ContainerName`                                             | Container remove after stop it                         |
+| 24  | `docker attach ContainerName`                                         | Attach the container                                   |
+| 25  | `docker logs ContainerName`                                           | See the logs details                                   |
+| 26  | `docker logs -f ContainerName`                                        | See the future logs details                            |
 
 #### Data-Storage
 
@@ -135,16 +135,25 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Essential command of volume
 
-| SL  | Command                             | Explanation                 |
-| :-: | :---------------------------------- | :-------------------------- |
-|  1  | `docker volume create`              | Create a anonymous volume   |
-|  2  | `docker volume create my-sweet-vol` | Create a volume             |
-|  3  | `docker volume ls`                  | Check the volume list       |
-|  4  | `docker volume inspect VolName`     | Inspect the volume          |
-|  5  | `docker volume rm VolName`          | Remove the volume           |
-|  6  | `docker volume prune`               | Remove the anonymous volume |
+| SL  | Command                                                                | Explanation                                  |
+| :-: | :--------------------------------------------------------------------- | :------------------------------------------- |
+|  1  | `docker volume create`                                                 | Create a anonymous volume                    |
+|  2  | `docker volume create my-sweet-vol`                                    | Create a volume                              |
+|  3  | `docker volume ls`                                                     | Check the volume list                        |
+|  4  | `docker volume inspect VolName`                                        | Inspect the volume                           |
+|  5  | `docker volume rm VolName`                                             | Remove the volume                            |
+|  6  | `docker volume prune`                                                  | Remove the anonymous volume                  |
+|  7  | `docker build -t ImgName(OldContName):volumes .`                       | Create own images tag named volumes          |
+|  7  | `docker run -d -p 3000:80 --rm --name NewContName OldContName:volumes` | Create own images tag named based on volumes |
+|  7  | `docker rmi ConName:volumes`                                           | Remove the named volume                      |
 
 #### CLIs in Docker-Kubernetes
+
+#### Footnote about volume
+
+- Storage persistent location outside of container.
+- If container removed then volume will be available on storage.
+- It use for the data security purpose.
 
 1. AWS CLI
 
