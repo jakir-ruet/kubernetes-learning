@@ -130,22 +130,26 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 - Volumes (managed by docker)
   - Anonymous Volumes
   - Named Volumes
-- Bind Mounts (managed by we)
+- Bind/Host Mounts (managed by we)
 - <a href="https://docs.docker.com/storage/">Manage data in Docker</a>
 
 #### Essential command of volume
 
-| SL  | Command                                                                | Explanation                                  |
-| :-: | :--------------------------------------------------------------------- | :------------------------------------------- |
-|  1  | `docker volume create`                                                 | Create a anonymous volume                    |
-|  2  | `docker volume create my-sweet-vol`                                    | Create a volume                              |
-|  3  | `docker volume ls`                                                     | Check the volume list                        |
-|  4  | `docker volume inspect VolName`                                        | Inspect the volume                           |
-|  5  | `docker volume rm VolName`                                             | Remove the volume                            |
-|  6  | `docker volume prune`                                                  | Remove the anonymous volume                  |
-|  7  | `docker build -t ImgName(OldContName):volumes .`                       | Create own images tag named volumes          |
-|  7  | `docker run -d -p 3000:80 --rm --name NewContName OldContName:volumes` | Create own images tag named based on volumes |
-|  7  | `docker rmi ConName:volumes`                                           | Remove the named volume                      |
+| SL  | Command                                                                  | Explanation                                                  |
+| :-: | :----------------------------------------------------------------------- | :----------------------------------------------------------- |
+|  1  | `docker volume create`                                                   | Create a anonymous volume                                    |
+|  2  | `docker volume create my-sweet-vol`                                      | Create a volume                                              |
+|  3  | `docker volume ls`                                                       | Check the volume list                                        |
+|  4  | `docker volume inspect VolName`                                          | Inspect the volume                                           |
+|  5  | `docker volume rm VolName`                                               | Remove the volume                                            |
+|  6  | `docker volume prune`                                                    | Remove the anonymous volume                                  |
+|  7  | `docker build -t ImgName(OldContName):volumes .`                         | Create own images tag named volumes                          |
+|  8  | `docker run -d -p 3000:80 --rm --name NewContName OldContName:volumes`   | Create own images tag named based on volumes                 |
+|  9  | `docker rmi ConName:volumes`                                             | Remove the named volume                                      |
+| 10  | `docker run -it --name ConName -v /DirName nginx /bin/bash`              | Create a container & anonymous volume mounted on a directory |
+| 11  | `docker run -it --name ConName -v VolName:/DirName nginx /bin/bash`      | Create a container & named volume mounted on a directory     |
+| 12  | `mkdir /opt/HostDir`                                                     | Create host directory                                        |
+| 12  | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
 
 #### CLIs in Docker-Kubernetes
 
