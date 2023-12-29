@@ -149,7 +149,9 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 | 10  | `docker run -it --name ConName -v /DirName nginx /bin/bash`              | Create a container & anonymous volume mounted on a directory |
 | 11  | `docker run -it --name ConName -v VolName:/DirName nginx /bin/bash`      | Create a container & named volume mounted on a directory     |
 | 12  | `mkdir /opt/HostDir`                                                     | Create host directory use as volume for app                  |
-| 12  | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
+| 13  | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
+
+#### Using Docker Volumes for Jenkins | Named Volumes and Bind Volumes
 
 #### CLIs in Docker-Kubernetes
 
