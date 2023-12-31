@@ -151,7 +151,20 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 | 12  | `mkdir /opt/HostDir`                                                     | Create host directory use as volume for app                  |
 | 13  | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
 
-#### Using Docker Volumes for Jenkins | Named Volumes and Bind Volumes
+#### <a href="https://hub.docker.com/_/jenkins">Using Docker Volumes for Jenkins | Named Volumes and Bind Volumes</a>
+
+| SL  | Command                                                                                                            | Explanation                          |
+| :-: | :----------------------------------------------------------------------------------------------------------------- | :----------------------------------- |
+|  1  | `docker run --name ConName -p 8080:8080 -p 50000:50000 -v VolName:/HostedDir jenkins`                              | Create a container as well as volume |
+|  2  | `docker run --name con_jenkins -p 8080:8080 -p 50000:50000 -v vol_jenkins:/var/jenkins_home jenkinsci/jenkins:lts` | Create a container as well as volume |
+
+#### <a href="https://docs.docker.com/network/">Docker Network</a>
+
+| SL  | Command                                            | Explanation            |
+| :-: | :------------------------------------------------- | :--------------------- |
+|  1  | `docker network ls`                                | Check the network list |
+|  2  | `docker network create -d NetworkType NetworkName` | Create the network     |
+|  3  | `docker network inspect NetworkName`               | Create the network     |
 
 #### CLIs in Docker-Kubernetes
 
