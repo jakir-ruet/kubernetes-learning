@@ -151,20 +151,25 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 | 12  | `mkdir /opt/HostDir`                                                     | Create host directory use as volume for app                  |
 | 13  | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
 
-#### <a href="https://hub.docker.com/_/jenkins">Using Docker Volumes for Jenkins | Named Volumes and Bind Volumes</a>
-
-| SL  | Command                                                                                                            | Explanation                          |
-| :-: | :----------------------------------------------------------------------------------------------------------------- | :----------------------------------- |
-|  1  | `docker run --name ConName -p 8080:8080 -p 50000:50000 -v VolName:/HostedDir jenkins`                              | Create a container as well as volume |
-|  2  | `docker run --name con_jenkins -p 8080:8080 -p 50000:50000 -v vol_jenkins:/var/jenkins_home jenkinsci/jenkins:lts` | Create a container as well as volume |
-
 #### <a href="https://docs.docker.com/network/">Docker Network</a>
 
-| SL  | Command                                            | Explanation            |
-| :-: | :------------------------------------------------- | :--------------------- |
-|  1  | `docker network ls`                                | Check the network list |
-|  2  | `docker network create -d NetworkType NetworkName` | Create the network     |
-|  3  | `docker network inspect NetworkName`               | Create the network     |
+##### Networks types
+
+- Bridge Network
+- User Define Bridge Network
+
+| SL  | Command                                                 | Explanation                                         |
+| :-: | :------------------------------------------------------ | :-------------------------------------------------- |
+|  1  | `docker network ls`                                     | Check the network list                              |
+|  2  | `ip address show`                                       | Check IP address in terminal; it will show docker0: |
+|  3  | `docker network create -d NetworkType NetworkName`      | Create the network                                  |
+|  4  | `docker network inspect NetworkName`                    | Create the network                                  |
+|  5  | `ip add sh`                                             | Show all network interface in details               |
+|  6  | `bridge link`                                           | Show all ethernet name and connected docker         |
+|  7  | `docker inspect bridge`                                 | Inspect all bridge networks with individual IP      |
+|  8  | `docker exec -it ImageName sh`                          | Enter into image                                    |
+|  9  | `ip route`                                              | Show IP, DNS & others                               |
+| 10  | `docker run -itd --rm -p 85:80 --name myforthapp nginx` | Run a nginx app                                     |
 
 ##### Network Driver Types
 
