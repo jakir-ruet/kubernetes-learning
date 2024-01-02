@@ -157,19 +157,24 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 - Bridge Network
 - User Define Bridge Network
+- Host Network (under main OS)
 
-| SL  | Command                                                 | Explanation                                         |
-| :-: | :------------------------------------------------------ | :-------------------------------------------------- |
-|  1  | `docker network ls`                                     | Check the network list                              |
-|  2  | `ip address show`                                       | Check IP address in terminal; it will show docker0: |
-|  3  | `docker network create -d NetworkType NetworkName`      | Create the network                                  |
-|  4  | `docker network inspect NetworkName`                    | Create the network                                  |
-|  5  | `ip add sh`                                             | Show all network interface in details               |
-|  6  | `bridge link`                                           | Show all ethernet name and connected docker         |
-|  7  | `docker inspect bridge`                                 | Inspect all bridge networks with individual IP      |
-|  8  | `docker exec -it ImageName sh`                          | Enter into image                                    |
-|  9  | `ip route`                                              | Show IP, DNS & others                               |
-| 10  | `docker run -itd --rm -p 85:80 --name myforthapp nginx` | Run a nginx app                                     |
+| SL  | Command                                                          | Explanation                                         |
+| :-: | :--------------------------------------------------------------- | :-------------------------------------------------- |
+|  1  | `docker network ls`                                              | Check the network list                              |
+|  2  | `ip address show`                                                | Check IP address in terminal; it will show docker0: |
+|  3  | `ip add sh`                                                      | Show all network interface in details               |
+|  4  | `bridge link`                                                    | Show all ethernet name and connected docker         |
+|  5  | `docker inspect bridge`                                          | Inspect all bridge networks with individual IP      |
+|  6  | `docker exec -it ImageName sh`                                   | Enter into image                                    |
+|  7  | `ip route`                                                       | Show IP, DNS & others                               |
+|  8  | `docker run -itd --rm -p 85:80 --name myforthapp nginx`          | Run a nginx app                                     |
+|  9  | `docker network create NetworkName`                              | Create a network, default dridge                    |
+| 10  | `docker network create -d NetworkType NetworkName`               | Create a network, assign network type & name        |
+| 11  | `docker network inspect NetworkName`                             | Inspect the user define network                     |
+| 12  | `docker run -itd --rm --network NetworkName --name loki ImgName` | Create an user define network under NetworkName     |
+| 13  | `docker inspect NetworkName`                                     | Inspect the user define network under NetworkName   |
+| 14  | `docker inspect NetworkName`                                     | Inspect the user define network under NetworkName   |
 
 ##### Network Driver Types
 
