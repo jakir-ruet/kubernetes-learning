@@ -205,6 +205,43 @@ spec:
     - containerPort: 80
 ```
 
+##### Cluster
+
+It is made up of at least one master node and one or more worker nodes. The **_master node makes up the control plane_** of a cluster and is responsible for scheduling tasks and monitoring the state of the cluster.
+
+##### Nodes
+
+A node may be a virtual or physical machine, depending on the cluster. Each node is managed by the control plane and contains the services necessary to run Pods.
+
+```
+{
+  "kind": "Node",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "10.240.79.157",
+    "labels": {
+      "name": "my-first-k8s-node"
+    }
+  }
+}
+```
+
+A Kubernetes cluster is made up of one **_master_** node and several **_worker_** nodes. The worker nodes are responsible for running the containers and doing any work assigned to them by the master node. The master node looks after or manage the cluster.
+
+- Master Node
+
+  - **_kube-apiserver:_** It is entry-point to the Kubernates cluster, which itself is a container. This is the process that allows communication between different Kubernetes clients and the cluster. We can run several instances of kube-apiserver and balance traffic between those instances. It is designed to scale horizontally—that is, it scales by deploying more instances.
+
+  - etcd
+  - kube scheduler
+  - kube controller manager
+  - cloude controller manager
+
+- Worker Node
+  - kubelet
+  - kube proxy
+  - container runtime
+
 #### Footnote about volume
 
 - Storage persistent location outside of container.
