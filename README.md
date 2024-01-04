@@ -231,16 +231,23 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 - Master Node
 
   - **_kube-apiserver:_** It is entry-point to the Kubernates cluster, which itself is a container. This is the process that allows communication between different Kubernetes clients and the cluster. We can run several instances of kube-apiserver and balance traffic between those instances. It is designed to scale horizontally—that is, it scales by deploying more instances.
-
-  - etcd
-  - kube scheduler
-  - kube controller manager
-  - cloude controller manager
+  - **_etcd:_** Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data. If your Kubernetes cluster uses etcd as its backing store, make sure you have a back up plan for the data.
+  - **_kube scheduler:_** Scheduler ensures proper pod placement on the worker nodes based on several factors such as the available resources and the current load on the cluster.
+  - **_kube controller manager:_** Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process. There are many different types of controllers some of them below;
+    - **_Node controller:_** Responsible for noticing and responding when nodes go down.
+    - **_Job controller:_** Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
+    - **_EndpointSlice controller:_** Populates EndpointSlice objects (to provide a link between Services and Pods).
+    - **_ServiceAccount controller:_** Create default ServiceAccounts for new namespaces.
+  - **_cloude controller manager:_** lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster.The following controllers can have cloud provider dependencies:
+    - **_Node controller:_** For checking the cloud provider to determine if a node has been deleted in the cloud after it stops responding
+    - **_Route controller:_** For setting up routes in the underlying cloud infrastructure
+    - **_Service controller:_** For creating, updating and deleting cloud provider load balancers
 
 - Worker Node
-  - kubelet
-  - kube proxy
-  - container runtime
+
+  - **_kubelet:_** An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. The kubelet takes a set of PodSpecs that are provided through various mechanisms and ensures that the containers described in those PodSpecs are running and healthy. The kubelet doesn't manage containers which were not created by Kubernetes.
+  - **_kube proxy:_** kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
+  - **_container runtime:_** A fundamental component that empowers Kubernetes to run containers effectively. It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
 
 #### Footnote about volume
 
