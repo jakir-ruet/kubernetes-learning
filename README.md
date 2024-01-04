@@ -147,6 +147,12 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 | 12  | `mkdir /opt/HostDir`                                                     | Create host directory use as volume for app                  |
 | 13  | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
 
+#### Footnote about volume
+
+- Storage persistent location outside of container.
+- If container removed then volume will be available on storage.
+- It use for the data security purpose.
+
 #### <a href="https://docs.docker.com/network/">Docker Network</a>
 
 ##### Networks types
@@ -248,12 +254,6 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
   - **_kubelet:_** An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. The kubelet takes a set of PodSpecs that are provided through various mechanisms and ensures that the containers described in those PodSpecs are running and healthy. The kubelet doesn't manage containers which were not created by Kubernetes.
   - **_kube proxy:_** kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
   - **_container runtime:_** A fundamental component that empowers Kubernetes to run containers effectively. It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
-
-#### Footnote about volume
-
-- Storage persistent location outside of container.
-- If container removed then volume will be available on storage.
-- It use for the data security purpose.
 
 1. AWS CLI
 
