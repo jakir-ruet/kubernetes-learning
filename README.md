@@ -258,7 +258,7 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 ##### <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.">Ingress?</a>
 
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. Here is a simple example where an Ingress sends all its traffic to one Service:
-<img src="img/ingress.png" alt="ingress"/>
+<img src="/img/ingress.png" alt="ingress"/>
 
 1. AWS CLI
 
