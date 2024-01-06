@@ -260,6 +260,27 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. Here is a simple example where an Ingress sends all its traffic to one Service:
 <img src="/img/ingress.png" alt="ingress"/>
 
+##### Kubernetes commands
+
+###### Nodes
+
+| SL  | Command                     | Explanation                   |
+| :-: | :-------------------------- | :---------------------------- |
+|  1  | `kubectl get node`          | show enlisted node            |
+|  2  | `kubectl get node -o wide`  | show enlisted node in details |
+|  3  | `kubectl describe node`     | show description of node      |
+|  4  | `kubectl top node NodeName` | move a node to top            |
+
+###### Pods
+
+| SL  | Command                        | Explanation                  |
+| :-: | :----------------------------- | :--------------------------- |
+|  1  | `kubectl get po`               | show enlisted pod            |
+|  2  | `kubectl get po -o wide`       | show enlisted pod in details |
+|  3  | `kubectl describe po`          | show description of pod      |
+|  4  | `kubectl get po --show-labels` | show the label of pod        |
+|  5  | `kubectl get po -o yaml`       | show yaml of pod             |
+
 1. AWS CLI
 
    - Control multiple AWS services from this command line.
