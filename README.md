@@ -1,10 +1,10 @@
 [![Youtube][youtube-shield]][youtube-url]
+
 [![Facebook-Page][facebook-shield]][facebook-url]
+
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<h3 align="center">
-   Visit Us <a href="http://www.lapissoft.com">Lapis Soft</a>
-</h3>
+## Visit Us [Lapis Soft](http://www.lapissoft.com)
 
 ### Docker
 
@@ -28,7 +28,7 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Docker Installation
 
-- <a href="https://docs.docker.com/get-docker/">How to Install?</a>
+- How to [Install?](https://docs.docker.com/get-docker/)
 
 #### How to pull from Docker Hub
 
@@ -127,7 +127,7 @@ We can run container in attached mode (in the foreground) or in detached mode (i
   - Anonymous Volumes
   - Named Volumes
 - Bind/Host Mounts (managed by we)
-- <a href="https://docs.docker.com/storage/">Manage data in Docker</a>
+- Manage data in [Docker](https://docs.docker.com/storage/)
 
 #### Essential command of volume
 
@@ -153,7 +153,7 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 - If container removed then volume will be available on storage.
 - It use for the data security purpose.
 
-#### <a href="https://docs.docker.com/network/">Docker Network</a>
+#### Network in [Docker](https://docs.docker.com/network/)
 
 ##### Networks types
 
@@ -199,16 +199,16 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes_**, t
 Pods are the smallest deployable units of computing that you can create and manage in Kubernetes. A Pod (as in a pod of whales or pea pod) is a group of **_one or more containers_**, with shared **_storage_** and **_network resources_**, and a **_specification_** for how to run the containers. A Pod's contents are always co-located and co-scheduled, and run in a shared context.
 
 ```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-spec:
-  containers:
-  - name: nginx
-    image: nginx:1.14.2
-    ports:
-    - containerPort: 80
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: nginx
+  spec:
+    containers:
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+      - containerPort: 80
 ```
 
 ##### Cluster
@@ -255,14 +255,40 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
   - **_kube proxy:_** kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
   - **_container runtime:_** A fundamental component that empowers Kubernetes to run containers effectively. It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
 
-##### <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.">Ingress?</a>
+#### Ingress in [Docker](https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.)
 
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. Here is a simple example where an Ingress sends all its traffic to one Service:
-<img src="/img/ingress.png" alt="ingress"/>
+![Tux, the Linux mascot](/img/ingress.png)
+
+##### Namespaces
+
+Namesapces is virtual cluster in a cluster, where organized the reaources. Namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Kubernetes starts with four initial namespaces:
+
+1. default
+
+    - We can start using your new cluster without first creating a namespace.
+    - Resource we can create are located here.
+
+2. kube-node-lease
+
+    - Heartbeats of nodes so that the control plane can detect node failure.
+    - Each node has associated lease object in namespae.
+    - Determines the availability of a node.
+
+3. kube-public:
+
+    - Publicely accessible data, even without any authentication.
+    - A configure, which containes cluster information.
+4. kube-system (```kubectl cluster-info```):
+
+    - The namespace for objects created by the Kubernetes system.
+    - Do not create or modify in kube system.
+    - Syetsm Process.
+    - Master and Kubectl processess
 
 ##### Kubernetes commands
 
-###### Nodes
+##### Nodes
 
 | SL  | Command                     | Explanation                   |
 | :-: | :-------------------------- | :---------------------------- |
@@ -281,15 +307,23 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 |  4  | `kubectl get po --show-labels` | show the label of pod        |
 |  5  | `kubectl get po -o yaml`       | show yaml of pod             |
 
+###### Namespaces
+
+| SL  | Command                                 | Explanation                  |
+| :-: | :-----------------------------          | :--------------------------- |
+|  1  | `kubectl get namespaces`                | Check enlisted namespaces    |
+|  2  | `kubectl cluster-info`                  | Check the cluster info       |
+|  3  | `kubectl create namespace myNamespace`  | Create namespace             |
+
 1. AWS CLI
 
    - Control multiple AWS services from this command line.
-   - <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">How to Install?</a>
+   - How to [Install?](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
    - Let's me check `aws --version`
    - If its okay then we will see `aws-cli/2.15.4 Python/3.11.6 Darwin/23.2.0 exe/x86_64 prompt/off`
    - Configuration using security credential
      - Go to AWS Management Console > Services > IAM
-     - Select the IAM User Name: You User Name [***NB***: You must use IAM's Information only not Root User]
+     - Select the IAM User Name: You User Name [_**NB**_: You must use IAM's Information only not Root User]
      - Click on `Security credentials`
      - Click on `Create access key`
      - Copy Access ID & Secret access key
@@ -306,7 +340,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 2. kubectl
 
    - Control the kubernetes clusters & objects.
-   - <a href="https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html">How to Install?</a>
+   - How to [Install?](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
    - `mkdir kubectlbinary`
    - `cd kubectlbinary`
    - `curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.3/2023-11-14/bin/darwin/amd64/kubectl`
@@ -323,21 +357,21 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
    - create, autoscale & delete the node groups.
    - create fargate profiles.
    - it is powerfull tool for managing EKS clusters on AWS.
-   - <a href="https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-eksctl.html">How to Install?</a>
+   - How to [Install?](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-eksctl.html)
    - If you do not already have Homebrew installed on macOS, install it with the following command. `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
    - Install the Weaveworks Homebrew tap. `brew tap weaveworks/tap` or `brew install weaveworks/tap/eksctl`
    - Test that your installation was successful with the following command. You must have eksctl 0.34.0 version or later. `eksctl version`
    - If it shows the following output then installation is done.
    - `0.167.0`
 
-## Courtesy of Jakir,
+## Courtesy of Jakir
 
-<a href="https://www.linkedin.com/in/jakir-ruet/">LinkedIn</a>
-<a href="https://www.facebook.com/jakir.ruet">Facebook</a>
-<a href="https://github.com/jakir-ruet">GitHub</a>
-<a href="https://web.skype.com/?openPstnPage=true">Skype</a>
+LinkedIn [Profile](https://www.linkedin.com/in/jakir-ruet/)
+Facebook [Profile](https://www.facebook.com/jakir.ruet)
+GitHub [Profile](https://github.com/jakir-ruet)
+Skype [Profile](https://web.skype.com/?openPstnPage=true)
 
-## Have a good day, stay with me.
+## Have a good day, stay with me
 
 [youtube-shield]: https://img.shields.io/badge/-Youtube-black.svg?style=flat-square&logo=youtube&color=blue&logoColor=red
 [youtube-url]: https://www.youtube.com/@LapisSoft/featured
