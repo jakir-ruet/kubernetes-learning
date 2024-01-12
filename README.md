@@ -212,6 +212,7 @@ Pods are the smallest deployable units of computing that you can create and mana
 ##### Cluster
 
 It is made up of at least one master node and one or more worker nodes. The **_master node makes up the control plane_** of a cluster and is responsible for scheduling tasks and monitoring the state of the cluster.
+![Cluster](/img/cluster.png)
 
 ##### Nodes
 
@@ -253,11 +254,6 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
   - **_kube proxy:_** kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
   - **_container runtime:_** A fundamental component that empowers Kubernetes to run containers effectively. It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
 
-#### Ingress in [Docker](https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.)
-
-Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. Here is a simple example where an Ingress sends all its traffic to one Service:
-![Tux, the Linux mascot](/img/ingress.png)
-
 ##### Namespaces
 
 Namespaces is virtual cluster in a cluster, where organized the resources. Namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Kubernetes starts with four initial namespaces:
@@ -295,7 +291,13 @@ Namespaces is virtual cluster in a cluster, where organized the resources. Names
 - Conflicts minimization in same application with many teams.
 - Resources sharing is possible such as staging, development, env setup.
 - Limit the access into resource will possible on namespace.
-- Own ConfigMap only possible in each namespace. 
+- Own ConfigMap only possible in each namespace.
+
+
+#### Ingress in [Docker](https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.)
+
+Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. Here is a simple example where an Ingress sends all its traffic to one Service:
+![Ingress](/img/ingress.png)
 
 #### Kubernetes commands
 
