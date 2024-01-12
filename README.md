@@ -1,7 +1,5 @@
 [![Youtube][youtube-shield]][youtube-url]
-
 [![Facebook-Page][facebook-shield]][facebook-url]
-
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 ## Visit Us [Lapis Soft](http://www.lapissoft.com)
@@ -236,7 +234,7 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 
 - Master Node
 
-  - **_kube-apiserver:_** It is entry-point to the Kubernates cluster, which itself is a container. This is the process that allows communication between different Kubernetes clients and the cluster. We can run several instances of kube-apiserver and balance traffic between those instances. It is designed to scale horizontally—that is, it scales by deploying more instances.
+  - **_kube-apiserver:_** It is entry-point to the Kubernetes cluster, which itself is a container. This is the process that allows communication between different Kubernetes clients and the cluster. We can run several instances of kube-apiserver and balance traffic between those instances. It is designed to scale horizontally—that is, it scales by deploying more instances.
   - **_etcd:_** Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data. If your Kubernetes cluster uses etcd as its backing store, make sure you have a back up plan for the data.
   - **_kube scheduler:_** Scheduler ensures proper pod placement on the worker nodes based on several factors such as the available resources and the current load on the cluster.
   - **_kube controller manager:_** Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process. There are many different types of controllers some of them below;
@@ -244,7 +242,7 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
     - **_Job controller:_** Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
     - **_EndpointSlice controller:_** Populates EndpointSlice objects (to provide a link between Services and Pods).
     - **_ServiceAccount controller:_** Create default ServiceAccounts for new namespaces.
-  - **_cloude controller manager:_** lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster.The following controllers can have cloud provider dependencies:
+  - **_cloud controller manager:_** lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster.The following controllers can have cloud provider dependencies:
     - **_Node controller:_** For checking the cloud provider to determine if a node has been deleted in the cloud after it stops responding
     - **_Route controller:_** For setting up routes in the underlying cloud infrastructure
     - **_Service controller:_** For creating, updating and deleting cloud provider load balancers
@@ -262,7 +260,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 
 ##### Namespaces
 
-Namesapces is virtual cluster in a cluster, where organized the reaources. Namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Kubernetes starts with four initial namespaces:
+Namespaces is virtual cluster in a cluster, where organized the resources. Namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Kubernetes starts with four initial namespaces:
 
 1. default
 
@@ -272,21 +270,34 @@ Namesapces is virtual cluster in a cluster, where organized the reaources. Names
 2. kube-node-lease
 
     - Heartbeats of nodes so that the control plane can detect node failure.
-    - Each node has associated lease object in namespae.
+    - Each node has associated lease object in namespace.
     - Determines the availability of a node.
 
 3. kube-public:
 
-    - Publicely accessible data, even without any authentication.
-    - A configure, which containes cluster information.
+    - Publicly accessible data, even without any authentication.
+    - A configure, which containers cluster information.
 4. kube-system (```kubectl cluster-info```):
 
     - The namespace for objects created by the Kubernetes system.
     - Do not create or modify in kube system.
-    - Syetsm Process.
-    - Master and Kubectl processess
+    - System Process.
+    - Master and Kubectl processes
 
-##### Kubernetes commands
+##### Importance
+
+- Everything in one namespace (default).
+  - Deployments
+  - Replica sets
+  - Services
+  - Configmaps
+- Resources grouping (database, monitoring, elastic stack, nginx-ingress) is possible in namespace.
+- Conflicts minimization in same application with many teams.
+- Resources sharing is possible such as staging, development, env setup.
+- Limit the access into resource will possible on namespace.
+- Own ConfigMap only possible in each namespace. 
+
+#### Kubernetes commands
 
 ##### Nodes
 
@@ -323,7 +334,7 @@ Namesapces is virtual cluster in a cluster, where organized the reaources. Names
    - If its okay then we will see `aws-cli/2.15.4 Python/3.11.6 Darwin/23.2.0 exe/x86_64 prompt/off`
    - Configuration using security credential
      - Go to AWS Management Console > Services > IAM
-     - Select the IAM User Name: You User Name [_**NB**_: You must use IAM's Information only not Root User]
+     - Select the IAM User Name: Your User Name [_**NB**_: You must use IAM's Information only not Root User]
      - Click on `Security credentials`
      - Click on `Create access key`
      - Copy Access ID & Secret access key
@@ -344,7 +355,7 @@ Namesapces is virtual cluster in a cluster, where organized the reaources. Names
    - `mkdir kubectlbinary`
    - `cd kubectlbinary`
    - `curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.3/2023-11-14/bin/darwin/amd64/kubectl`
-   - Assign the exexute permissions `chmod +x ./kubectl`
+   - Assign the execute permissions `chmod +x ./kubectl`
    - Set the path by copying to user home directory `mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH` & `echo 'export PATH=$HOME/bin:$PATH' >> ~/.bash_profile`
 
 - Let's me check whether the configuration is done. `kubectl version --client`
