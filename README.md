@@ -361,7 +361,27 @@ It is a package manager for Kubernetes applications. It simplifies the process o
 - Download a binary release of the Helm client. You can use tools like homebrew, or look at the official releases page.
 
 ***Helm Chart:***
-A Helm chart is a package of pre-configured Kubernetes resources, which are defined as templates. Helm is a package manager for Kubernetes applications, allowing you to define, install, and upgrade even the most complex Kubernetes applications.
+A Helm chart is a package of pre-configured Kubernetes resources, which are defined as templates. Helm is a package manager for Kubernetes applications, allowing you to define, install, and upgrade even the most complex Kubernetes applications. Chart structure show below;
+- myHelmChart
+  - charts
+    - sub-chart & dependencies
+  - templates
+    - deployment.yaml
+    - services.yaml
+    - ingress.yaml
+    - others kubernetes resources definitions
+  - values.yaml
+  - chart.yaml
+  - README.md
+  - LICENSE
+  - Other files/directories
+
+***Tiller (Server)***
+In Helm, a package manager for Kubernetes, a "Tiller" refers to the server-side component of Helm. Helm follows a client-server architecture, where the Helm client interacts with the Tiller server to deploy and manage Kubernetes applications. Tiller is responsible for managing the release lifecycle, applying Kubernetes manifests, and keeping track of releases.
+
+|  SL   | Command                           | Explanation                       |
+| :---: | :-------------------------------- | :-------------------------------- |
+|   1   | `kubectl get po --all-namespaces` | is namespaces running to confirm? |
 
 1. AWS CLI
 
