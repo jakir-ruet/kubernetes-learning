@@ -41,61 +41,61 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Essential Commands of Docker
 
-| SL  | Command                 | Explanation                    |
-| :-: | :---------------------- | :----------------------------- |
-|  1  | `docker --version (-v)` | Checking the version of docker |
-|  2  | `docker login`          | We can access using credential |
-|  3  | `docker logout`         | We can logout                  |
+|  SL   | Command                 | Explanation                    |
+| :---: | :---------------------- | :----------------------------- |
+|   1   | `docker --version (-v)` | Checking the version of docker |
+|   2   | `docker login`          | We can access using credential |
+|   3   | `docker logout`         | We can logout                  |
 
 #### Essential command of images
 
-| SL  | Command                                          | Explanation                                                 |
-| :-: | :----------------------------------------------- | :---------------------------------------------------------- |
-|  1  | `docker image`                                   | Show the command details                                    |
-|  2  | `docker images or docker ls`                     | Show image list                                             |
-|  3  | `docker pull ImageName`                          | Pull/Download the image                                     |
-|  4  | `docker pull ImageName:TagName`                  | Pull/Download the image with tag name                       |
-|  5  | `docker run ImageName (node/nginx)`              | Will be Run & Publish a new container for each publish      |
-|  6  | `docker run -it ImageName (node/nginx)`          | Enter into the interactive mode                             |
-|  7  | `docker build -t doc-kub-first-app:latest .`     | Build the images with tag (name/version/others) (own image) |
-|  8  | `docker image tag ImgId UserName/ImgName:latest` | Image renaming/taging (own image)                           |
-|  9  | `docker push jakirbd/my-node-server`             | Pushing the image (own image)                               |
-| 10  | `docker image history ImageId`                   | History of image                                            |
-| 11  | `docker image inspect ImageId`                   | Inspections the image                                       |
-| 12  | `docker image prune -a`                          | Remove all unused images, not just dangling ones            |
-| 13  | `docker rmi ImageId`                             | Image remove                                                |
+|  SL   | Command                                          | Explanation                                                 |
+| :---: | :----------------------------------------------- | :---------------------------------------------------------- |
+|   1   | `docker image`                                   | Show the command details                                    |
+|   2   | `docker images or docker ls`                     | Show image list                                             |
+|   3   | `docker pull ImageName`                          | Pull/Download the image                                     |
+|   4   | `docker pull ImageName:TagName`                  | Pull/Download the image with tag name                       |
+|   5   | `docker run ImageName (node/nginx)`              | Will be Run & Publish a new container for each publish      |
+|   6   | `docker run -it ImageName (node/nginx)`          | Enter into the interactive mode                             |
+|   7   | `docker build -t doc-kub-first-app:latest .`     | Build the images with tag (name/version/others) (own image) |
+|   8   | `docker image tag ImgId UserName/ImgName:latest` | Image renaming/taging (own image)                           |
+|   9   | `docker push jakirbd/my-node-server`             | Pushing the image (own image)                               |
+|  10   | `docker image history ImageId`                   | History of image                                            |
+|  11   | `docker image inspect ImageId`                   | Inspections the image                                       |
+|  12   | `docker image prune -a`                          | Remove all unused images, not just dangling ones            |
+|  13   | `docker rmi ImageId`                             | Image remove                                                |
 
 #### Essential command of container
 
-| SL  | Command                                                               | Explanation                                            |
-| :-: | :-------------------------------------------------------------------- | :----------------------------------------------------- |
-|  1  | `docker container`                                                    | Show the command details                               |
-|  2  | `docker container ls`                                                 | Show the enlisted container                            |
-|  3  | `docker ps`                                                           | Show only running container                            |
-|  4  | `docker ps -a`                                                        | Show all container                                     |
-|  5  | `docker ps -a -q`                                                     | Show all container with id (quiet)                     |
-|  6  | `docker build .`                                                      | Build a container                                      |
-|  7  | `docker build -t TagName .`                                           | Build a container with tag                             |
-|  8  | `docker run -p 3000:80 nginx/node/https`                              | Will be Run & Publish a new container for each publish |
-|  7  | `docker run -p 3000:80 BaseImageId`                                   | Will be Run & Publish a new container for each publish |
-|  9  | `docker rename OldContName NewContName`                               | Renaming the container                                 |
-| 10  | `docker run -p 3000:80 -d --name NewContName OldContName`             | Renaming & publishing container                        |
-| 11  | `docker run -p 3000:80 -d --rm --name NewContName OldContName`        | Renaming, removing & publishing container              |
-| 12  | `docker run -p 3000:80 -d --rm --name NewContName OldContName:latest` | Renaming, removing & publishing using tag container    |
-| 13  | `docker run -p 3000:80 -d BaseImageId`                                | Publish the container as detach                        |
-| 14  | `docker run -p 3000:80 -d --rm BaseImageId`                           | Container is Remove after stop the container           |
-| 15  | `docker exec -it ContainerName /bin/sh`                               | Container connect to terminal using shell              |
-| 16  | `docker exec -it ContainerName /bin/bash`                             | Container connect to terminal using bash               |
-| 17  | `docker exec -it ContainerName /bash`                                 | Container connect to terminal using bash               |
-| 18  | `docker cp index.html my-nginx-server:/usr/share/nginx/html`          | Moving the source file local pc to docker nginx server |
-| 19  | `docker container prune`                                              | Remove all container                                   |
-| 20  | `docker start ContainerName`                                          | Container start                                        |
-| 21  | `docker stop ContainerName`                                           | Container stop                                         |
-| 22  | `docker restart ContainerName`                                        | Container restart                                      |
-| 23  | `docker rm ContainerName`                                             | Container remove after stop it                         |
-| 24  | `docker attach ContainerName`                                         | Attach the container                                   |
-| 25  | `docker logs ContainerName`                                           | See the logs details                                   |
-| 26  | `docker logs -f ContainerName`                                        | See the future logs details                            |
+|  SL   | Command                                                               | Explanation                                            |
+| :---: | :-------------------------------------------------------------------- | :----------------------------------------------------- |
+|   1   | `docker container`                                                    | Show the command details                               |
+|   2   | `docker container ls`                                                 | Show the enlisted container                            |
+|   3   | `docker ps`                                                           | Show only running container                            |
+|   4   | `docker ps -a`                                                        | Show all container                                     |
+|   5   | `docker ps -a -q`                                                     | Show all container with id (quiet)                     |
+|   6   | `docker build .`                                                      | Build a container                                      |
+|   7   | `docker build -t TagName .`                                           | Build a container with tag                             |
+|   8   | `docker run -p 3000:80 nginx/node/https`                              | Will be Run & Publish a new container for each publish |
+|   7   | `docker run -p 3000:80 BaseImageId`                                   | Will be Run & Publish a new container for each publish |
+|   9   | `docker rename OldContName NewContName`                               | Renaming the container                                 |
+|  10   | `docker run -p 3000:80 -d --name NewContName OldContName`             | Renaming & publishing container                        |
+|  11   | `docker run -p 3000:80 -d --rm --name NewContName OldContName`        | Renaming, removing & publishing container              |
+|  12   | `docker run -p 3000:80 -d --rm --name NewContName OldContName:latest` | Renaming, removing & publishing using tag container    |
+|  13   | `docker run -p 3000:80 -d BaseImageId`                                | Publish the container as detach                        |
+|  14   | `docker run -p 3000:80 -d --rm BaseImageId`                           | Container is Remove after stop the container           |
+|  15   | `docker exec -it ContainerName /bin/sh`                               | Container connect to terminal using shell              |
+|  16   | `docker exec -it ContainerName /bin/bash`                             | Container connect to terminal using bash               |
+|  17   | `docker exec -it ContainerName /bash`                                 | Container connect to terminal using bash               |
+|  18   | `docker cp index.html my-nginx-server:/usr/share/nginx/html`          | Moving the source file local pc to docker nginx server |
+|  19   | `docker container prune`                                              | Remove all container                                   |
+|  20   | `docker start ContainerName`                                          | Container start                                        |
+|  21   | `docker stop ContainerName`                                           | Container stop                                         |
+|  22   | `docker restart ContainerName`                                        | Container restart                                      |
+|  23   | `docker rm ContainerName`                                             | Container remove after stop it                         |
+|  24   | `docker attach ContainerName`                                         | Attach the container                                   |
+|  25   | `docker logs ContainerName`                                           | See the logs details                                   |
+|  26   | `docker logs -f ContainerName`                                        | See the future logs details                            |
 
 #### Data-Storage
 
@@ -129,21 +129,21 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Essential command of volume
 
-| SL  | Command                                                                  | Explanation                                                  |
-| :-: | :----------------------------------------------------------------------- | :----------------------------------------------------------- |
-|  1  | `docker volume create`                                                   | Create a anonymous volume                                    |
-|  2  | `docker volume create my-sweet-vol`                                      | Create a volume                                              |
-|  3  | `docker volume ls`                                                       | Check the volume list                                        |
-|  4  | `docker volume inspect VolName`                                          | Inspect the volume                                           |
-|  5  | `docker volume rm VolName`                                               | Remove the volume                                            |
-|  6  | `docker volume prune`                                                    | Remove the anonymous volume                                  |
-|  7  | `docker build -t ImgName(OldContName):volumes .`                         | Create own images tag named volumes                          |
-|  8  | `docker run -d -p 3000:80 --rm --name NewContName OldContName:volumes`   | Create own images tag named based on volumes                 |
-|  9  | `docker rmi ConName:volumes`                                             | Remove the named volume                                      |
-| 10  | `docker run -it --name ConName -v /DirName nginx /bin/bash`              | Create a container & anonymous volume mounted on a directory |
-| 11  | `docker run -it --name ConName -v VolName:/DirName nginx /bin/bash`      | Create a container & named volume mounted on a directory     |
-| 12  | `mkdir /opt/HostDir`                                                     | Create host directory use as volume for app                  |
-| 13  | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
+|  SL   | Command                                                                  | Explanation                                                  |
+| :---: | :----------------------------------------------------------------------- | :----------------------------------------------------------- |
+|   1   | `docker volume create`                                                   | Create a anonymous volume                                    |
+|   2   | `docker volume create my-sweet-vol`                                      | Create a volume                                              |
+|   3   | `docker volume ls`                                                       | Check the volume list                                        |
+|   4   | `docker volume inspect VolName`                                          | Inspect the volume                                           |
+|   5   | `docker volume rm VolName`                                               | Remove the volume                                            |
+|   6   | `docker volume prune`                                                    | Remove the anonymous volume                                  |
+|   7   | `docker build -t ImgName(OldContName):volumes .`                         | Create own images tag named volumes                          |
+|   8   | `docker run -d -p 3000:80 --rm --name NewContName OldContName:volumes`   | Create own images tag named based on volumes                 |
+|   9   | `docker rmi ConName:volumes`                                             | Remove the named volume                                      |
+|  10   | `docker run -it --name ConName -v /DirName nginx /bin/bash`              | Create a container & anonymous volume mounted on a directory |
+|  11   | `docker run -it --name ConName -v VolName:/DirName nginx /bin/bash`      | Create a container & named volume mounted on a directory     |
+|  12   | `mkdir /opt/HostDir`                                                     | Create host directory use as volume for app                  |
+|  13   | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
 
 #### Footnote about volume
 
@@ -159,22 +159,22 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 - User Define Bridge Network
 - Host Network (under main OS)
 
-| SL  | Command                                                          | Explanation                                         |
-| :-: | :--------------------------------------------------------------- | :-------------------------------------------------- |
-|  1  | `docker network ls`                                              | Check the network list                              |
-|  2  | `ip address show`                                                | Check IP address in terminal; it will show docker0: |
-|  3  | `ip add sh`                                                      | Show all network interface in details               |
-|  4  | `bridge link`                                                    | Show all ethernet name and connected docker         |
-|  5  | `docker inspect bridge`                                          | Inspect all bridge networks with individual IP      |
-|  6  | `docker exec -it ImageName sh`                                   | Enter into image                                    |
-|  7  | `ip route`                                                       | Show IP, DNS & others                               |
-|  8  | `docker run -itd --rm -p 85:80 --name myforthapp nginx`          | Run a nginx app                                     |
-|  9  | `docker network create NetworkName`                              | Create a network, default dridge                    |
-| 10  | `docker network create -d NetworkType NetworkName`               | Create a network, assign network type & name        |
-| 11  | `docker network inspect NetworkName`                             | Inspect the user define network                     |
-| 12  | `docker run -itd --rm --network NetworkName --name loki ImgName` | Create an user define network under NetworkName     |
-| 13  | `docker inspect NetworkName`                                     | Inspect the user define network under NetworkName   |
-| 14  | `docker inspect NetworkName`                                     | Inspect the user define network under NetworkName   |
+|  SL   | Command                                                          | Explanation                                         |
+| :---: | :--------------------------------------------------------------- | :-------------------------------------------------- |
+|   1   | `docker network ls`                                              | Check the network list                              |
+|   2   | `ip address show`                                                | Check IP address in terminal; it will show docker0: |
+|   3   | `ip add sh`                                                      | Show all network interface in details               |
+|   4   | `bridge link`                                                    | Show all ethernet name and connected docker         |
+|   5   | `docker inspect bridge`                                          | Inspect all bridge networks with individual IP      |
+|   6   | `docker exec -it ImageName sh`                                   | Enter into image                                    |
+|   7   | `ip route`                                                       | Show IP, DNS & others                               |
+|   8   | `docker run -itd --rm -p 85:80 --name myforthapp nginx`          | Run a nginx app                                     |
+|   9   | `docker network create NetworkName`                              | Create a network, default bridge                    |
+|  10   | `docker network create -d NetworkType NetworkName`               | Create a network, assign network type & name        |
+|  11   | `docker network inspect NetworkName`                             | Inspect the user define network                     |
+|  12   | `docker run -itd --rm --network NetworkName --name loki ImgName` | Create an user define network under NetworkName     |
+|  13   | `docker inspect NetworkName`                                     | Inspect the user define network under NetworkName   |
+|  14   | `docker inspect NetworkName`                                     | Inspect the user define network under NetworkName   |
 
 ##### Network Driver Types
 
@@ -208,6 +208,14 @@ Pods are the smallest deployable units of computing that you can create and mana
       ports:
       - containerPort: 80
 ```
+
+|  SL   | Command                        | Explanation                  |
+| :---: | :----------------------------- | :--------------------------- |
+|   1   | `kubectl get po`               | show enlisted pod            |
+|   2   | `kubectl get po -o wide`       | show enlisted pod in details |
+|   3   | `kubectl describe po`          | show description of pod      |
+|   4   | `kubectl get po --show-labels` | show the label of pod        |
+|   5   | `kubectl get po -o yaml`       | show yaml of pod             |
 
 ##### Cluster
 
@@ -254,6 +262,13 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
   - **_kube proxy:_** kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
   - **_container runtime:_** A fundamental component that empowers Kubernetes to run containers effectively. It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
 
+|  SL   | Command                     | Explanation                   |
+| :---: | :-------------------------- | :---------------------------- |
+|   1   | `kubectl get node`          | show enlisted node            |
+|   2   | `kubectl get node -o wide`  | show enlisted node in details |
+|   3   | `kubectl describe node`     | show description of node      |
+|   4   | `kubectl top node NodeName` | move a node to top            |
+
 ##### Namespaces
 
 Namespaces is virtual cluster in a cluster, where organized the resources. Namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Kubernetes starts with four initial namespaces:
@@ -293,40 +308,41 @@ Namespaces is virtual cluster in a cluster, where organized the resources. Names
 - Limit the access into resource will possible on namespace.
 - Own ConfigMap only possible in each namespace.
 
+|  SL   | Command                                | Explanation               |
+| :---: | :------------------------------------- | :------------------------ |
+|   1   | `kubectl get namespaces`               | Check enlisted namespaces |
+|   2   | `kubectl cluster-info`                 | Check the cluster info    |
+|   3   | `kubectl create namespace myNamespace` | Create namespace          |
 
 #### Ingress in [Docker](https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.)
 
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. Here is a simple example where an Ingress sends all its traffic to one Service:
 ![Ingress](/img/ingress.png)
 
-#### Kubernetes commands
+```
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: minimal-ingress
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+  spec:
+    ingressClassName: nginx-example
+    rules:
+    - http:
+        paths:
+        - path: /testpath
+          pathType: Prefix
+          backend:
+            service:
+              name: test
+              port:
+                number: 80
+```
 
-##### Nodes
-
-| SL  | Command                     | Explanation                   |
-| :-: | :-------------------------- | :---------------------------- |
-|  1  | `kubectl get node`          | show enlisted node            |
-|  2  | `kubectl get node -o wide`  | show enlisted node in details |
-|  3  | `kubectl describe node`     | show description of node      |
-|  4  | `kubectl top node NodeName` | move a node to top            |
-
-##### Pods
-
-| SL  | Command                        | Explanation                  |
-| :-: | :----------------------------- | :--------------------------- |
-|  1  | `kubectl get po`               | show enlisted pod            |
-|  2  | `kubectl get po -o wide`       | show enlisted pod in details |
-|  3  | `kubectl describe po`          | show description of pod      |
-|  4  | `kubectl get po --show-labels` | show the label of pod        |
-|  5  | `kubectl get po -o yaml`       | show yaml of pod             |
-
-##### Namespaces
-
-| SL  | Command                                 | Explanation                  |
-| :-: | :-----------------------------          | :--------------------------- |
-|  1  | `kubectl get namespaces`                | Check enlisted namespaces    |
-|  2  | `kubectl cluster-info`                  | Check the cluster info       |
-|  3  | `kubectl create namespace myNamespace`  | Create namespace             |
+|  SL   | Command                          | Explanation                    |
+| :---: | :------------------------------- | :----------------------------- |
+|   1   | `minikube addons enable ingress` | install controller in Minikube |
 
 1. AWS CLI
 
@@ -360,12 +376,13 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
    - Assign the execute permissions `chmod +x ./kubectl`
    - Set the path by copying to user home directory `mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH` & `echo 'export PATH=$HOME/bin:$PATH' >> ~/.bash_profile`
 
-- Let's me check whether the configuration is done. `kubectl version --client`
-- If it shows the following output then installation is done.
-  - `Client Version: v1.28.2`
-  - `Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3`
+   - Let's me check whether the configuration is done. `kubectl version --client`
+   - If it shows the following output then installation is done.
+     - `Client Version: v1.28.2`
+     - `Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3`
 
 3. eksctl
+
    - creating-deleting clusters on AWS EKS.
    - create, autoscale & delete the node groups.
    - create fargate profiles.
