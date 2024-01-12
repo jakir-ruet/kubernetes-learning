@@ -340,9 +340,30 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
                 number: 80
 ```
 
-|  SL   | Command                          | Explanation                    |
-| :---: | :------------------------------- | :----------------------------- |
-|   1   | `minikube addons enable ingress` | install controller in Minikube |
+|  SL   | Command                                        | Explanation                    |
+| :---: | :--------------------------------------------- | :----------------------------- |
+|   1   | `minikube addons enable ingress`               | install controller in Minikube |
+|   2   | `kubectl apply -f dashboard-ingress.yaml`      | ingress create                 |
+|   3   | `minikube get ingress -n kubernetes-dashboard` | see details of ingress         |
+
+#### [Helm](https://helm.sh/docs/)
+It is a package manager for Kubernetes applications. It simplifies the process of deploying and managing applications on Kubernetes clusters.
+![Helm](/img/helm.png)
+
+Prerequisites
+- A Kubernetes cluster
+- Deciding what security configurations to apply to your installation, if any
+- Installing and configuring Helm.
+
+Install
+- You must have Kubernetes installed. For the latest release of Helm, we recommend the latest stable release of Kubernetes, which in most cases is the second-latest minor release.
+- You should also have a local configured copy of kubectl. Or
+- Download a binary release of the Helm client. You can use tools like homebrew, or look at the official releases page.
+
+Helm Chart:
+A Helm chart is a package of pre-configured Kubernetes resources, which are defined as templates. Helm is a package manager for Kubernetes applications, allowing you to define, install, and upgrade even the most complex Kubernetes applications.
+
+[Helm Cheat Sheet](https://helm.sh/docs/intro/cheatsheet/)
 
 1. AWS CLI
 
