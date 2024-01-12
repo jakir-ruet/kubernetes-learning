@@ -310,7 +310,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 |  3  | `kubectl describe node`     | show description of node      |
 |  4  | `kubectl top node NodeName` | move a node to top            |
 
-###### Pods
+##### Pods
 
 | SL  | Command                        | Explanation                  |
 | :-: | :----------------------------- | :--------------------------- |
@@ -320,7 +320,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 |  4  | `kubectl get po --show-labels` | show the label of pod        |
 |  5  | `kubectl get po -o yaml`       | show yaml of pod             |
 
-###### Namespaces
+##### Namespaces
 
 | SL  | Command                                 | Explanation                  |
 | :-: | :-----------------------------          | :--------------------------- |
