@@ -222,8 +222,9 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
 - Port definitions
 - Optional mapping of incoming ports to a targetPort
 
-***Types of services***
-***ClusterIP:*** 
+***Types of service***
+
+***ClusterIP:***
 Exposes a service which is only accessible from within the cluster. It is the default type of service, which is used to expose a service on an IP address internal to the cluster. Access is only permitted from within the cluster.
 
 ***NodePort*** 
