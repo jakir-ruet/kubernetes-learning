@@ -190,7 +190,31 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
 #### Components
 
-A Kubernetes cluster consists of a set of worker machines, called **_nodes_**, that run containerized applications. Every cluster has at least **_one worker_** node.
+A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_**, that run containerized applications. Every cluster has at least **_one worker_** node.
+
+##### Types of components
+- Control Plane Components
+  - kube-apiserver
+  - etcd
+  - kube-scheduler
+  - kube-controller-manager
+    - node-controller
+    - replication-controller
+    - endpoint-controller
+    - service-account-controller
+  - cloud-controller-manager
+    - node-controller
+    - route-controller
+    - service-controller 
+- Worker Node Components
+  - kubelet
+  - kube-proxy
+  - container runtime
+- Kubernetes
+  - DNS
+  - Kubernetes Dashboard
+  - Resource Monitoring
+  - Logging
 
 ##### Pods
 
@@ -347,7 +371,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 |   3   | `minikube get ingress -n kubernetes-dashboard` | see details of ingress         |
 
 #### [Helm](https://helm.sh/docs/) | [Helm Cheat Sheet](https://helm.sh/docs/intro/cheatsheet/)
-It is a package manager for Kubernetes applications. It simplifies the process of deploying and managing applications on Kubernetes clusters.
+It is a package manager for Kubernetes applications. It simplifies the process of deploying and managing applications on Kubernetes clusters. Helm consists of two main components: the Helm client and the Helm server. The client is used to interact with the server and manage charts, while the server contains all the necessary information about available charts.
 ![Helm](/img/helm.png)
 
 ##### Prerequisites
