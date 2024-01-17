@@ -328,6 +328,22 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 |   3   | `kubectl describe node`     | show description of node      |
 |   4   | `kubectl top node NodeName` | move a node to top            |
 
+##### Volumes
+It is a directory containing data, which can be accessed by containers in a Kubernetes pod. The location of the directory, the storage media that supports it, and its contents, depend on the specific type of volume being used. There are a few types of volumes in Kubernetes.
+
+- Volumes
+  - Persistent Volumes (PV)
+    is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. It is a resource in the cluster just like a node is a cluster resource. PVs are volume plugins like Volumes, but have a lifecycle independent of any individual Pod that uses the PV.
+  - Persistent Volume Claim (PVC)
+    is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Pods can request specific levels of resources (CPU and Memory). Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany, 
+  - Ephemeral Volumes
+  - EmptyDir Volumes
+  - hostPath Volumes
+  - Volumes ConfigMap 
+- [Storing Volumes](https://kubernetes.io/docs/concepts/storage/storage-classes/) 
+  - NFS (Network File System)
+  - CSI (Container Storage Interface)
+
 ##### Namespaces
 
 Namespaces is virtual cluster in a cluster, where organized the resources. Namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Kubernetes starts with four initial namespaces:
