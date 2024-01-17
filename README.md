@@ -192,7 +192,7 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
 A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_**, that run containerized applications. Every cluster has at least **_one worker_** node (vm).
 
-##### Types of components
+##### [Types of components](https://kubernetes.io/docs/concepts/overview/components/)
 - Control Plane Components
   - kube-apiserver
   - etcd
@@ -215,8 +215,6 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
   - Kubernetes Dashboard
   - Resource Monitoring
   - Logging
-
-***kube-apiserver:*** is a component within the control plane, validates and configures data for API objects, including pods and services. The API Server provides the frontend to the cluster's shared state, which is where all of the other components interact.
 
 ##### Pods
 
