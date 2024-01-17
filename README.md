@@ -216,7 +216,34 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
   - Resource Monitoring
   - Logging
 
-##### Pods
+***Services***  is a logical abstraction for a deployed group of pods in a cluster (which all perform the same function). if one is crash then another will ready to work. The core attributes of a Kubernetes service are:
+- A label selector that locates pods
+- The clusterIP IP address and assigned port number
+- Port definitions
+- Optional mapping of incoming ports to a targetPort
+
+***Types of services***
+***ClusterIP:*** Exposes a service which is only accessible from within the cluster. It is the default type of service, which is used to expose a service on an IP address internal to the cluster. Access is only permitted from within the cluster.
+***NodePort*** Exposes a service via a static port on each node’s IP.
+***LoadBalancer*** Exposes the service via the cloud provider’s load balancer like AWS or Azure.
+***ExternalName*** Maps a service to a predefined externalName field by returning a value for the CNAME record.
+
+***Sample Service***
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+```
+
+##### Pods (containers)
 
 Pods are the smallest deployable units of computing that you can create and manage in Kubernetes. A Pod (as in a pod of whales or pea pod) is a group of **_one or more containers_**, with shared **_storage_** and **_network resources_**, and a **_specification_** for how to run the containers. A Pod's contents are always co-located and co-scheduled, and run in a shared context.
 
