@@ -223,10 +223,17 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
 - Optional mapping of incoming ports to a targetPort
 
 ***Types of services***
-***ClusterIP:*** Exposes a service which is only accessible from within the cluster. It is the default type of service, which is used to expose a service on an IP address internal to the cluster. Access is only permitted from within the cluster.
-***NodePort*** Exposes a service via a static port on each node’s IP.
-***LoadBalancer*** Exposes the service via the cloud provider’s load balancer like AWS or Azure.
-***ExternalName*** Maps a service to a predefined externalName field by returning a value for the CNAME record.
+***ClusterIP:*** 
+Exposes a service which is only accessible from within the cluster. It is the default type of service, which is used to expose a service on an IP address internal to the cluster. Access is only permitted from within the cluster.
+
+***NodePort*** 
+Exposes a service via a static port on each node’s IP.
+
+***LoadBalancer*** 
+Exposes the service via the cloud provider’s load balancer like AWS or Azure.
+
+***ExternalName*** 
+Maps a service to a predefined externalName field by returning a value for the CNAME record.
 
 ***Sample Service***
 ```
