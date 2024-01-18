@@ -379,6 +379,7 @@ Namespaces is virtual cluster in a cluster, where organized the resources. Names
 
     - Publicly accessible data, even without any authentication.
     - A configure, which containers cluster information.
+  
 4. kube-system (```kubectl cluster-info```):
 
     - The namespace for objects created by the Kubernetes system.
