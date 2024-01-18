@@ -333,7 +333,7 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 |  10   | `kubectl get pod`                                        | show enlisted pod                      |
 |  11   | `kubectl describe pod podName`                           | description of node                    |
 |  12   | `kubectl get replicaset`                                 | show replica set                       |
-|  13   | `kubectl edit deployment nginxPDeplName`                 | change deployment name (image version) |
+|  13   | `kubectl edit deployment nginxDepltName`                 | change deployment name (image version) |
 |  14   | `kubectl delete deployment nginx-deployment`             | remove deployment                      |
 |  15   | `kubectl logs podName`                                   | checking logs of a pod                 |
 |  16   | `kubectl exec -it podName -- bin/bash`                   | debugging the pod                      |
