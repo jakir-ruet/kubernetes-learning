@@ -425,7 +425,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 It is a package manager for Kubernetes applications. It simplifies the process of deploying and managing applications on Kubernetes clusters. Helm consists of two main components: the Helm client and the Helm server. The client is used to interact with the server and manage charts, while the server contains all the necessary information about available charts.
 ![Helm](/img/helm.png)
 
-##### Helm Architecture
+##### Helm Chart Architecture
 ![Helm](/img/helm-architecture.png)
 
 ##### Prerequisites
