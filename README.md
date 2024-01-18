@@ -317,6 +317,9 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 
 ***Minikube:*** is a tool that allows you to run a single-node Kubernetes cluster locally on your machine. It is designed to be a lightweight and easy-to-use solution for developers who want to develop, test, and experiment with Kubernetes applications without the need for a full-scale, multi-node cluster.
 
+##### kubectl cli vs minikube cli?
+kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
+
 ##### minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s[install](https://microk8s.io)
 
 |  SL   | Command                                                  | Explanation                            |
@@ -349,10 +352,6 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 |   3   | `kubectl apply -f nginx-deployment.yaml` | deployment on the kubernetes        |
 |   4   | `kubectl get deployment`                 | checking the deployment             |
 |   5   | `kubectl exec -it podName -- bin/bash`   | accessing the pod                   |
-
-
-##### kubectl cli vs minikube cli?
-kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
 
 ##### Volumes
 It is a directory containing data, which can be accessed by containers in a Kubernetes pod. The location of the directory, the storage media that supports it, and its contents, depend on the specific type of volume being used. There are a few types of volumes in Kubernetes.
