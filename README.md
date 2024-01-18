@@ -302,10 +302,10 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 
 - Master Node
 
-  - **_kube-apiserver:_** It is entry-point to the Kubernetes cluster, which itself is a container. This is the process that allows communication between different Kubernetes clients and the cluster. We can run several instances of kube-apiserver and balance traffic between those instances. It is designed to scale horizontally—that is, it scales by deploying more instances.
-  - **_etcd:_** Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data. If your Kubernetes cluster uses etcd as its backing store, make sure you have a back up plan for the data.
-  - **_kube scheduler:_** Scheduler ensures proper pod placement on the worker nodes based on several factors such as the available resources and the current load on the cluster.
-  - **_kube controller manager:_** Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process. There are many different types of controllers some of them below;
+  - **_kube-apiserver (cluster gateway) (some request > apiserver > validates request > others process > pod):_** It is entry-point to the Kubernetes cluster, which itself is a container. This is the process that allows communication between different Kubernetes clients and the cluster. We can run several instances of kube-apiserver and balance traffic between those instances. It is designed to scale horizontally—that is, it scales by deploying more instances. it is working as gatekeeper for authentication.
+  - **_etcd (cluster brain):_** is a distributed key-value store that plays a critical role in the architecture of Kubernetes. Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data. If your Kubernetes cluster uses etcd as its backing store, make sure you have a back up plan for the data. application data is not stored in etcd.
+  - **_kube scheduler (schedule new pod > apiserver > scheduler > where put pod > kubelet):_** Scheduler ensures proper pod placement on the worker nodes based on several factors such as the available resources and the current load on the cluster.
+  - **_kube controller manager (kcm > scheduler > kubelet > pod):_** Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process. its can detects cluster state changes. There are many different types of controllers some of them below;
     - **_Node controller:_** Responsible for noticing and responding when nodes go down.
     - **_Job controller:_** Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
     - **_EndpointSlice controller:_** Populates EndpointSlice objects (to provide a link between Services and Pods).
@@ -315,18 +315,41 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
     - **_Route controller:_** For setting up routes in the underlying cloud infrastructure
     - **_Service controller:_** For creating, updating and deleting cloud provider load balancers
 
-- Worker Node
+- Worker Node: here three process shown below;
 
   - **_kubelet:_** An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. The kubelet takes a set of PodSpecs that are provided through various mechanisms and ensures that the containers described in those PodSpecs are running and healthy. The kubelet doesn't manage containers which were not created by Kubernetes.
   - **_kube proxy:_** kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
   - **_container runtime:_** A fundamental component that empowers Kubernetes to run containers effectively. It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
 
-|  SL   | Command                     | Explanation                   |
-| :---: | :-------------------------- | :---------------------------- |
-|   1   | `kubectl get node`          | show enlisted node            |
-|   2   | `kubectl get node -o wide`  | show enlisted node in details |
-|   3   | `kubectl describe node`     | show description of node      |
-|   4   | `kubectl top node NodeName` | move a node to top            |
+***kubectl (kube control):*** is the command-line tool for interacting with Kubernetes clusters. It allows users to perform various operations on Kubernetes resources, such as creating and managing pods, services, deployments, and more.
+
+***Minikube:*** is a tool that allows you to run a single-node Kubernetes cluster locally on your machine. It is designed to be a lightweight and easy-to-use solution for developers who want to develop, test, and experiment with Kubernetes applications without the need for a full-scale, multi-node cluster.
+
+##### minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s[install](https://microk8s.io)
+
+|  SL   | Command                                                  | Explanation                            |
+| :---: | :------------------------------------------------------- | :------------------------------------- |
+|   1   | `kubectl -h`                                             | show all command                       |
+|   2   | `kubectl get node`                                       | show enlisted node                     |
+|   3   | `kubectl get pod`                                        | show enlisted pod                      |
+|   4   | `kubectl get services`                                   | show enlisted services                 |
+|   5   | `kubectl get node -o wide`                               | show enlisted node in details          |
+|   6   | `kubectl describe node`                                  | show description of node               |
+|   7   | `kubectl top node NodeName`                              | move a node to top                     |
+|   8   | `kubectl create deployment nginxDepltName --image=nginx` | nginx install on kubernetes            |
+|   9   | `kubectl get deployment`                                 | show deployment list                   |
+|  10   | `kubectl get pod`                                        | show enlisted pod                      |
+|  11   | `kubectl describe pod podName`                           | description of node                    |
+|  12   | `kubectl get replicaset`                                 | show replica set                       |
+|  13   | `kubectl edit deployment nginxPDeplName`                 | change deployment name (image version) |
+|  14   | `kubectl delete deployment nginx-deployment`             | remove deployment                      |
+|  15   | `kubectl logs podName`                                   | checking logs of a pod                 |
+|  16   | `kubectl exec -it podName -- bin/bash`                   | debugging the pod                      |
+|  17   | `kubectl apply -f config-file.yaml`                      | execute the conf file                  |
+
+
+##### kubectl cli vs minikube cli?
+kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
 
 ##### Volumes
 It is a directory containing data, which can be accessed by containers in a Kubernetes pod. The location of the directory, the storage media that supports it, and its contents, depend on the specific type of volume being used. There are a few types of volumes in Kubernetes.
