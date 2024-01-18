@@ -188,6 +188,11 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a powerful and flexible platform for container orchestration, allowing you to deploy and manage applications seamlessly across a cluster of machines.
 
+##### Cluster
+
+It is made up of at least one master node and one or more worker nodes. The **_master node makes up the control plane_** of a cluster and is responsible for scheduling tasks and monitoring the state of the cluster.
+![Cluster](/img/cluster.png)
+
 #### Components
 
 A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_**, that run containerized applications. Every cluster has at least **_one worker_** node (vm).
@@ -275,11 +280,6 @@ Pods are the smallest deployable units of computing that you can create and mana
 |   3   | `kubectl describe po`          | show description of pod      |
 |   4   | `kubectl get po --show-labels` | show the label of pod        |
 |   5   | `kubectl get po -o yaml`       | show yaml of pod             |
-
-##### Cluster
-
-It is made up of at least one master node and one or more worker nodes. The **_master node makes up the control plane_** of a cluster and is responsible for scheduling tasks and monitoring the state of the cluster.
-![Cluster](/img/cluster.png)
 
 ##### Nodes
 
