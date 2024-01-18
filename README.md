@@ -273,14 +273,6 @@ Pods are the smallest deployable units of computing that you can create and mana
       - containerPort: 80
 ```
 
-|  SL   | Command                        | Explanation                  |
-| :---: | :----------------------------- | :--------------------------- |
-|   1   | `kubectl get po`               | show enlisted pod            |
-|   2   | `kubectl get po -o wide`       | show enlisted pod in details |
-|   3   | `kubectl describe po`          | show description of pod      |
-|   4   | `kubectl get po --show-labels` | show the label of pod        |
-|   5   | `kubectl get po -o yaml`       | show yaml of pod             |
-
 ##### Nodes
 
 A node may be a virtual or physical machine, depending on the cluster. Each node is managed by the control plane and contains the services necessary to run Pods.
@@ -346,7 +338,8 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 |  15   | `kubectl logs podName`                                   | checking logs of a pod                 |
 |  16   | `kubectl exec -it podName -- bin/bash`                   | debugging the pod                      |
 |  17   | `kubectl apply -f config-file.yaml`                      | execute the conf file                  |
-
+|  18   | `kubectl get pod --show-labels`                          | show the label of pod                  |
+|  19   | `kubectl get pod -o yaml`                                | show yaml of pod                       |
 
 ##### kubectl cli vs minikube cli?
 kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
