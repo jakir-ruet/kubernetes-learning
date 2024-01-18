@@ -341,6 +341,16 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 |  18   | `kubectl get pod --show-labels`                          | show the label of pod                  |
 |  19   | `kubectl get pod -o yaml`                                | show yaml of pod                       |
 
+#### First nginx deployment
+|  SL   | Command                                  | Explanation                         |
+| :---: | :--------------------------------------- | :---------------------------------- |
+|   1   | `touch nginx-deployment.yaml`            | create yaml conf file on local pc   |
+|   2   | `nano nginx-deployment.yaml`             | open in nano & write conf yaml code |
+|   3   | `kubectl apply -f nginx-deployment.yaml` | deployment on the kubernetes        |
+|   4   | `kubectl get deployment`                 | checking the deployment             |
+|   5   | `kubectl exec -it podName -- bin/bash`   | accessing the pod                   |
+
+
 ##### kubectl cli vs minikube cli?
 kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
 
