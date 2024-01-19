@@ -354,9 +354,9 @@ kubectl and minikube are command-line tools used in the Kubernetes ecosystem, th
 |   4   | `kubectl get deployment`                 | checking the deployment             |
 |   5   | `kubectl exec -it podName -- bin/bash`   | accessing the pod                   |
 
-##### See 2-yaml-file-parts (yaml understanding). Recommended to read docs of [kubernetes](https://kubernetes.io/docs/home/).
+##### See (2-yaml-file-parts) for yaml understanding. Recommended to read docs of [kubernetes](https://kubernetes.io/docs/home/).
 
-##### See 3-complete-deployment. Recommended to read docs of [kubernetes](https://kubernetes.io/docs/home/).
+##### See (3-complete-deployment) for complete deployment. Recommended to read docs of [kubernetes](https://kubernetes.io/docs/home/).
 
 #### Ingress in [Docker](https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.)
 
