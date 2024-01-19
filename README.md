@@ -319,8 +319,7 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 
 ##### kubectl cli vs minikube cli?
 kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
-
-##### minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s[install](https://microk8s.io)
+##### minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s [install](https://microk8s.io)
 
 |  SL   | Command                                                  | Explanation                            |
 | :---: | :------------------------------------------------------- | :------------------------------------- |
@@ -355,67 +354,9 @@ kubectl and minikube are command-line tools used in the Kubernetes ecosystem, th
 |   4   | `kubectl get deployment`                 | checking the deployment             |
 |   5   | `kubectl exec -it podName -- bin/bash`   | accessing the pod                   |
 
-##### Volumes
-It is a directory containing data, which can be accessed by containers in a Kubernetes pod. The location of the directory, the storage media that supports it, and its contents, depend on the specific type of volume being used. There are a few types of volumes in Kubernetes.
+##### See 2-yaml-file-parts (yaml understanding). Recommended to read docs of [kubernetes](https://kubernetes.io/docs/home/).
 
-- Volumes
-  - Persistent Volumes (PV)
-    is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. It is a resource in the cluster just like a node is a cluster resource. PVs are volume plugins like Volumes, but have a lifecycle independent of any individual Pod that uses the PV.
-  - Persistent Volume Claim (PVC)
-    is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Pods can request specific levels of resources (CPU and Memory). Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany, 
-  - Ephemeral Volumes
-  - EmptyDir Volumes
-  - hostPath Volumes
-  - Volumes ConfigMap 
-- [Storing Volumes](https://kubernetes.io/docs/concepts/storage/storage-classes/) 
-  - NFS (Network File System)
-  - CSI (Container Storage Interface)
-
-##### Namespaces
-
-Namespaces is virtual cluster in a cluster, where organized the resources. Namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Kubernetes starts with four initial namespaces:
-
-1. default
-
-    - We can start using your new cluster without first creating a namespace.
-    - Resource we can create are located here.
-
-2. kube-node-lease
-
-    - Heartbeats of nodes so that the control plane can detect node failure.
-    - Each node has associated lease object in namespace.
-    - Determines the availability of a node.
-
-3. kube-public:
-
-    - Publicly accessible data, even without any authentication.
-    - A configure, which containers cluster information.
-  
-4. kube-system (```kubectl cluster-info```):
-
-    - The namespace for objects created by the Kubernetes system.
-    - Do not create or modify in kube system.
-    - System Process.
-    - Master and Kubectl processes
-
-##### Importance
-
-- Everything in one namespace (default).
-  - Deployments
-  - Replica sets
-  - Services
-  - Configmaps
-- Resources grouping (database, monitoring, elastic stack, nginx-ingress) is possible in namespace.
-- Conflicts minimization in same application with many teams.
-- Resources sharing is possible such as staging, development, env setup.
-- Limit the access into resource will possible on namespace.
-- Own ConfigMap only possible in each namespace.
-
-|  SL   | Command                                | Explanation               |
-| :---: | :------------------------------------- | :------------------------ |
-|   1   | `kubectl get namespaces`               | Check enlisted namespaces |
-|   2   | `kubectl cluster-info`                 | Check the cluster info    |
-|   3   | `kubectl create namespace myNamespace` | Create namespace          |
+##### See 3-complete-deployment. Recommended to read docs of [kubernetes](https://kubernetes.io/docs/home/).
 
 #### Ingress in [Docker](https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.)
 
@@ -488,6 +429,77 @@ In Helm, a package manager for Kubernetes, a "Tiller" refers to the server-side 
 |  SL   | Command                           | Explanation                       |
 | :---: | :-------------------------------- | :-------------------------------- |
 |   1   | `kubectl get po --all-namespaces` | is namespaces running to confirm? |
+
+##### Namespaces
+Namespaces is virtual cluster in a cluster, where organized the resources. Namespaces provides a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Kubernetes starts with four initial namespaces:
+
+1. default
+
+    - We can start using your new cluster without first creating a namespace.
+    - Resource we can create are located here.
+
+2. kube-node-lease
+
+    - Heartbeats of nodes so that the control plane can detect node failure.
+    - Each node has associated lease object in namespace.
+    - Determines the availability of a node.
+
+3. kube-public:
+
+    - Publicly accessible data, even without any authentication.
+    - A configure, which containers cluster information.
+  
+4. kube-system (```kubectl cluster-info```):
+
+    - The namespace for objects created by the Kubernetes system.
+    - Do not create or modify in kube system.
+    - System Process.
+    - Master and Kubectl processes
+
+##### Importance
+
+- Everything in one namespace (default).
+  - Deployments
+  - Replica sets
+  - Services
+  - Configmaps
+- Resources grouping (database, monitoring, elastic stack, nginx-ingress) is possible in namespace.
+- Conflicts minimization in same application with many teams.
+- Resources sharing is possible such as staging, development, env setup.
+- Limit the access into resource will possible on namespace.
+- Own ConfigMap only possible in each namespace.
+
+|  SL   | Command                                | Explanation               |
+| :---: | :------------------------------------- | :------------------------ |
+|   1   | `kubectl get namespaces`               | Check enlisted namespaces |
+|   2   | `kubectl cluster-info`                 | Check the cluster info    |
+|   3   | `kubectl create namespace myNamespace` | Create namespace          |
+
+##### Volumes
+It is a directory containing data, which can be accessed by containers in a Kubernetes pod. The location of the directory, the storage media that supports it, and its contents, depend on the specific type of volume being used. There are a few types of volumes in Kubernetes.
+
+-------------------------
+Sections
+-------------------------
+pod container-------------
+
+- Volumes
+  - Persistent Volumes (PV)
+    is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. It is a resource in the cluster just like a node is a cluster resource. PVs are volume plugins like Volumes, but have a lifecycle independent of any individual Pod that uses the PV.
+  - Persistent Volume Claim (PVC)
+    is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Pods can request specific levels of resources (CPU and Memory). Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany, 
+  - Ephemeral Volumes
+  - EmptyDir Volumes
+  - hostPath Volumes
+  - Volumes ConfigMap 
+- [Storing Volumes](https://kubernetes.io/docs/concepts/storage/storage-classes/) 
+  - NFS (Network File System)
+  - CSI (Container Storage Interface)
+
+
+ConfigMap and Secret------
+StatefullSet deployment-----
+Monitoring tools (Prometheus)
 
 1. AWS CLI
 
