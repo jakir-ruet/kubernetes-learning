@@ -328,21 +328,23 @@ kubectl and minikube are command-line tools used in the Kubernetes ecosystem, th
 |   2   | `kubectl get node`                                       | show enlisted node                     |
 |   3   | `kubectl get pod`                                        | show enlisted pod                      |
 |   4   | `kubectl get services`                                   | show enlisted services                 |
-|   5   | `kubectl get node -o wide`                               | show enlisted node in details          |
-|   6   | `kubectl describe node`                                  | show description of node               |
-|   7   | `kubectl top node NodeName`                              | move a node to top                     |
-|   8   | `kubectl create deployment nginxDepltName --image=nginx` | nginx install on kubernetes            |
-|   9   | `kubectl get deployment`                                 | show deployment list                   |
-|  10   | `kubectl get pod`                                        | show enlisted pod                      |
-|  11   | `kubectl describe pod podName`                           | description of node                    |
-|  12   | `kubectl get replicaset`                                 | show replica set                       |
-|  13   | `kubectl edit deployment nginxDepltName`                 | change deployment name (image version) |
-|  14   | `kubectl delete deployment nginxDepltName`               | remove deployment                      |
-|  15   | `kubectl logs podName`                                   | checking logs of a pod                 |
-|  16   | `kubectl exec -it podName -- bin/bash`                   | debugging the pod                      |
-|  17   | `kubectl apply -f config-file.yaml`                      | execute the conf file                  |
-|  18   | `kubectl get pod --show-labels`                          | show the label of pod                  |
-|  19   | `kubectl get pod -o yaml`                                | show yaml of pod                       |
+|   5   | `kubectl describe service serviceName`                   | show details of a service              |
+|   6   | `kubectl get node -o wide`                               | show enlisted node in details          |
+|   7   | `kubectl describe node`                                  | show description of node               |
+|   8   | `kubectl top node NodeName`                              | move a node to top                     |
+|   9   | `kubectl create deployment nginxDepltName --image=nginx` | nginx install on kubernetes            |
+|  10   | `kubectl get deployment`                                 | show deployment list                   |
+|  11   | `kubectl get pod`                                        | show enlisted pod                      |
+|  12   | `kubectl describe pod podName`                           | description of node                    |
+|  13   | `kubectl get replicaset`                                 | show replica set                       |
+|  14   | `kubectl edit deployment nginxDepltName`                 | change deployment name (image version) |
+|  15   | `kubectl delete deployment nginxDepltName`               | remove deployment                      |
+|  16   | `kubectl logs podName`                                   | checking logs of a pod                 |
+|  17   | `kubectl exec -it podName -- bin/bash`                   | debugging the pod                      |
+|  18   | `kubectl apply -f config-file.yaml`                      | execute the conf file                  |
+|  19   | `kubectl get pod --show-labels`                          | show the label of pod                  |
+|  20   | `kubectl get pod -o yaml`                                | show yaml of pod                       |
+|  21   | `kubectl get deployment deplName -o yaml`                | all info in output yaml file           |
 
 #### First nginx deployment
 |  SL   | Command                                  | Explanation                         |
