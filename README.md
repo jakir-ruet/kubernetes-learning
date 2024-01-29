@@ -320,8 +320,19 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 ##### kubectl cli vs minikube cli?
 kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
 ##### Install Minikube & kubectl (You may install as per your operating system.)
-- Minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s [install](https://microk8s.io). 
-- KubeCtl [Install](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+- Minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s [install](https://microk8s.io) ***Minikube Recommended***. 
+```bash 
+  minikube start --force --driver=docker
+```
+Check the running/all container on docker
+```bash 
+  docker ps / docker ps -a
+```
+```bash 
+  minikube dashboard
+```
+If it return "kubectl not found. If you need it, try: 'minikube kubectl -- get pods -A'", then
+- You will Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) ***Ubuntu Server Recommended***.
 
 |  SL   | Command                                                  | Explanation                            |
 | :---: | :------------------------------------------------------- | :------------------------------------- |
