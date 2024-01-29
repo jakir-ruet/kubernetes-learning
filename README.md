@@ -242,7 +242,7 @@ Exposes the service via the cloud provider’s load balancer like AWS or Azure.
 Maps a service to a predefined externalName field by returning a value for the CNAME record.
 
 ***Sample Service***
-```
+``` YAML
 apiVersion: v1
 kind: Service
 metadata:
@@ -260,7 +260,7 @@ spec:
 
 Pods are the smallest deployable units of computing that you can create and manage in Kubernetes. A Pod (as in a pod of whales or pea pod) is a group of **_one or more containers_**, with shared **_storage_** and **_network resources_**, and a **_specification_** for how to run the containers. A Pod's contents are always co-located and co-scheduled, and run in a shared context.
 
-```
+``` YAML
   apiVersion: v1
   kind: Pod
   metadata:
@@ -277,7 +277,7 @@ Pods are the smallest deployable units of computing that you can create and mana
 
 A node may be a virtual or physical machine, depending on the cluster. Each node is managed by the control plane and contains the services necessary to run Pods.
 
-```
+```JSON
 {
   "kind": "Node",
   "apiVersion": "v1",
@@ -376,7 +376,7 @@ If it return "kubectl not found. If you need it, try: 'minikube kubectl -- get p
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. Here is a simple example where an Ingress sends all its traffic to one Service:
 ![Ingress](/img/ingress.png)
 
-```
+``` YAML
   apiVersion: networking.k8s.io/v1
   kind: Ingress
   metadata:
@@ -510,9 +510,9 @@ pod container-------------
   - CSI (Container Storage Interface)
 
 
-ConfigMap and Secret------
-StatefullSet deployment-----
-Monitoring tools (Prometheus)
+ConfigMap and Secret------coming
+StatefullSet deployment-----coming
+Monitoring tools (Prometheus)-----coming
 
 1. AWS CLI
 
