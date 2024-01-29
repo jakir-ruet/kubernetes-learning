@@ -26,7 +26,7 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Docker Installation
 
-- How to [Install?](https://docs.docker.com/get-docker/)
+- How to [Install?](https://docs.docker.com/get-docker/). You may install as per your operating system.
 
 #### How to pull from Docker Hub
 
@@ -319,7 +319,9 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 
 ##### kubectl cli vs minikube cli?
 kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
-##### minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s [install](https://microk8s.io)
+##### Install Minikube & kubectl (You may install as per your operating system.)
+- Minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s [install](https://microk8s.io). 
+- KubeCtl [Install](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
 
 |  SL   | Command                                                  | Explanation                            |
 | :---: | :------------------------------------------------------- | :------------------------------------- |
