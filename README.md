@@ -532,6 +532,7 @@ Monitoring tools (Prometheus)-----coming
      - AWS Secret Access Key [None]: Put your secret key here and press Enter
      - Default region name [None]: us-east-1
      - Default output format [None]: json
+     - Check the users `aws iam list-users`
    - Let's me check whether the configuration is done.
      - `aws ec2 describe-vpcs`
      - If it is done then we will see the details of the default vpc.
