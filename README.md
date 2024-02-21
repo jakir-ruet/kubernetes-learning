@@ -8,6 +8,14 @@
 
 Docker is a platform and set of tools designed to facilitate the creation, deployment, and running of applications in lightweight, portable containers. Containers allow developers to package an application and its dependencies, including libraries and other components, into a single, standardized unit. This unit can then be easily moved between different environments, such as development, testing, and production, without worrying about differences in the underlying infrastructure.
 
+### Container
+A container is a lightweight, standalone, executable package that contains everything needed to run a piece of software, including the code, runtime, system tools, system libraries, and settings.
+
+### Image
+An image is a lightweight, standalone, and executable software package that contains everything needed to run a piece of software. It serves as a template for creating Docker containers. Docker images are built based on a Dockerfile, which is a text document that contains a set of instructions for assembling the image. Two types of images in docker.
+  1. Pre-Build Image (Node, Apache, Nginx etc.)
+  2. Custom Image (Our own build image)
+
 ### Types of Processes
 
 There are fundamentally two types of processes in Unix based OS:
