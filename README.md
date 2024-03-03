@@ -83,25 +83,25 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 #### Dockerfile
 
-- FROM node:20
-  this instruction specifies the parent image from which we are willing to building.
+- ***FROM node:20***
+  this instruction specifies the parent image (with tag) from which we are willing to building.
 
-- WORKDIR /app
+- ***WORKDIR /app***
   this instruction is define current working directory for subsequent instructions in the Dockerfile. when it executed, then all subsequent instruction will be executed.
 
-- COPY package.json .
+- ***COPY package.json .***
   this instruction allow copy the files/folders from host machine into the docker container.
 
-- RUN npm install
+- ***RUN npm install***
   this instruction start the installation command of the application.
 
-- COPY . . [COPY <Source> <Destination>]
+- ***COPY . . [COPY <Source> <Destination>]***
   this instruction allow copy the files/folders from host machine into the docker container.
 
-- EXPOSE 3000
+- ***EXPOSE 3000***
   this instruction will be expose the port for public user of the application.
 
-- CMD ["node", "app.mjs"]
+- ***CMD ["node", "app.mjs"]***
   this instruction finally run the application.
   
 
