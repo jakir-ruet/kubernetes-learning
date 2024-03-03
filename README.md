@@ -6,10 +6,10 @@
 
 ### Docker
 
-Docker is a platform and set of tools designed to facilitate the creation, deployment, and running of applications in lightweight, portable containers. Containers allow developers to package an application and its dependencies, including libraries and other components, into a single, standardized unit. This unit can then be easily moved between different environments, such as development, testing, and production, without worrying about differences in the underlying infrastructure.
+Docker is a container technology/tool for creating & managing containers.
 
 ### Container
-A container is a lightweight, standalone, executable package that contains everything needed to run a piece of software, including the code, runtime, system tools, system libraries, and settings.
+A container is a lightweight, standalone, standardized, executable package that contains everything needed to run a piece of software, including the code, runtime, system tools, system libraries, and settings.
 
 ### Image
 An image is a lightweight, standalone, and executable software package that contains everything needed to run a piece of software. It serves as a template for creating Docker containers. Docker images are built based on a Dockerfile, which is a text document that contains a set of instructions for assembling the image. Two types of images in docker.
@@ -80,6 +80,30 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 |   1   | `docker --version (-v)` | Checking the version of docker |
 |   2   | `docker login`          | We can access using credential |
 |   3   | `docker logout`         | We can logout                  |
+
+#### Dockerfile
+
+- FROM node:20
+  this instruction specifies the parent image from which we are willing to building.
+
+- WORKDIR /app
+  this instruction is define current working directory for subsequent instructions in the Dockerfile. when it executed, then all subsequent instruction will be executed.
+
+- COPY package.json .
+  this instruction allow copy the files/folders from host machine into the docker container.
+
+- RUN npm install
+  this instruction start the installation command of the application.
+
+- COPY . . [COPY <Source> <Destination>]
+  this instruction allow copy the files/folders from host machine into the docker container.
+
+- EXPOSE 3000
+  this instruction will be expose the port for public user of the application.
+
+- CMD ["node", "app.mjs"]
+  this instruction finally run the application.
+  
 
 #### Essential command of images
 
