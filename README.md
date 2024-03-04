@@ -122,6 +122,8 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 |  11   | `docker image inspect ImageId`                   | Inspections the image                                       |
 |  12   | `docker image prune -a`                          | Remove all unused images, not just dangling ones            |
 |  13   | `docker rmi ImageId`                             | Image remove                                                |
+|  14   | `docker tag ImageID ImgNewName`                  | Image renaming which name is 'none'                         |
+|  15   | `docker tag ImageID ImgNewName`                  | New img will be created if old name is not 'none'           |
 
 #### Essential command of container
 
