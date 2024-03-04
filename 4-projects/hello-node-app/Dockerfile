@@ -9,7 +9,12 @@ CMD ["node", "app.mjs"]
 
 # run the command
 # docker build .
-# docker run  c7bbfc10fb91d5c24eee150639c6077bd15abab67116bd6403b939f3bdc1678e
-# localhost:3000
+# docker run ImgID (Above Not Working due to not publish & port expose)
+# IP:3000
+# docker stop  ImgID Not Working
+# docker run -p 3000:3000 ImgId (Working)
+# IP:3000
+# docker run -p 3000:3000 -d ImgId (Working)
+# IP:3000
 # docker exec -it hello-node-app /bin/bash
 # docker -p run exec -it hello-node /bin/bash
