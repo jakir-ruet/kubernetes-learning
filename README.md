@@ -205,6 +205,28 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 |  12   | `mkdir /opt/HostDir`                                                     | Create host directory use as volume for app                  |
 |  13   | `docker run -it --name ConName -v /opt/HostDir:/HostDir nginx /bin/bash` | Create a image, container on host directory                  |
 
+
+inspect the container & check the volume which is being used here.
+```bash
+docker inspect ConName
+docker inspect azuresqledge
+```
+create new named volume which we will use.
+```bash
+docker volume create VolName
+docker stop ConName # where we will work
+docker stop azuresqledge # for avoid corrupting the data
+```
+
+cloning data from old to new volume
+```bash
+docker run --rm --volumes-from ConName -v NewVol:/target
+docker run --rm --volumes-from azuresqledge -v mssql-extensibility:target
+```
+
+
+
+
 #### Footnote about volume
 
 - Storage persistent location outside of container.
