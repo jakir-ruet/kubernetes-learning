@@ -220,8 +220,8 @@ docker stop azuresqledge # for avoid corrupting the data
 
 cloning data from old to new volume
 ```bash
-docker run --rm --volumes-from ConName -v NewVol:/target
-docker run --rm --volumes-from azuresqledge -v mssql-extensibility:target
+docker run --rm --volumes-from ConName[present] -v NewVol:/target VolName[present] sh-c "cp rp /Destination[present]/. /target"
+docker run --rm --volumes-from azuresqledge -v mssql-extensibility:/target mssql-server sh-c "cp -rp /var/opt/mssql-extensibility/. /target"
 ```
 
 
