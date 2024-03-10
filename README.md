@@ -222,7 +222,7 @@ docker stop mysql-server # for avoid corrupting the data
 cloning data from old to new volume
 ```bash
 docker ps
-docker run --rm --volumes-from ConName[present] -v NewVol:/target VolName[present] sh -c "cp -rp /Destination[present]/. /target"
+docker run --rm --volumes-from ConName[present] -v NewVol:/target VolName[present] sh -c "cp -rp /Destination[present]/. /target" # here -rp > record preserve
 docker run --rm --volumes-from mysql-server -v vol-mysql-server:/target alpine sh -c "cp -rp /var/lib/mysql/. /target"
 docker run -d --name NewContName -v vol-mysql-server:/var/lib/mysql -p 3306:3306 mysql:tag
 docker run -d --name new-mysql-server -v vol-mysql-server:/var/lib/mysql -p 3306:3306 mysql:latest
