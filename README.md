@@ -208,27 +208,30 @@ We can run container in attached mode (in the foreground) or in detached mode (i
 
 inspect the container & check the volume which is being used here.
 ```bash
-docker inspect ConName
-docker inspect azuresqledge
+docker pull mysql
+docker run --name mysql-server -e MYSQL_ROOT_PASSWORD=Mysql@054003 -d mysql:latest
+docker exec -it mysql-server mysql -u root -p
+docker inspect mysql-server # mysql-server is container name
 ```
 create new named volume which we will use.
 ```bash
-docker volume create VolName
-docker stop ConName # where we will work
-docker stop azuresqledge # for avoid corrupting the data
+docker volume create vol-mysql-server
+docker stop mysql-server # for avoid corrupting the data
 ```
 
 cloning data from old to new volume
 ```bash
-docker run --rm --volumes-from ConName[present] -v NewVol:/target VolName[present] sh-c "cp rp /Destination[present]/. /target"
-docker run --rm --volumes-from azuresqledge -v mssql-extensibility:/target mssql-server sh-c "cp -rp /var/opt/mssql-extensibility/. /target"
+docker ps
+docker run --rm --volumes-from ConName[present] -v NewVol:/target VolName[present] sh -c "cp -rp /Destination[present]/. /target"
+docker run --rm --volumes-from mysql-server -v vol-mysql-server:/target alpine sh -c "cp -rp /var/lib/mysql/. /target"
+docker run -d --name NewContName -v vol-mysql-server:/var/lib/mysql -p 3306:3306 mysql:tag
+docker run -d --name new-mysql-server -v vol-mysql-server:/var/lib/mysql -p 3306:3306 mysql:latest
+docker ps
+docker exec -it new-mysql-server mysql -u root -p
+docker inspect new-mysql-server # mysql-server is container name
 ```
 
-
-
-
 #### Footnote about volume
-
 - Storage persistent location outside of container.
 - If container removed then volume will be available on storage.
 - It use for the data security purpose.
@@ -403,6 +406,10 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
 ##### Install Minikube & kubectl (You may install as per your operating system.)
 - Minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s [install](https://microk8s.io) ***Minikube Recommended***. 
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_arm64.deb
+sudo dpkg -i minikube_latest_arm64.deb
+```
 ```bash 
   minikube start --force --driver=docker
 ```
