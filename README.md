@@ -271,7 +271,7 @@ docker inspect new-mysql-server # mysql-server is container name
 
 ### Kubernetes
 
-Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF). Kubernetes provides a powerful and flexible platform for container orchestration, allowing you to deploy and manage applications seamlessly across a cluster of machines.
+Kubernetes, often abbreviated as K8s, is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally developed by Google and is now maintained by the ***Cloud Native Computing Foundation*** (CNCF). Kubernetes provides a powerful and flexible platform for container orchestration, allowing you to deploy and manage applications seamlessly across a cluster of machines.
 
 ##### Cluster
 
@@ -306,6 +306,13 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
   - Kubernetes Dashboard
   - Resource Monitoring
   - Logging
+- Volume
+- Service
+- Ingress
+- Deployment (pod's blue print)
+- StatefulSet
+- ConfigMap
+- Secret
 
 ***Services***  is a logical abstraction for a deployed group of pods in a cluster (which all perform the same function). if one is crash then another will ready to work. The core attributes of a Kubernetes service are:
 - A label selector that locates pods
@@ -359,7 +366,7 @@ Pods are the smallest deployable units of computing that you can create and mana
       - containerPort: 80
 ```
 
-##### Nodes
+##### Nodes (VM)
 
 A node may be a virtual or physical machine, depending on the cluster. Each node is managed by the control plane and contains the services necessary to run Pods.
 
@@ -396,7 +403,9 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 - Worker Node: here three process shown below;
 
   - **_kubelet:_** An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. The kubelet takes a set of PodSpecs that are provided through various mechanisms and ensures that the containers described in those PodSpecs are running and healthy. The kubelet doesn't manage containers which were not created by Kubernetes.
+
   - **_kube proxy:_** kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
+
   - **_container runtime:_** A fundamental component that empowers Kubernetes to run containers effectively. It is responsible for managing the execution and lifecycle of containers within the Kubernetes environment.
 
 ***kubectl (kube control):*** is the command-line tool for interacting with Kubernetes clusters. It allows users to perform various operations on Kubernetes resources, such as creating and managing pods, services, deployments, and more.
@@ -405,6 +414,7 @@ A Kubernetes cluster is made up of one **_master_** node and several **_worker_*
 
 ##### kubectl cli vs minikube cli?
 kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
+
 ##### Install Minikube & kubectl (You may install as per your operating system.)
 - Minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s [install](https://microk8s.io) ***Minikube Recommended***. 
 ```bash
@@ -434,19 +444,19 @@ If it return "kubectl not found. If you need it, try: 'minikube kubectl -- get p
 |   6   | `kubectl get node -o wide`                                         | show enlisted node in details          |
 |   7   | `kubectl describe node`                                            | show description of node               |
 |   8   | `kubectl top node NodeName`                                        | move a node to top                     |
-|   9   | `kubectl create deployment nginxDepltName --image=nginx`           | nginx install on kubernetes            |
-|  10   | `kubectl get deployment`                                           | show deployment list                   |
-|  11   | `kubectl get pod`                                                  | show enlisted pod                      |
-|  12   | `kubectl describe pod podName`                                     | description of node                    |
-|  13   | `kubectl get replicaset`                                           | show replica set                       |
-|  14   | `kubectl edit deployment nginxDepltName`                           | change deployment name (image version) |
-|  15   | `kubectl delete deployment nginxDepltName`                         | remove deployment                      |
-|  16   | `kubectl logs podName`                                             | checking logs of a pod                 |
-|  17   | `kubectl exec -it podName -- bin/bash`                             | debugging the pod                      |
-|  18   | `kubectl apply -f config-file.yaml`                                | execute the conf file                  |
-|  19   | `kubectl get pod --show-labels`                                    | show the label of pod                  |
-|  20   | `kubectl get pod -o yaml`                                          | show yaml of pod                       |
-|  21   | `kubectl get deployment deplName -o yaml`                          | all info in output yaml file           |
+|   9   | `kubectl get deployment`                                           | show deployment list                   |
+|  10   | `kubectl get pod`                                                  | show enlisted pod                      |
+|  11   | `kubectl describe pod podName`                                     | description of node                    |
+|  12   | `kubectl get replicaset`                                           | show replica set                       |
+|  13   | `kubectl edit deployment nginxDepltName`                           | change deployment name (image version) |
+|  14   | `kubectl delete deployment nginxDepltName`                         | remove deployment                      |
+|  15   | `kubectl logs podName`                                             | checking logs of a pod                 |
+|  16   | `kubectl exec -it podName -- bin/bash`                             | debugging the pod                      |
+|  17   | `kubectl apply -f config-file.yaml`                                | execute the conf file                  |
+|  18   | `kubectl get pod --show-labels`                                    | show the label of pod                  |
+|  19   | `kubectl get pod -o yaml`                                          | show yaml of pod                       |
+|  20   | `kubectl get deployment deplName -o yaml`                          | all info in output yaml file           |
+|  21   | `kubectl create deployment nginxDepltName --image=nginx`           | nginx install on kubernetes            |
 |  22   | `kubectl create deployment my-nginx --image=nginx:latest`          | create nginx deployment                |
 |  23   | `kubectl expose deployment my-nginx --port=80 --type=LoadBalancer` | create nginx deployment expose port    |
 |  24   | `kubectl get services`                                             | see service details                    |
@@ -498,7 +508,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 |   3   | `minikube get ingress -n kubernetes-dashboard` | see details of ingress         |
 
 #### [Helm](https://helm.sh/docs/) | [Helm Cheat Sheet](https://helm.sh/docs/intro/cheatsheet/)
-It is a package manager for Kubernetes applications. It simplifies the process of deploying and managing applications on Kubernetes clusters. Helm consists of two main components: the Helm client and the Helm server. The client is used to interact with the server and manage charts, while the server contains all the necessary information about available charts.
+It is a package manager for Kubernetes applications. It simplifies the process of deploying and managing applications on Kubernetes clusters. Helm consists of two main components: the ***Helm client*** and the ***Helm server***. The client is used to interact with the server and manage charts, while the server contains all the necessary information about available charts.
 ![Helm](/img/helm.png)
 
 ##### Helm Chart Architecture
@@ -567,9 +577,9 @@ Namespaces is virtual cluster in a cluster, where organized the resources. Names
 
 - Everything in one namespace (default).
   - Deployments
-  - Replica sets
+  - ReplicaSets
   - Services
-  - Configmaps
+  - ConfigMaps
 - Resources grouping (database, monitoring, elastic stack, nginx-ingress) is possible in namespace.
 - Conflicts minimization in same application with many teams.
 - Resources sharing is possible such as staging, development, env setup.
