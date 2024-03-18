@@ -9,30 +9,30 @@
 4. Secret (DB UserName & Password) [1]
 
 #### Find the base64 value of username & password
-```
+```bash
    echo -n 'username' | base64
 ```
 
-```
+```bash
    echo -n 'password' | base64
 ```
 
 #### After configuring the mongo-deployment.yaml & mongo-secret.yaml
 - deploying the mongo-deployment.yaml by following command [we must run the minikube ```minikube start```]
-```
+```bash
    kubectl apply -f mongo-deployment.yaml
 ```
 After it will make a pod named "mongo-deployment"
-```
+```bash
    kubectl get pod
 ```
 See in details of the pod
-```
+```bash
    kubectl describe pod PodName
 ```
 
 #### type service code in mongo-deployment.yaml file
-```
+```bash
    apiVersion: v1
    kind: Service
    metadata: 
@@ -46,9 +46,9 @@ See in details of the pod
       targetPort: 27017
 ```
 Reapply & check service
-```
+```bash
    kubectl apply -f mongo-deployment.yaml
 ```
-```
+```bash
    kubectl get service
 ```
