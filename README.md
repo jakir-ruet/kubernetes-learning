@@ -459,8 +459,17 @@ If it return "kubectl not found. If you need it, try: 'minikube kubectl -- get p
 |  21   | `kubectl get deployment deplName -o yaml`                          | all info in output yaml file           |
 |  22   | `kubectl get services`                                             | show enlisted services                 |
 |  23   | `kubectl describe service serviceName`                             | show details of a service              |
-|  24   | `kubectl get replicaset`                                           | show replica set                       |
-|  25   | `kubectl apply -f config-file.yaml`                                | execute the conf file                  |
+|  24   | `kubectl apply -f config-file.yaml`                                | execute the conf file                  |
+|  25   | `kubectl describe pod DepltName PIPESIGN grep -i image`            | which images is use in a pod           |
+|  26   | `kubectl run DepltName --image=nginx --dry-run=client -o yaml`     | see the yaml template                  |
+
+Replica set
+|  SL   | Command                                                                                | Explanation                 |
+| :---: | :------------------------------------------------------------------------------------- | :-------------------------- |
+|   1   | `kubectl describe rs rsName`                                                           | describe rs                 |
+|   2   | `kubectl ge rs rsName -o wide`                                                         | see details                 |
+|   3   | `kubectl describe rs rsName PIPSIGN grep -i image`                                     | which images is use in a rs |
+|   4   | `kubectl create deployment rsName --image=nginx --replicas=3 --dry-run=client -o yaml` | see the yaml template       |
 
 
 #### First nginx deployment
