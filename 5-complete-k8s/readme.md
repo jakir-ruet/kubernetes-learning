@@ -10,6 +10,8 @@ sudo ./aws/install
 aws --version
 ```
 
+[Prerequisite](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)
+
 [Kubectl Install](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
 
 ```bash
@@ -26,4 +28,20 @@ kubectl version --client
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
+```
+
+IAM Role for EKS
+- EksRole
+  - AmazonEC2FullAccess
+  - IAMFullAccess
+  - AdministratorAccess
+  - AWSCloudFormationFullAccess
+
+Let's move ec2 & role integrate with ec2 instance.
+
+[Create EksCluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+
+```bash
+eksctl create cluster --name my-cluster --region region-code --version 1.28 --vpc-private-subnets subnet-ExampleID1,subnet-ExampleID2 --without-nodegroup
+eksctl create cluster --name mycluster --region us-east-2 --node-type t2.small 
 ```
