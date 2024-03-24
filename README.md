@@ -474,9 +474,6 @@ DaemonSet
 |   6   | `kubectl apply -f web-app.yaml`                              | apply new label        |
 |   7   | `kubectl get pod --show-labels`                              | check node's label     |
 
-
-
-
 Replica set
 |  SL   | Command                                                                                | Explanation                 |
 | :---: | :------------------------------------------------------------------------------------- | :-------------------------- |
