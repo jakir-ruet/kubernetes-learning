@@ -483,8 +483,30 @@ Replica set
 |   4   | `kubectl create deployment rsName --image=nginx --replicas=3 --dry-run=client -o yaml` | see the yaml template       |
 |   5   | `kubectl get deployments.apps`                                                         | checking available app      |
 |   6   | `kubectl describe deployments.apps AppName`                                            | details of available app    |
-|   6   | `kubectl rollout undo deployment depltName`                                            | go back to pre version      |
+|   7   | `kubectl rollout undo deployment depltName`                                            | go back to pre version      |
 
+Static Pod(Without APIServer)
+|  SL   | Command                            | Explanation                |
+| :---: | :--------------------------------- | :------------------------- |
+|   1   | `kubectl get deployment.apps`      | check available deployment |
+|   2   | `kubectl get pod`                  | check available pod        |
+|   3   | `kubectl -n kube-system get pod`   | check system pod           |
+|   4   | `vi static.yaml`                   | --                         |
+|   5   | `kubectl apply -f static.yaml`     | apply                      |
+|   6   | `kubectl get pod`                  | check pod                  |
+|   7   | `kubectl delete pod static-master` | delete the pod             |
+
+```bash
+apiServer: v1
+kind: Pod
+metadata:
+  name: static-master
+  spec:
+  containers:
+  - image: busybox
+    name: static
+    command: ["sleep", "1000"]
+```
 
 #### First nginx deployment
 |  SL   | Command                                  | Explanation                         |
