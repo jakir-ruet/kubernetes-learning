@@ -450,7 +450,7 @@ If it return "kubectl not found. If you need it, try: 'minikube kubectl -- get p
 |  12   | `kubectl get deployment`                                           | show deployment list                   |
 |  13   | `kubectl create deployment nginxDepltName --image=nginx`           | nginx install on kubernetes            |
 |  14   | `kubectl create deployment my-nginx --image=nginx:latest`          | create nginx deployment                |
-|  15   | `kubectl expose deployment my-nginx --port=80 --type=LoadBalancer` | create nginx deployment expose port    |
+|  15   | `kubectl expose deployment my-nginx --port=80 --type=LoadBalancer` | run nginx deployment expose port       |
 |  16   | `kubectl get services`                                             | show enlisted services                 |
 |  17   | `minikube service my-nginx`                                        | run the nginx server                   |
 |  18   | `kubectl exec -it podName -- bin/bash`                             | debugging the pod                      |
@@ -463,6 +463,20 @@ If it return "kubectl not found. If you need it, try: 'minikube kubectl -- get p
 |  25   | `kubectl describe pod DepltName PIPESIGN grep -i image`            | which images is use in a pod           |
 |  26   | `kubectl run DepltName --image=nginx --dry-run=client -o yaml`     | see the yaml template                  |
 
+DaemonSet
+|  SL   | Command                                                      | Explanation            |
+| :---: | :----------------------------------------------------------- | :--------------------- |
+|   1   | `kubectl get node`                                           | check available node   |
+|   2   | `kubectl pod --show-labels`                                  | check node's label     |
+|   3   | `kubectl label pod podName env=labelName name=labelName`     | apply the label name   |
+|   4   | `kubectl run web-app --image=nginx --dry-run=client -o yaml` | see in details in yaml |
+|   5   | `vi web-app.yaml`                                            | see in details in yaml |
+|   6   | `kubectl apply -f web-app.yaml`                              | apply new label        |
+|   7   | `kubectl get pod --show-labels`                              | check node's label     |
+
+
+
+
 Replica set
 |  SL   | Command                                                                                | Explanation                 |
 | :---: | :------------------------------------------------------------------------------------- | :-------------------------- |
@@ -470,6 +484,9 @@ Replica set
 |   2   | `kubectl ge rs rsName -o wide`                                                         | see details                 |
 |   3   | `kubectl describe rs rsName PIPSIGN grep -i image`                                     | which images is use in a rs |
 |   4   | `kubectl create deployment rsName --image=nginx --replicas=3 --dry-run=client -o yaml` | see the yaml template       |
+|   5   | `kubectl get deployments.apps`                                                         | checking available app      |
+|   6   | `kubectl describe deployments.apps AppName`                                            | details of available app    |
+|   6   | `kubectl rollout undo deployment depltName`                                            | go back to pre version      |
 
 
 #### First nginx deployment

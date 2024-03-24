@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: antivirus
+spec:
+  selector:
+    matchLabels:
+      tier: antivirus
+  template:
+    metadata:
+      labels:
+        tier: antivirus
+      spec:
+        containers:
+          - name: antivirus-container
+            image: nginx
