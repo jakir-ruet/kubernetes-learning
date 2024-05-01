@@ -277,7 +277,7 @@ Kubernetes, often abbreviated as K8s, is an open-source container orchestration 
 
 It is made up of at least one master node and one or more worker nodes. The **_master node makes up the control plane_** of a cluster and is responsible for scheduling tasks and monitoring the state of the cluster.
 ![Cluster](/img/cluster.png)
-CNI > Container Network Interface
+CRI >Container Runtime Interface & CNI > Container Network Interface
 
 #### Components
 
