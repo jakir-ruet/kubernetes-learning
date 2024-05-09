@@ -74,6 +74,7 @@ deb https://apt.kubernetes.io/kubernetes-xenial main
 ```bash
 EOF
 ```
+
 ```bash
 sudo apt-get update
 sudo apt-get install kubelet kubeadm kubectl # or
@@ -139,7 +140,7 @@ sudo sysctl --system # reload
 On control plane
 ```bash
 kubectl get nodes
-
+```
 ###### [setup open GPG key & configuration](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
 ```bash
 sudo apt-get update
