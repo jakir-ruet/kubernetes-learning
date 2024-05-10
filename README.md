@@ -638,13 +638,14 @@ Namespaces is virtual cluster in a cluster, where organized the resources. Names
 |   2   | `kubectl cluster-info`                 | Check the cluster info    |
 |   3   | `kubectl create namespace myNamespace` | Create namespace          |
 
+##### [Pods](https://kubernetes.io/docs/concepts/workloads/pods/)
+Pods are the smallest deployable units of computing that you can create and manage in Kubernetes. [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+
+##### [Containers](https://kubernetes.io/docs/concepts/containers/)
+Each container that you run is repeatable; the standardization from having dependencies included means that you get the same behavior wherever you run it.
+
 ##### Volumes
 It is a directory containing data, which can be accessed by containers in a Kubernetes pod. The location of the directory, the storage media that supports it, and its contents, depend on the specific type of volume being used. There are a few types of volumes in Kubernetes.
-
--------------------------
-Sections
--------------------------
-pod container-------------
 
 - Volumes
   - Persistent Volumes (PV)
@@ -659,10 +660,14 @@ pod container-------------
   - NFS (Network File System)
   - CSI (Container Storage Interface)
 
+[ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/)
+A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
 
-ConfigMap and Secret------coming
-StatefullSet deployment-----coming
-Monitoring tools (Prometheus)-----coming
+[Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't need to include confidential data in your application code.
+
+
+[Monitoring Tools](https://github.com/jakir-ruet/prometheus-grafana-learning)
 
 1. AWS CLI
 
