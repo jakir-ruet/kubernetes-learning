@@ -4,15 +4,21 @@
 - You must know basic Linux command
 - Basic command & understanding of docker & kubernetes.
 
-###### upgrade the & put the host name of all node.
+###### Upgrade VM/Machine
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
+```
+
+Setup IP addresses in all VM/Machine
+```bash
 nano /etc/hosts # setup all host
 192.168.3.37 k8s-control-node
 192.168.3.38 k8s-workerone-node
 192.168.3.39 k8s-workertwo-node
 ```
+
+Configure containerd
 ```bash
 cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
 ```
@@ -30,6 +36,7 @@ sudo modprobe overlay
 sudo modprobe br_netfilter
 ```
 
+Configure 99-kubernetes-cri
 ```bash
 cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
 ```
@@ -46,6 +53,7 @@ net.bridge.bridge-nf-call-ip6tables=1
 EOF
 ```
 
+Install these dependencies
 ```bash
 sudo apt-get update
 sudo apt-get install curl
@@ -54,21 +62,21 @@ sudo apt-get install gnupg
 ``` 
 
 ###### Docker Installation
+How to [Install?](https://docs.docker.com/get-docker/). You may install as per your operating system.
+Run the following command to uninstall all conflicting packages:
+```bash
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+```
+Repository setup
+```bash
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+```
 
-- How to [Install?](https://docs.docker.com/get-docker/). You may install as per your operating system.
-- Run the following command to uninstall all conflicting packages:
-  ```bash
-  for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
-  ```
-- Repository setup
-  ```bash
-  # Add Docker's official GPG key:
-  sudo apt-get update
-  sudo apt-get install ca-certificates curl
-  sudo install -m 0755 -d /etc/apt/keyrings
-  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-  sudo chmod a+r /etc/apt/keyrings/docker.asc
-  ```
 ```bash
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -78,11 +86,13 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
+Checking configuration
 ```bash
 sudo mkdir -p /etc/containerd
 sudo containerd config default | sudo tee /etc/containerd/config.toml
 ```
 
+Disable swap memory & add apt-key
 ```bash
 sudo swapoff -a
 sudo systemctl restart containerd
@@ -90,7 +100,7 @@ sudo systemctl status containerd
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 ```
 
-###### [setup open GPG key & configuration](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
+###### [Setup open GPG key & Configuration](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
 ```bash
 sudo apt-get update
 # Update the apt package index and install packages needed to use the Kubernetes apt repository:
@@ -104,85 +114,62 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 # helps tools such as command-not-found to work correctly
 sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
 ```
-```bash
-sudo <<EOF tee | sudo tee /etc/apt/source.list.d/kubernetes.list
-```
-```bash
-deb https://apt.kubernetes.io/kubernetes-xenial main
-```
-```bash
-EOF
-```
 
+[Installing kubeadm, kubelet and kubectl](https://v1-29.docs.kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 ```bash
 sudo apt-get update
-sudo apt-get install kubelet kubeadm kubectl # or
-sudo apt-get install kubelet=1.30.0-00 kubeadm=1.30.0-00 kubectl=1.30.0-00
+sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl # only control plane
 sudo sysctl --system # reload
 ```
-
+Disable swap memory & kubeadm initialize
 ```bash
-sudo apt-mark hold kubectl kubeadm kubelet # only for control plane
+sudo swapoff -a
 sudo kubeadm init # or
-sudo kubeadm init --pod-network-cidr 192.168.1.36/24 --Kubernetes version: v1.30.0
-# here 192.168.1.36 is cluster IP
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --Kubernetes version: v1.30.0 # [see](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
+# here 192.168.0.0 is cluster IP
 sudo sysctl --system # reload
-kubectl get all
 ```
 
+Give admin permission
 ```bash
 # after initialize, we will see below script
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+# or, if you are the root user, you can run
+export KUBECONFIG=/etc/kubernetes/admin.conf
 kubectl get nodes
 ```
 
-Install network plugin
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed to this [link](https://kubernetes.io/docs/concepts/cluster-administration/addons/). 
+[Calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
+
+Install Calico
 ```bash
-kubectl apply -f cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
-```
-```bash
-net.bridge.bridge-nf-call-iptables=1
-```
-```bash
-net.ipv4.ip_forward=1
-```
-```bash
-net.bridge.bridge-nf-call-ip6tables=1
-```
-```bash
-EOF
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.3/manifests/tigera-operator.yaml
 ```
 
-See [Networking and Network Policy](https://kubernetes.io/docs/concepts/cluster-administration/addons/)
-
-[Install Calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
+Then you can join any number of ***worker nodes*** by running the following on each as root:
 ```bash
-kubectl apply —f https://raw.githubusercontent.com/projectcalico/calico/y3.25.1/manifests/calico.yaml 
+kubeadm join 172.16.246.135:6443 --token 8icerf.nk1x7f11ptx7uroi \
+	--discovery-token-ca-cert-hash sha256:8fcded6e57287119388da689e6e7d2959e4e2336cdac7f846aab53209915df27 
 ```
 
-Run the token on working node
+You may create token for connecting worker node
 ```bash
 kubectl get nodes
 kubectl get all
 kubeadm token create --print-join-command
 sudo sysctl --system # reload
 ```
-Run this token on all worker nodes
-```bash
-kubeadm join 192.168.3.37:6443 --token n87ioa.vl1kn5wpdjworycb \
-        --discovery-token-ca-cert-hash sha256:11930fc6ee2310b16788321ae62301a9bebb52b6438eef5011b54b0dd6922482
-sudo sysctl --system # reload
-```
 
-On control plane
-```bash
-kubectl get nodes
-```
-
-
-###### [port & service allow on firewall](https://www.ibm.com/docs/en/cdfsp/7.6.1.x?topic=kubernetes-installing-kubeadm-kubelet-kubectl)
+###### [Port & Service allow on Firewall](https://www.ibm.com/docs/en/cdfsp/7.6.1.x?topic=kubernetes-installing-kubeadm-kubelet-kubectl)
 
 |  SL   | Protocol | Direction | Port-Range  | Purpose                 | Used By               |
 | :---: | :------- | :-------- | :---------- | :---------------------- | :-------------------- |
