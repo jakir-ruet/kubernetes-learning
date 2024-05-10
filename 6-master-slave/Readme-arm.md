@@ -147,8 +147,7 @@ kubectl get nodes
 ```
 
 You should now deploy a pod network to the cluster.
-Run "kubectl apply -f [podnetwork].yaml" with one of the options listed to this [link](https://kubernetes.io/docs/concepts/cluster-administration/addons/). 
-[Calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed to this [link](https://kubernetes.io/docs/concepts/cluster-administration/addons/).
 
 Install Calico
 ```bash
