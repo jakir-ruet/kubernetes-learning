@@ -5,13 +5,13 @@
    synchronize the configuration all specification by using data from etcd (due to etcd is brain of kubernetes).
 
 
-#### Declaration ---------------------------------------------------------------------------------------------------------------------
+#### Declaration
 ```bash
 apiVersion: apps/v1
 kind: Deployment
 ```
 
-#### Metadata ------------------------------------------------------------------------------------------------------------------------
+#### Metadata
 ```bash
 metadata:
   name: nginx-deployment
@@ -19,7 +19,7 @@ metadata:
     app: nginx
 ```
 
-#### Specification ------------------------------------------------------------------------------------------------------------------
+#### Specification
 ```bash
 spec:
   replicas: 2
@@ -38,7 +38,7 @@ spec:
         - containerPort: 8080
 ```
 
-#### Status (In result-nginx-deployment-FILE) --------------------------------------------------------------------------------------
+#### Status (In result-nginx-deployment-FILE)
 ```bash
 status:
   availableReplicas: 2
