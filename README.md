@@ -521,7 +521,7 @@ metadata:
 
 ##### See (3-complete-deployment) for complete deployment. Recommended to read docs of [kubernetes](https://kubernetes.io/docs/home/).
 
-#### Ingress in [Docker](https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.)
+#### [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/#:~:text=The%20Ingress%20concept%20lets%20you,define%20via%20the%20Kubernetes%20API.&text=An%20API%20object%20that%20manages,and%20name%2Dbased%20virtual%20hosting.) in Docker
 
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource. Here is a simple example where an Ingress sends all its traffic to one Service:
 ![Ingress](/img/ingress.png)
@@ -553,7 +553,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 |   2   | `kubectl apply -f dashboard-ingress.yaml`      | ingress create                 |
 |   3   | `minikube get ingress -n kubernetes-dashboard` | see details of ingress         |
 
-#### Egress in [Docker](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+#### [Egress](https://kubernetes.io/docs/concepts/services-networking/network-policies/) in Docker
 Egress refers to the traffic that exits the Kubernetes cluster to external systems or networks.
 ```bash
 apiVersion: networking.k8s.io/v1
