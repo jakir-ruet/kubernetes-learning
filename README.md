@@ -553,6 +553,36 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 |   2   | `kubectl apply -f dashboard-ingress.yaml`      | ingress create                 |
 |   3   | `minikube get ingress -n kubernetes-dashboard` | see details of ingress         |
 
+#### Egress in [Docker](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+Egress refers to the traffic that exits the Kubernetes cluster to external systems or networks.
+```bash
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-external
+spec:
+  podSelector:
+    matchLabels:
+      role: frontend
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+    ports:
+    - protocol: TCP
+      port: 80
+```
+Ingress vs	Egress
+|  SL   | Aspect        | Ingress                                                          | Egress                                                                                            |
+| :---: | :------------ | :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+|   1   | Definition    | Manages external access to services within the cluster           | Manages traffic exiting the cluster to external systems                                           |
+|   2   | Focus         | Primary Use	Routing incoming HTTP/HTTPS traffic to services      | Controlling and securing outbound traffic from the cluster                                        |
+|   3   | Components    | Ingress Resource & Ingress Controller                            | Network Policies, Egress Gateways (in service mesh environments)                                  |
+|   4   | Functionality | Load balancing, SSL/TLS termination & Name-based virtual hosting | Regulating access to external services, Enforcing security policies & Monitoring outbound traffic |
+|   5   | Example       | NGINX Ingress Controller, HAProxy Ingress & Traefik              | Istio Egress Gateway                                                                              |
+
 #### [Helm](https://helm.sh/docs/) | [Helm Cheat Sheet](https://helm.sh/docs/intro/cheatsheet/)
 It is a package manager for Kubernetes applications. It simplifies the process of deploying and managing applications on Kubernetes clusters. Helm consists of two main components: the ***Helm client*** and the ***Helm server***. The client is used to interact with the server and manage charts, while the server contains all the necessary information about available charts.
 ![Helm](/img/helm.png)
