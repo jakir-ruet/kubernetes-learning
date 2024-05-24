@@ -8,6 +8,7 @@ sudo apt-get upgrade
 sudo swapoff -a # Disable swap memory
 ```
 - Step-2: [(Install Docker Engine/Container Runtime)](https://docs.docker.com/engine/install/)
+
 Remove the old version
 ```bash
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
