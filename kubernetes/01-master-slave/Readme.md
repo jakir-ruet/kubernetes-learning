@@ -119,3 +119,12 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 ```bash
 kubectl get nodes
 ```
+Step: 12 (For worker node)
+```bash
+kubectl get nodes
+kubectl get all
+kubeadm token create --print-join-command
+sudo sysctl --system # reload
+kubectl get nodes
+kubectl get all
+```
