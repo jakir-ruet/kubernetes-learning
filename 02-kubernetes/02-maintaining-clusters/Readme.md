@@ -1,5 +1,5 @@
-#### Welcome to High Availability (HA)
-- What is HA?
+#### Welcome to maintaining-clusters
+- What is High Availability?
 - HA Control Plane
 - Etch Management
   - Stacked Etcd
@@ -23,3 +23,9 @@
   - Kustomize
     - Configuration management tool for K8s objects configuration
     - Similar to Helm and have ability to create re-useable templates for K8s.
+
+Remove Node From Cluster
+- Node Draining
+- How to Drain a Node
+- Ignore DaemonSets
+- Uncordoning a Node
