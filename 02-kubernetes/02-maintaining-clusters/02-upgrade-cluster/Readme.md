@@ -23,7 +23,7 @@ kubectl uncordon master-node
 
 Worker node (worker-node)
 ```bash
-kubectl drain master-node --ignore-daemonsets
+kubectl drain worker-node --ignore-daemonsets
 sudo apt-get update
 sudo apt-get install -y --allow-change-held-packages kubeadm=1.30.0-00
 kubeadm version
@@ -37,5 +37,5 @@ sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 kubectl get nodes
 # uncordon
-kubectl uncordon master-node
+kubectl uncordon worker-node
 ```
