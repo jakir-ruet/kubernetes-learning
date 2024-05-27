@@ -24,8 +24,22 @@
     - Configuration management tool for K8s objects configuration
     - Similar to Helm and have ability to create re-useable templates for K8s.
 
-Remove Node From Cluster
+#### Lets get started Drain/Remove Node From Cluster
 - Node Draining
 - How to Drain a Node
 - Ignore DaemonSets
 - Uncordoning a Node
+
+#### Lets get started Upgrade the cluster
+- Master node upgrade
+  - Drain node
+  - Upgrade plan
+  - Apply upgrade
+  - Upgrade kubectl & kubelet
+  - Uncordon node & Join
+- Worker node upgrade
+  - Drain node
+  - Upgrade kubeadm
+  - Upgrade kubelet config
+  - Upgrade kubectl & kubelet
+  - Uncordon node
