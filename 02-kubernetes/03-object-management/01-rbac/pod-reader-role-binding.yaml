@@ -5,7 +5,7 @@ metadata:
   namespace: development 
 subjects:
 - kind: User 
-  name: DevUser 
+  name: Jasim 
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role 
