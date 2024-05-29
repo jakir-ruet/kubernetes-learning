@@ -1,5 +1,6 @@
-[service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/)
-A service account is a type of non-human account that, in Kubernetes, provides a distinct identity in a Kubernetes cluster.
+[Service Accounts:](https://kubernetes.io/docs/concepts/security/service-accounts/)
+ It is a type of non-human account that, in Kubernetes, provides a distinct identity in a Kubernetes cluster.
+
 Why Use
 - To authenticate with K8s the container process.
 - User need to setup service account to control the access. If Pods needs to communicate with K8s APls.
