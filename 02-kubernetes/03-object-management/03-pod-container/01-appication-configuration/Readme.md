@@ -2,6 +2,9 @@ Step of application configuration
 - Create ConfigMap Object
 - Describe ConfigMap
 - Create Secrets Object
+- Create volume object
+- Create ConfigMap Env
+- Create POSIX Env
 - Pass ConfigMap to Container as Env Variable
 
 ```bash
