@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: liveness-exec-probe
-    image: busybox:latest
+    image: nginx:latest
     args:
       - /bin/sh
       - -c
