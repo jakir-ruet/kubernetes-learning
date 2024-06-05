@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: restart-onfailure-pod
+  labels:
+    name: restart-onfailure-pod
+spec:
+  restartPolicy: OnFailure
+  containers:
+   - name: always-onfailure-app
+     image: alpine
+     command: ["sleep", "20"]
