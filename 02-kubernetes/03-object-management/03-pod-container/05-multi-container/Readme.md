@@ -1,0 +1,1 @@
+A multi-container pod in Kubernetes is a pod that runs more than one container. This setup can be useful when the containers need to share resources or communicate closely with each other. These containers within a pod share the same network namespace and can communicate with each other using localhost.
