@@ -11,7 +11,7 @@ Ways of resources allocation or scheduling
 - Taints & Tolerations
 - Resource Quotas
   
-  Scheduling Process
-  - Filtering
-  - Scoring
-  - Binding
+Scheduling Process
+- Filtering
+- Scoring
+- Binding
