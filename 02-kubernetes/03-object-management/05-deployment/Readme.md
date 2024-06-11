@@ -74,3 +74,14 @@ Use case
 - Rolling Upgrade Pod
 - Rolling Downgrade Pod
 - Pause/Resume Pod
+
+```bash
+kubectl apply -f deployment.yaml
+kubectl get deployment nginx-deployment
+kubectl rollout status deployment deployment
+kubectl describe deployment
+kubectl rollout history deployment/nginx-deployment
+kubectl rollout status deployment
+kubectl describe deployment
+kubectl delete -f deployment.yaml
+```
