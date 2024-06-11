@@ -62,3 +62,15 @@ spec:
 | Suitable for simple, non-critical tasks | Suitable for production workloads requiring high availability |
 | not self-healing, and not scalability   | self-healing, and scalability                                 |
 | No Scaling                              | Scaling                                                       |
+
+[Deployment:](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) Its one level higher/desire abstraction of ReplicaSet.
+deployment can control 2 components such as 
+1. Pod & 
+2. ReplicaSet
+
+Use case
+- Create Pod
+- Update Pod
+- Rolling Upgrade Pod
+- Rolling Downgrade Pod
+- Pause/Resume Pod
