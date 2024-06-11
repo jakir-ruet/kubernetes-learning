@@ -24,4 +24,41 @@ kubectl scale --replicas=6 replicationcontroller/my-replica-controller
 kubectl scale --replicas=3 replicationcontroller/my-replica-controller
 # delete all pod using this command
 kubectl delete -f replication-controller.yaml
-``
+```
+
+ReplicaSet
+- ReplicaSet?
+- ReplicaSet vs ReplicationController
+- ReplicaSet vs Bare Pods
+
+ReplicaSet vs ReplicationController
+- ReplicaSet is enhanced version of ReplicationController
+- ReplicaSet support for [set-based & equality-based](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) selectors but ReplicationController not support
+- ReplicaSet generally used with deployments
+- ReplicaSet
+```bash
+spec:
+   replicas: 3
+   selector:
+   matchExpression:
+      - {key: app, operator: In, values: [example, example, rs]}
+      - {key: tier, operator: NotIn, values: [production]}
+   template:
+      metadata:
+```
+- ReplicationController
+```bash
+spec:
+   replicas: 3
+   selector:
+      app: alpine-app
+   template:
+      metadata:
+```
+
+| Bare Pod                                | ReplicaSet                                                    |
+| :-------------------------------------- | :------------------------------------------------------------ |
+| Its not have labels                     | Its have labels                                               |
+| Suitable for simple, non-critical tasks | Suitable for production workloads requiring high availability |
+| not self-healing, and not scalability   | self-healing, and scalability                                 |
+| No Scaling                              | Scaling                                                       |
