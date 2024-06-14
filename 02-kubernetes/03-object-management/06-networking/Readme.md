@@ -119,3 +119,13 @@ Network policies allows to build a secure network by keeping pod isolated from t
   ...
   ``` 
 
+Implementing a network policy
+```bash
+kubectl get namespace
+kubectl create namespace network-policy
+kubectl get namespace --show-labels # kubernetes.io/metadata.name=network-policy
+kubectl label namespace network-policy role=test-network-policy # attach another label
+kubectl get namespace --show-labels
+kubectl apply -f network-policy-pods.yaml
+kubectl get pods -o wide -n network-policy
+```
