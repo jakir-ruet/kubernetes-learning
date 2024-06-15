@@ -18,9 +18,33 @@ kubectl get endpoints serviceName
 - [ClusterIP](https://kubernetes.io/docs/concepts/services-networking/service/#type-clusterip)
   - ClusterIP Service expose Application within Cluster Network.
   - Use ClusterIP, when client is Other Pods within the Cluster.
+    how the client can access to pod via service,
+    requirements
+    1. deployment (pod)
+    2. clusterip-service
+    3. tmp-pod (due to service only accessible in k8s network)
+    ```bash
+    kubectl apply -f svc-pod.yaml
+    kubectl describe deployment nginx-server
+    kubectl get pods -o wide # available 3 pods
+    kubectl get pod -o wide --show-labels
+    kubectl apply -f clusterip-svc.yaml
+    kubectl describe service nginx-service
+    curl nginx-service:8080 # getting an error, due its only within k8s network, need temp pod
+    kubectl apply -f svc-test-pod.yaml
+    kubectl exec svc-test-pod -- curl nginx-service:8080 # see nginx default page
+    ```
 - [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport)
   - NodePort Service expose Application Outside Cluster Network.
   - Use NodePort, when client is accessing the Service from Outside the Cluster.
+  ```bash
+  kubectl apply -f nodeport-service.yaml
+  kubectl describe nginx-service-nodeport
+  curl localhost:35005
+  # after allow this port 35005 in AWS/GCP in inbound policy
+  http://IPofInstance:35005
+  ```
+
 - [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)
   - Load Balancer Service also expose Application to Outer World but Cloud LB is required.
 - [ExternalName](https://kubernetes.io/docs/concepts/services-networking/service/#externalname)
