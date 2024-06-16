@@ -67,6 +67,11 @@ Accessing to service from same & cross namespace.
 ```bash
 kubectl get services -o wide
 kubectl get pods -o wide --show-labels
+kubectl apply -f svc-test-pod.yaml
+kubectl create namespace service-namespace
+kubectl get namespaces --show-labels
+kubectl get pods -o wide --show-labels -n service-namespace
+kubectl apply -f svc-dns-pod.yaml
 kubectl exec podName -- curl serviceName:8080
 kubectl exec svc-test-pod -- curl nginx-service:8080
 ```
@@ -83,3 +88,10 @@ kubectl exec svc-test-pod -- curl nginx-service:8080
 - Ingress define a set of Routing Rules.
 - Each Rule has a set of Paths, each with a Backend. Request matching a path will be routed to associated Backend.
 - If Service Use ***NamedPort***, ingress can also use the port’s name to choose to which port it will route.
+
+```bash
+kubectl apply -f nginx-deployment.yaml
+kubectl describe deployment nginx-ingress-deployment
+kubectl apply -f nginx-service.yaml
+
+```
