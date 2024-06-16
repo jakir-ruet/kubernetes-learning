@@ -23,27 +23,31 @@ kubectl get endpoints serviceName
     1. deployment (pod)
     2. clusterip-service
     3. tmp-pod (due to service only accessible in k8s network)
-    ```bash
-    kubectl apply -f svc-pod.yaml
-    kubectl describe deployment nginx-server
-    kubectl get pods -o wide # available 3 pods
-    kubectl get pod -o wide --show-labels
-    kubectl apply -f clusterip-svc.yaml
-    kubectl describe service nginx-service
-    curl nginx-service:8080 # getting an error, due its only within k8s network, need temp pod
-    kubectl apply -f svc-test-pod.yaml
-    kubectl exec svc-test-pod -- curl nginx-service:8080 # see nginx default page
-    ```
+```bash
+kubectl apply -f deployment.yaml
+kubectl describe deployment nginx-server-deployment
+kubectl exec -it PodNameHere -c ContainerNameHere -- curl --version
+kubectl exec -it PodNameHere -c curl-installer-- curl --version
+kubectl get pods -o wide # available 3 pods
+kubectl get pod -o wide --show-labels
+kubectl apply -f svc-clusterip.yaml
+kubectl describe service nginx-service
+curl nginx-service:8080 # getting an error, due its work only within k8s network, so we need temp pod
+kubectl apply -f svc-test-pod.yaml
+kubectl exec -it svc-test-pod -- curl --version
+kubectl exec svc-test-pod -- curl nginx-service:8080 # see nginx default page
+```
+    
 - [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport)
   - NodePort Service expose Application Outside Cluster Network.
   - Use NodePort, when client is accessing the Service from Outside the Cluster.
-  ```bash
-  kubectl apply -f nodeport-service.yaml
-  kubectl describe nginx-service-nodeport
-  curl localhost:35005
-  # after allow this port 35005 in AWS/GCP in inbound policy
-  http://IPofInstance:35005
-  ```
+```bash
+kubectl apply -f svc-nodeport.yaml
+kubectl describe nginx-service-nodeport
+curl localhost:35005
+# after allow this port 35005 in AWS/GCP in inbound policy
+http://IPofInstance:35005
+```
 
 - [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer)
   - Load Balancer Service also expose Application to Outer World but Cloud LB is required.
@@ -51,13 +55,21 @@ kubectl get endpoints serviceName
 
 ***Service DNS***
 - Kubernetes DNS assign DNSNames to Services, allow applications within Cluster to easily locate the Service.
-- Service Fully Qualified Name has the following format- Service-name.namespace-name.svc.cluster-domain.example
-- Defauly Cluster Domain is cluster.local
+- Service Fully Qualified Name has the following format- `Service-name.namespace-name.svc.cluster-domain.example`
+- Default Cluster Domain is `cluster.local`
 
 ***Service DNS & Namespaces***
 - Service fully qualified Domain Name can be used to reach service from within any Namespace in Cluster. `service-name.namespace-name.svc.cluster.local`
 - Pods within the same NameSpace can use the Service Name Only.
 `service-name`
+
+Accessing to service from same & cross namespace.
+```bash
+kubectl get services -o wide
+kubectl get pods -o wide --show-labels
+kubectl exec podName -- curl serviceName:8080
+kubectl exec svc-test-pod -- curl nginx-service:8080
+```
 
 [Ingress]()
 - Manage the External Access to Service.

@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: nginx-service-nodeport
 spec:
-  type: NodePort
+  type: NodePort 
   selector:
     app: frontend
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-    nodeport: 35005
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 35005
