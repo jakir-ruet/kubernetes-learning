@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-ingress-deployment
+  name: own-nginx-ingress-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-ingress
+      app: own-nginx-ingress
   template:
     metadata:
       labels:
-        app: nginx-ingress
+        app: own-nginx-ingress
     spec:
       containers:
-      - name: nginx-ingress
-        image: nginx
+      - name: own-nginx-ingress
+        image: jakirbd/own-nginx-ingress:latest
         command: ["/bin/bash", "-c"]
         args:
           - |

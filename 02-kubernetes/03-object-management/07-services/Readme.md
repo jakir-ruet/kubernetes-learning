@@ -93,5 +93,21 @@ kubectl exec svc-test-pod -- curl nginx-service:8080
 kubectl apply -f nginx-deployment.yaml
 kubectl describe deployment nginx-ingress-deployment
 kubectl apply -f nginx-service.yaml
-
+kubectl describe service nginx-service
+kubectl apply -f own-nginx-deployment.yaml
+kubectl describe deployment own-nginx-ingress-deployment
+kubectl apply -f own-nginx-service.yaml
+kubectl describe service own-nginx-service
+minikube start --driver=docker # for run the minikube
+minikube addons enable ingress
+minikube service nginx-ingress-service --curl
+curl http://192.168.12.102:35006 # see nginx default page
+minikube service own-nginx-ingress-service --curl
+curl http://192.168.12.103:35006 # see nginx home page
+kubectl apply -f ingress-controller.yaml
+kubectl describe ingress nginx-rules
+minikube ip
+192.168.49.2
+curl 192.168.49.2 -H 'Host: nginx-ingress.example.com' # see default nginx page 
+curl 192.168.49.2 -H 'Host: own-nginx-ingress.example.com' # see default nginx home page 
 ```
