@@ -27,17 +27,74 @@ Container File System
 - Volume : In Pod Spec, user can define the storage volume available in for the Pod.
 - Volume Specify the VolumeType and where the data is actually store.
 - VolumeMount : VolumeMount in container spec, refer the Volume in Pod Spec and provide a MountPath.
+```bash
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: volume-mount-pod
+spec:
+  volumes:
+    - name: my-sample-vol
+      hostPath:
+        path: /data
+    containers:
+      - name: volume-mount-pod
+        image: nginx:latest
+        command: ["/bin/sh", "-c", "echo Kubernetes DevOps"]
+        volumeMounts:
+          - name: volume-mount-pod
+            mountPath: /output
+```
 
 ***emptyDir Volume***
 - emptyDir : emptyDir created when Pod is assigned to Node and Persist as long as Pod running on the Node.
 - Multiple containers can refer the same emptyDir Volume.
 - Multiple containers in the Pod can read and write the same files in the emptyDir volume, though that volume can be mounted at the same or different paths in each container.
-
+```bash
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: volume-mount-pod
+spec:
+  volumes:
+    - name: my-cache-vol
+      emptyDir: {}
+    containers:
+      - name: volume-mount-pod
+        image: nginx:latest
+        command: ["/bin/sh", "-c", "echo Kubernetes DevOps"]
+        volumeMounts:
+          - name: my-cache-vol
+            mountPath: /cache
+```
 ***Share Volume***
 - User can use the same volumeMounts to share the same Volume to multiple container within the Same Pod.
 - This is very powerful feature which can be used to data transformation of Data Processing.
 - hostPath & emtpyDir volumeType support share volumes.
-
+```bash
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: volume-mount-pod
+spec:
+  volumes:
+    - name: my-cache-vol
+      emptyDir: {}
+    containers:
+      - name: volume-mount-pod
+        image: nginx:latest
+        command: ["/bin/sh", "-c", "echo Kubernetes DevOps"]
+        volumeMounts:
+          - name: my-cache-vol
+            mountPath: /cache
+    containers:
+      - name: volume-mount-pod-1
+        image: nginx:latest
+        command: ["/bin/sh", "-c", "echo Kubernetes DevOps"]
+        volumeMounts:
+          - name: my-cache-vol
+            mountPath: /cache/tmp
+```
 ***Persistent Volumes***
 - PersistentVolumes are k8s Object that allow user to treat Storage as an Abstract Resource.
 - PV is resource in the cluster just like a node is a cluster resource.
