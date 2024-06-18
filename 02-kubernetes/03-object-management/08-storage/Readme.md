@@ -131,6 +131,18 @@ kill 1 # kill the redis process, it means kil the container & run again
 ls redis # see testfile.txt is exist
 ```
 
+Shared/Common Volume
+```bash
+kubectl apply -f shared-volume.yaml
+kubectl get pod
+kubectl describe pod/shared-multi-container # check mount point
+kubectl get pod -o wide
+kubectl exec -it shared-multi-container -- /bin/bash
+cd /usr/share/nginx/html
+cat index.html
+echo "welcome to nginx server"
+```
+
 ***Persistent Volumes***
 - PersistentVolumes are k8s Object that allow user to treat Storage as an Abstract Resource.
 - PV is resource in the cluster just like a node is a cluster resource.
