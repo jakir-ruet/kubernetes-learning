@@ -147,24 +147,131 @@ echo "welcome to nginx server"
 - PersistentVolumes are k8s Object that allow user to treat Storage as an Abstract Resource.
 - PV is resource in the cluster just like a node is a cluster resource.
 - PV uses a set of Attribute to describe the underlying storage resources (Disk or Cloud Storage), which will be used to store data.
+Sample manifest
+```bash
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  - name: static-persistent-volume
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /var/tmp
+  storageClassName: local-storage  
+```
 
 ***Storage Classes***
 - StorageClass allows K8s Administrator to Specify all type of Storage Service they offer on their Platform.
 - Admin cloud create a StorageClass called Slow to describe inexpensive storage for general Development use.
 - Admin cloud create a StorageClass called Fast for High I/O Operation Applications.
+Sample manifest
+```bash
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+```
+```bash
+kubectl apply -f localhost-storage-class.yaml
+kubectl describe storageclass.storage.k8s.io/local-storage
+```
+Slow Storage Class
+```bash
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: slow
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: io1
+  iopsPerGB: "10"
+  fsType: ext4
+```
+Fast Storage Class
+```bash
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fast
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+  fsType: ext4
+allowedTopologies:
+  - matchLabelExpressions:
+      - key: topology.kubernetes.io/zone
+        values:
+          - us-east-1a
+```
 
 ***allowVolume Expansion***
 - allowVolumeExpansion - This field can accept boolean value only.
 - This is the property of StorageClass and define whether StorageClass supports the ability to resize after they are created.
 - All Cloud Disk Supports this property.
+Sample manifest
+```bash
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true  
+```
 
 ***Reclaim Policy***
 - persistentVolumeReclaimPolicy - This define, how the storage will be reused, when the PVs associated PVCs are deleted.
 - Retain - Keep all the data. This require manual data cleanup and prepare for reuse.
 - Delete - Delete underlying storage resources automatically (Support for Cloud Resource Only).
 - Recycle - Automatically delete all data in underlying storage. Allow PVs to be reuse.
+Sample manifest
+```bash
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: static-persistent-volume
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /var/tmp
+  storageClassName: local-storage
+  persistentVolumeReclaimPolicy: Recycle
+```
 
 ***PersistentVolumeClaim***
 - PersistentVolumeClaim (PVC) is a request for storage by a user.
 - PVCs define a set of attribute Similar to those of PVs.
 - PVCs look for a PVs that is able to meet the criteria. If it found one, will automatically be bound to that PV.
+Sample manifest
+```bash
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: static-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-storage
+```
+```bash
+kubectl apply -f persistent-volume.yaml
+kubectl describe persistentvolume/persistent-volume
+kubectl get pv -o wide
+```
+```bash
+kubectl apply -f persistent-volume-claim.yaml
+kubectl describe persistentvolumeclaim/static-pvc
+kubectl get pv -o wide
+kubectl get pvc -o wide # status pending due to first consumer
+```
