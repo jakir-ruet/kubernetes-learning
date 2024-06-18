@@ -95,6 +95,42 @@ spec:
           - name: my-cache-vol
             mountPath: /cache/tmp
 ```
+Host Path Volume
+```bash
+ls /var/tmp
+kubectl apply -f hostpath-volume-pod.yaml
+kubectl get pod
+ls /var/tmp # see output.txt
+```
+NB: Delete/Remove of the pod, the file output.txt remain unchanged.
+
+emptyDir
+```bash
+kubectl apply -f empty-dir-vol.yaml
+kubectl get pod
+kubectl get pod -o wide # see mount point
+kubectl describe pod/redis-emptydir
+kubectl exec -it redis-emptydir -- /bin/bash
+ls # see redis directory
+ls redis # see redis directory
+cd /data/redis
+echo "Hello, Kubernetes How are you" >> index.txt
+cat index.txt
+exit
+kubectl delete pod redis-emptydir
+kubectl apply -f empty-dir-vol.yaml
+kubectl exec -it redis-emptydir -- /bin/bash
+cd /data/redis # not index.txt available
+touch testfile.txt
+ps -aux # if it not work
+apt-get update
+apt-get install procps
+ps -aux # delete the pod then only delete the emptyDir. And Delete/Destroy/Remove the container the emptyDir will remain unchanged.
+kubectl get pod redis-emptydir --watch # run it another tab of terminal
+kill 1 # kill the redis process, it means kil the container & run again
+ls redis # see testfile.txt is exist
+```
+
 ***Persistent Volumes***
 - PersistentVolumes are k8s Object that allow user to treat Storage as an Abstract Resource.
 - PV is resource in the cluster just like a node is a cluster resource.
