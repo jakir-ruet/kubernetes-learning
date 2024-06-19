@@ -275,3 +275,15 @@ kubectl describe persistentvolumeclaim/static-pvc
 kubectl get pv -o wide
 kubectl get pvc -o wide # status pending due to first consumer
 ```
+Create a pod
+```bash
+kubectl apply -f persistent-volume-pod.yaml
+kubectl describe pod/pvc-pod
+kubectl get pv -o wide # see persistent volume created, status bound & claim is default/static-pvc
+kubectl get pvc -o wide # see status bound (earlier was pending) & cname is static-pvc
+kubectl edit pvc static-pvc # here static-pvc is pvc name. change the storage
+kubectl delete -f persistent-volume-pod.yaml
+kubectl get pvc -o wide # here static-pvc is pvc name > still unchanged
+kubectl delete -f persistent-volume-claim.yaml
+kubectl get pv -o wide # status change bound to available
+```
