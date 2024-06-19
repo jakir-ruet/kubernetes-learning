@@ -1,7 +1,6 @@
 /.vscode
 /.idea
 /.DS_Store
-/node_modules
-/4-projects/.DS_Store
-/4-projects/vol-manage-app/.DS_Store
-/4-projects/vol-manage-app/node_modules
+/01-docker/.DS_Store
+/02-kubernetes/.DS_Store
+/img/.DS_Store

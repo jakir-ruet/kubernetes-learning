@@ -275,7 +275,7 @@ kubectl describe persistentvolumeclaim/static-pvc
 kubectl get pv -o wide
 kubectl get pvc -o wide # status pending due to first consumer
 ```
-Create a pod
+Checking activities of PVC in details
 ```bash
 kubectl apply -f persistent-volume-pod.yaml
 kubectl describe pod/pvc-pod
