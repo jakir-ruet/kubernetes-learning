@@ -1,9 +1,16 @@
 #### Welcome to maintaining-clusters
-- What is High Availability?
+- High Availability?
+  A highly available cluster in Kubernetes is a configuration where multiple nodes work together to ensure that applications and services remain continuously operational even if parts of the system fail. This involves distributing components across multiple nodes and zones, using redundancy and failover mechanisms to prevent single points of failure, and ensuring that there are always enough resources to handle the workload.
 - HA Control Plane
+  - Multiple API Servers
+  - etcd Cluster (odd number quorum member)
+  - Controller Manager &
+  - Scheduler
 - Etch Management
   - Stacked Etcd
+    ![Stacked Etcd](/img/high-availability/stacked-etch.png)
   - External Etcd
+    ![External Etcd](/img/high-availability/external-etcd.png)
 - K8s Management Tools
   - Kubectl
     - Kubectl is oﬃcial CLI for K8s.
