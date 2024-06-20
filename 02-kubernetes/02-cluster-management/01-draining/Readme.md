@@ -16,8 +16,8 @@ kubectl uncordon worker1
 kubectl get node
 kubectl get pods -o wide
 ```
-| Command    | Purpose                           | Effect                                                         | Command Example                                                     | Typical Use Cases                                        |
-| ---------- | --------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------- |
-| `cordon`   | Mark a node as unschedulable      | Prevents new pods from being scheduled on the node             | `kubectl cordon <node-name>`                                        | Preparing for maintenance, testing without new workloads |
-| `uncordon` | Mark a node as schedulable        | Allows new pods to be scheduled on the node                    | `kubectl uncordon <node-name>`                                      | Re-enabling a node after maintenance, scaling up         |
-| `drain`    | Safely evict all pods from a node | Evicts all non-DaemonSet pods, respecting PodDisruptionBudgets | `kubectl drain <node-name> --ignore-daemonsets --delete-local-data` | Node decommissioning, maintenance, troubleshooting       |
+| Command                                                             | Purpose                           | Effect                                                         | Typical Use Cases                                        |
+| ------------------------------------------------------------------- | --------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------- |
+| `kubectl cordon <node-name>`                                        | Mark a node as unschedulable      | Prevents new pods from being scheduled on the node             | Preparing for maintenance, testing without new workloads |
+| `kubectl uncordon <node-name>`                                      | Mark a node as schedulable        | Allows new pods to be scheduled on the node                    | Re-enabling a node after maintenance, scaling up         |
+| `kubectl drain <node-name> --ignore-daemonsets --delete-local-data` | Safely evict all pods from a node | Evicts all non-DaemonSet pods, respecting PodDisruptionBudgets | Node decommissioning, maintenance, troubleshooting       |
