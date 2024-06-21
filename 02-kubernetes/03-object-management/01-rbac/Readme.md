@@ -84,7 +84,7 @@ roleRef:
 | Subject               | User, Group, or ServiceAccount                   | User, Group, or ServiceAccount                       |
 | Purpose               | Grants permissions within a namespace            | Grants permissions across namespaces or cluster-wide |
 
-***Granular access control*** in Kubernetes refers to the practice of finely defining permissions and restrictions at various levels within the Kubernetes cluster. This approach ensures that users, applications, or services only have access to the resources they require to perform their intended tasks, thereby enhancing security and adhering to the principle of least privilege. Here are some key aspects and strategies for achieving granular access control in Kubernetes:
+***Granular access control*** in Kubernetes refers to the practice of finely defining permissions and restrictions at various levels within the Kubernetes cluster. This approach ensures that users, applications, or services only have access to the resources they require to perform their intended tasks, thereby enhancing security and adhering to the principle of ***least privilege***. Here are some key aspects and strategies for achieving granular access control in Kubernetes:
 - Namespace Isolation
 - Role-Based Access Control (RBAC)
 - Cluster-Wide Permissions
