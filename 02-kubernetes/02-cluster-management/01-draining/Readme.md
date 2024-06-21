@@ -21,3 +21,5 @@ kubectl get pods -o wide
 | `kubectl cordon <node-name>`                                        | Mark a node as unschedulable      | Prevents new pods from being scheduled on the node             | Preparing for maintenance, testing without new workloads |
 | `kubectl uncordon <node-name>`                                      | Mark a node as schedulable        | Allows new pods to be scheduled on the node                    | Re-enabling a node after maintenance, scaling up         |
 | `kubectl drain <node-name> --ignore-daemonsets --delete-local-data` | Safely evict all pods from a node | Evicts all non-DaemonSet pods, respecting PodDisruptionBudgets | Node decommissioning, maintenance, troubleshooting       |
+
+A DaemonSet in Kubernetes is a type of controller that ensures a copy of a pod is running on each node (or a subset of nodes) in a cluster. DaemonSets are typically used to deploy system-level services and other background tasks that need to run on all (or specific) nodes.
