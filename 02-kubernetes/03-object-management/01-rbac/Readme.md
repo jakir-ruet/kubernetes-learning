@@ -1,4 +1,99 @@
 #### Lets get started
+Kubernetes RBAC is a key security control to ensure that cluster users and workloads have only the access to resources required to execute their roles. It is important to ensure that, when designing permissions for cluster users, the cluster administrator understands the areas where privilege escalation could occur, to reduce the risk of excessive access leading to security incidents.
+
+***NB:*** Attribute-Based Access Control (ABAC) has been deprecated since Kubernetes version 1.6 in favour of RBAC.
+
+***Role*** is a type of resource that defines a set of permissions for a specific namespace. It allows you to grant access to Kubernetes resources within that namespace to users, groups, or service accounts.
+
+| Aspect                    | Role                                                 | ClusterRole                                                                                |
+| ------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Scope                     | Namespace-wide                                       | Cluster-wide                                                                               |
+| Definition                | Defines permissions within a specific namespace      | Defines permissions that are available cluster-wide                                        |
+| Resources Managed         | Resources within a single namespace                  | Resources across all namespaces and cluster-wide resources                                 |
+| Typical Use Case          | Granting permissions to resources within a namespace | Granting permissions to cluster-level resources (like nodes) or across multiple namespaces |
+| Binding Mechanism         | RoleBinding                                          | ClusterRoleBinding or RoleBinding                                                          |
+| Example Resources Managed | Pods, Services, ConfigMaps, Secrets                  | Nodes, PersistentVolumes, CustomResourceDefinitions (CRDs)                                 |
+                                  
+***ClusterRole*** is a type of resource that defines a set of permissions across the entire cluster, rather than within a specific namespace like a Role does. ClusterRoles are used to grant access to Kubernetes resources that span multiple namespaces or are cluster-wide.
+
+Role Example
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-reader
+  namespace: default
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]       
+```
+ClusterRole Example
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-admin
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "watch", "list"]
+```
+
+| Aspect                | RoleBinding                                      | ClusterRoleBinding                                   |
+| --------------------- | ------------------------------------------------ | ---------------------------------------------------- |
+| Scope                 | Applies to resources within a specific namespace | Applies across all namespaces or cluster-wide        |
+| Role/ClusterRole Type | Binds a Role                                     | Binds a ClusterRole                                  |
+| API Version           | rbac.authorization.k8s.io/v1                     | rbac.authorization.k8s.io/v1                         |
+| Resources Managed     | Resources within a single namespace              | Resources across multiple namespaces or cluster-wide |
+| Subject               | User, Group, or ServiceAccount                   | User, Group, or ServiceAccount                       |
+| Purpose               | Grants permissions within a namespace            | Grants permissions across namespaces or cluster-wide |
+
+***RoleBinding*** is a resource that binds a Role to a user, group, or service account within a specific namespace. RoleBindings are used to grant permissions defined in a Role to entities (subjects) that need access to Kubernetes resources within a particular namespace. 
+
+Role Binding Example
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: default
+subjects:
+- kind: User
+  name: jasim
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io
+```
+
+***ClusterRoleBinding*** in Kubernetes is a resource that binds a ClusterRole to a user, group, or service account across the entire Kubernetes cluster. Unlike RoleBindings, which are limited to a specific namespace, ClusterRoleBindings apply permissions cluster-wide, allowing subjects to access resources across all namespaces or in specified contexts.
+
+ClusterRole Binding Example
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-nodes
+subjects:
+- kind: User
+  name: jasim
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+```
+
+***Granular access control*** in Kubernetes refers to the practice of finely defining permissions and restrictions at various levels within the Kubernetes cluster. This approach ensures that users, applications, or services only have access to the resources they require to perform their intended tasks, thereby enhancing security and adhering to the principle of least privilege. Here are some key aspects and strategies for achieving granular access control in Kubernetes:
+- Namespace Isolation
+- Role-Based Access Control (RBAC)
+- Cluster-Wide Permissions
+- Resource Quotas and Limit Ranges
+- Network Policies
+- Pod Security Policies
+
 ##### Add user named Jasim in K8s Cluster
 Create namespace named 'development'
 ```bash
