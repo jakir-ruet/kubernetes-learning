@@ -11,6 +11,7 @@ Difference & Comparison of `kubectl apply`  & `kubectl create`
 | Conflict Resolution   | Handles conflicts by ***merging*** changes                                                   | No conflict resolution; will ***fail*** if resource already exists      |
 | Annotations           | Adds `kubectl.kubernetes.io/last-applied-configuration` annotation for tracking changes      | Does not add such annotations                                           |
 | Example Command       | `kubectl apply -f <filename>`                                                                | `kubectl create -f <filename>`                                          |
+
 NB:
 Idempotency is a concept in computer science and programming that refers to the property of certain operations that can be applied multiple times without changing the result beyond the initial application.
 
