@@ -101,7 +101,7 @@ kubectl create secret generic [DB-USER-PASSWORD] --from-file=./username.txt --fr
 kubectl get secrets
 kubectl describe secrets [SecretName]
 ```
-***Note:*** $, \, *, ! is require to escape.
+***Note:*** `$`, `\`, `*`, `!` are require to escape.
 
 Secret
 ```yaml
