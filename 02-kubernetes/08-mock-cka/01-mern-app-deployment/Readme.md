@@ -1,4 +1,15 @@
-#### Requirement of complete deployment
+### MERN Full Stack App Configure & Deployment on Docker & Kubernetes as well.
+Its required some important steps
+#### MERN Environment Configuration with Install MongoDB on Docker
+```bash
+docker pull mongo
+docker run --name mongodb-server -p 27017:27017 -d mongo:latest
+docker exec -it mongodb-server bash
+```
+
+#### Making an Application
+
+#### Requirement of complete deployment analysis
 1. Deployments/Pods [2]
    - MongoDB (Private Interaction)
    - MongoExpress (Public Interaction)
