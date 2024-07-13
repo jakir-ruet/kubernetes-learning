@@ -13,7 +13,7 @@ Kubernetes security is a broad topic due to the sophistication of the platform. 
 **Service accounts versus user accounts**
 In Kubernetes, we have a distinction between normal user accounts and service accounts managed by Kubernetes. An account represents an identity for a user or a service process. The main difference between a user account and a service account is as follows:
 
-1. User accounts are for normal human users. In Kubernetes, the RBAC subsystem is used to determine whether the user is authorized to perform a specific operation on a specific scope. We’ll look into this further in the Kubernetes RBAC section as I discussion previous.
+1. **User accounts** are for normal human users. In Kubernetes, the RBAC subsystem is used to determine whether the user is authorized to perform a specific operation on a specific scope. We’ll look into this further in the Kubernetes RBAC section as I discussion previous.
 2. **Service accounts** are for services or processes running in a Pod in the Kubernetes cluster. The service accounts are users managed by the Kubernetes API. In Kubernetes, it is possible to use client certificates, bearer tokens, or even an authenticating proxy to authenticate API requests through an API server.
 
 **K8s authorization**
