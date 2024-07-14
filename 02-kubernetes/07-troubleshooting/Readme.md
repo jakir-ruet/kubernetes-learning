@@ -58,6 +58,7 @@ Logs are very handy when it comes to troubleshooting issues. The information col
 **Cluster-level logging**
 In Kubernetes, the notion of cluster-level logging is widely recognized. This means logs are meant to be stored in a separate backend, so the lifecycles of those logs are independent of what’s been logged down to the **worker node**, **pod**, or even **container** level.
 Kubernetes itself does not provide a comprehensive native logging framework, but it can be integrated with lots of third-party open source logging solutions in the community, such as **Grafana Loki** or the **EFK stack**, which includes **Elasticsearch**, **Fluentd**, and **Kibana** for log searching, querying, and tracing.
+
 [Logging in Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/logging/) involves a set of patterns that are implemented by the community with different open source solutions. There are the following three patterns:
 - Using a node-level logging agent that runs on every node: 
   The agent is often in a DaemonSet so it will be evenly distributed on each node, and this agent pushes the logs to a backend. In this case, there are no code changes for the application.
