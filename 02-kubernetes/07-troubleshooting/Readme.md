@@ -73,6 +73,12 @@ In the Unix and Linux OSs, there are three I/O streams, called STDIN, STDOUT, an
 kubectl logs nginx
 kubectl logs logger
 kubectl logs logger - conName
-kubectl logs -f logger
+kubectl logs -f logger # f means follow the logs
 kubectl logs --since=1h # log check as per use time
+```
+Node Status
+```bash
+systemctl status kubelet
+systemctl start kubelet
+systemctl enable kubelet
 ```
