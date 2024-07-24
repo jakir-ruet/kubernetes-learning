@@ -279,20 +279,20 @@ It is made up of at least one master node and one or more worker nodes. The **_m
 ![Cluster](/img/cluster.png)
 CRI >Container Runtime Interface & CNI > Container Network Interface
 
-#### Components
+#### K8s Components
 
 A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_**, that run containerized applications. Every cluster has at least **_one worker_** node (vm).
 
 ##### [Types of components](https://kubernetes.io/docs/concepts/overview/components/)
 - Control Plane Components
   - kube-apiserver
-  - etcd
   - kube-scheduler
   - kube-controller-manager
     - node-controller
     - replication-controller
     - endpoint-controller
     - service-account-controller
+  - etcd [Its a Separate Project & may Different Version]
   - cloud-controller-manager
     - node-controller
     - route-controller
@@ -302,17 +302,27 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
   - kube-proxy
   - container runtime
 - Kubernetes
-  - DNS
+  - DNS 
+  - CoreDNS [Its a Separate Project & may Different Version]
   - Kubernetes Dashboard
   - Resource Monitoring
   - Logging
 - Volume
 - Service
 - Ingress
+- Egress
 - Deployment (pod's blue print)
 - StatefulSet
 - ConfigMap
 - Secret
+
+**Version** Its Mandatory in same version
+- kube-apiserver [`x > v1.12`]
+- controller-manager [`x-1 > v1.11 or v1.12`]
+- kube-scheduler [`x-1 > v1.11 or v1.12`]
+-  kubelet [`x-2 > v1.10 or v1.11`]
+-  kube-proxy [`x-2 > v1.10 or v1.11`]
+-  kubectl [`x-1, x+1 > v1.11, v1.13`]
 
 ***Services***  is a logical abstraction for a deployed group of pods in a cluster (which all perform the same function). if one is crash then another will ready to work. The core attributes of a Kubernetes service are:
 - A label selector that locates pods

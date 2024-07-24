@@ -3,7 +3,21 @@
   A highly available cluster in Kubernetes is a configuration where multiple nodes work together to ensure that applications and services remain continuously operational even if parts of the system fail. This involves distributing components across multiple nodes and zones, using redundancy and failover mechanisms to prevent single points of failure, and ensuring that there are always enough resources to handle the workload.
 - HA Control Plane
   - Multiple API Servers
-  - etcd Cluster (odd number quorum member)
+  - etcd Cluster 
+    - Odd number quorum (Min No. of Node) member [Recommended]
+    - Find Quorum (`Majority`) by this Formula `Quorum = N/2 + 1`); Where, N is Node.
+    - Table 
+      | Instance (`Node`) | Quorum (`Majority`) | Fault Tolerance (`C1-C2`) |
+      | :---------------: | :-----------------: | :-----------------------: |
+      |         1         |          1          |             0             |
+      |         2         |          2          |             0             |
+      |       **3**       |          2          |             1             |
+      |         4         |          3          |             1             |
+      |       **5**       |          3          |             2             |
+      |         6         |          4          |             2             |
+      |       **7**       |          4          |             3             |
+      |         9         |          5          |             4             |
+    - Instance/Node/Manager is Recommended (Odd).
   - Controller Manager &
   - Scheduler
 - Etch Management
