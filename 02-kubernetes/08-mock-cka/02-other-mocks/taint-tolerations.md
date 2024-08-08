@@ -107,3 +107,17 @@ tolerations:
 kubectl create -f my-pod.yaml
 kubectl describe pod my-pod | grep Node:
 ```
+
+Taint a node to be un-schedulable and test it by creating a pod on the node
+`Answer`
+```bash
+kubectl get nodes -o wide
+ps -aux | grep kubelet
+kubectl get nodes
+minikube ssh
+sudo su or sudo -i
+cd /etc/kubernetes/manifests/
+vi my-static-pod.yaml # write pod spec
+systemctl restart kubelet
+kubectl get node
+```

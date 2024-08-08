@@ -532,7 +532,9 @@ Edit the existing pod `my-nginx` and the command `sleep 3600`.
 kubectl get pod my-nginx -o yaml > my-nginx.yaml
 nano my-nginx.yaml
 ```
+
 Add this section under containers
+`Answer`
 ```yaml
 command: ["sleep", "3600"]
 ```
@@ -541,4 +543,55 @@ kubectl delete pod my-nginx
 kubectl create -f my-nginx.yaml
 kubectl get pods
 kubectl describe pod my-nginx
+```
+
+Create a pod with the labels, pod name: mango-pod, image: redis:alpine, labels: tier=redis.
+NB: redis:alpine means Redis container will be created using the Redis image built on Alpine Linux
+`Answer`
+```bash
+kubectl run mango-pod --image=redis:alpine -l tier=redis
+kubectl describe pod mango-pod # check labels
+kubectl exec -it mango-pod – redis-cli ping
+```
+
+Create a pod in the ‘fruit-ns’ namespace, pod name: banana-pod, image: redis:alpine
+kubectl create namespace fruit-ns
+`Answer`
+```bash
+kubectl run banana-pod --image=redis:alpine -n fruit-ns
+kubectl get ns
+kubectl describe pod banana-pod -n fruit-ns
+```
+
+Create a pod & expose it where pod name: mango-pod, image: redis:alpine, service name: my-pod-service, port: 8090, target port: 80
+`Answer`
+```bash
+kubectl run mango-pod --image=redis:alpine
+kubectl expose pod mango-pod --name=my-pod-service --port=8090 --target-port=80
+kubectl describe service my-pod-service
+```
+
+Create a static pod & use the command “sleep 1000”, where pod name: my-static-pod, image: busybox
+`Answer`
+```bash
+kubectl create deployment nginx-deployment --image=nginx:1.26.0 --replicas=3 --dry-run=client -o yaml > nginx-deployment.yaml
+kubectl apply -f nginx-deployment.yaml
+kubectl get deployments -o wide
+kubectl set image deployment/nginx-deployment nginx=nginx:1.27.0 --record
+kubectl get deployments -o wide
+kubectl rollout history deployment nginx-deployment # check history
+```
+
+Create a static pod and use the command “sleep 1000”, where pod name: static-box, image: busybox
+`Answer`
+```bash
+kubectl get nodes -o wide
+ps -aux | grep kubelet
+kubectl get nodes
+minikube ssh
+sudo su or sudo -i
+cd /etc/kubernetes/manifests/
+vi my-static-pod.yaml # write pod spec
+systemctl restart kubelet
+kubectl get node
 ```
