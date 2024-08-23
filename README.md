@@ -593,9 +593,11 @@ Ingress vs	Egress
 |   4   | Functionality | Load balancing, SSL/TLS termination & Name-based virtual hosting | Regulating access to external services, Enforcing security policies & Monitoring outbound traffic |
 |   5   | Example       | NGINX Ingress Controller, HAProxy Ingress & Traefik              | Istio Egress Gateway                                                                              |
 
-#### [Helm](https://helm.sh/docs/) | [Helm Cheat Sheet](https://helm.sh/docs/intro/cheatsheet/)
+#### [Helm](https://helm.sh/docs/) [Visit](https://github.com/jakir-ruet/helm-learning)
 It is a package manager for Kubernetes applications. It simplifies the process of deploying and managing applications on Kubernetes clusters. Helm consists of two main components: the ***Helm client*** and the ***Helm server***. The client is used to interact with the server and manage charts, while the server contains all the necessary information about available charts.
 ![Helm](/img/helm.png)
+
+#### [Helm Cheat Sheet](https://helm.sh/docs/intro/cheatsheet/)
 
 ##### Helm Chart Architecture
 ![Helm](/img/helm-architecture.png)
