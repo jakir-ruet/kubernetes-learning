@@ -45,7 +45,21 @@ A DaemonSet in Kubernetes is a controller that ensures a copy of a specified pod
 - Supports the ability to perform rolling updates to update pods incrementally.
 
 Use Cases
-- ***System Monitoring:*** Deploying monitoring agents like Prometheus Node Exporter or DataDog agents to gather metrics from every node.
-- ***Log Collection:*** Running logging agents like Fluentd or Logstash on each node to collect and forward logs.
-- ***Networking:*** Managing network plugins like Calico or Weave Net that need to run on every node for consistent network policy enforcement.
-- ***Security:*** Deploying security agents like Falco to monitor and enforce security policies across the cluster.
+- ***System Monitoring:*** Deploying monitoring agents like `Prometheus` Node Exporter or DataDog agents to gather metrics from every node.
+- ***Log Collection:*** Running logging agents like `Fluentd` or Logstash on each node to collect and forward logs.
+- ***Networking:*** Managing network plugins like `Calico` or Weave Net that need to run on every node for consistent network policy enforcement.
+- ***Security:*** Deploying security agents like `Falco` to monitor and enforce security policies across the cluster.
+
+**Static**: A static pod in Kubernetes is a pod that is directly managed by the `kubelet` (the node agent) on a specific node, rather than by the Kubernetes API server. Static pods are primarily used for `bootstrapping`, `running essential components`, or when you need to ensure that certain pods are always running on a particular node, even if the Kubernetes control plane is not fully functional.
+
+**Characteristics**
+- Managed by Kubelet
+- No Replication Controller
+- Persistent on Node
+- No API Object
+- Manual Management:
+
+**Use Cases**
+- Bootstrapping Control Plane Components
+- Running Critical Node Services
+- Disaster Recovery
