@@ -1,6 +1,6 @@
 #### Welcome to maintaining-clusters
 - High Availability?
-  A highly available cluster in Kubernetes is a configuration where multiple nodes work together to ensure that applications and services remain continuously operational even if parts of the system fail. This involves distributing components across multiple nodes and zones, using redundancy and failover mechanisms to prevent single points of failure, and ensuring that there are always enough resources to handle the workload.
+  A highly available configuration where multiple nodes work together to ensure that applications and services remain continuously operational even if parts of the system fail. This involves distributing components across multiple nodes and zones, using redundancy and failover mechanisms to prevent single points of failure, and ensuring that there are always enough resources to handle the workload.
 - HA Control Plane
   - Multiple API Servers
   - etcd Cluster 
@@ -16,6 +16,7 @@
       |       **5**       |          3          |             2             |
       |         6         |          4          |             2             |
       |       **7**       |          4          |             3             |
+      |         8         |          5          |             3             |
       |         9         |          5          |             4             |
     - Instance/Node/Manager is Recommended (Odd).
   - Controller Manager &
