@@ -32,6 +32,20 @@ A StorageClass in Kubernetes is a way to define different types of storage, or "
 - **Customizable Parameters:** Each StorageClass can define a set of parameters that affect how the storage is provisioned. These parameters are specific to the storage backend and can include details such as disk type, IOPS, redundancy level, and more.
 - **Reclaim Policy:** StorageClasses define a reclaim policy that dictates what happens to a dynamically provisioned Persistent Volume when it is released (e.g., deleted). The reclaim policy can be Retain (keep the storage intact), Delete (delete the storage), or Recycle (wipe and reuse the storage).
 
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fast-storage
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2  # General Purpose SSD in AWS
+  zones: "us-west-1a, us-west-1b"
+  iopsPerGB: "10"
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+```
+
 ***Volume Types***
 - Volume & Persistent Volumes each have a Volume Type.
 - Volume Type determines how storage will be handled.

@@ -36,15 +36,14 @@ kubectl get pod
 kubectl get pod -o wide
 ```
 
-DaemonSet: 
-
+**DaemonSet: **
 A DaemonSet in Kubernetes is a controller that ensures a copy of a specified pod runs on all (or some) nodes in the cluster. It is particularly useful for deploying system-level services and background tasks that need to run on every node.
 - When a new node is added to the cluster, the DaemonSet automatically deploys the pod on the new node.
 - When a node is removed from the cluster, the pod managed by the DaemonSet is also removed.
 - Updating the DaemonSet template triggers a rolling update across all nodes where the DaemonSet is deployed.
 - Supports the ability to perform rolling updates to update pods incrementally.
 
-Use Cases
+**Use Cases**
 - ***System Monitoring:*** Deploying monitoring agents like `Prometheus` Node Exporter or DataDog agents to gather metrics from every node.
 - ***Log Collection:*** Running logging agents like `Fluentd` or Logstash on each node to collect and forward logs.
 - ***Networking:*** Managing network plugins like `Calico` or Weave Net that need to run on every node for consistent network policy enforcement.
@@ -63,3 +62,39 @@ Use Cases
 - Bootstrapping Control Plane Components
 - Running Critical Node Services
 - Disaster Recovery
+
+**CronJob:**
+CronJob is used to run jobs on a schedule. A CronJob creates Jobs on a repeating schedule.
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
+```
+Explain
+```yaml
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday)
+# │ │ │ │ │                                   OR sun, mon, tue, wed, thu, fri, sat
+# │ │ │ │ │ 
+# │ │ │ │ │
+# * * * * *
+```
