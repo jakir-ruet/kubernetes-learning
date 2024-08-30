@@ -367,7 +367,7 @@ Pods are the smallest deployable units of computing that you can create and mana
 ##### [Containers](https://kubernetes.io/docs/concepts/containers/)
 Each container that you run is repeatable; the standardization from having dependencies included means that you get the same behavior wherever you run it.
 
-##### Volumes
+##### [Volumes](https://kubernetes.io/docs/concepts/storage/)
 It is a directory containing data, which can be accessed by containers in a Kubernetes pod. The location of the directory, the storage media that supports it, and its contents, depend on the specific type of volume being used. There are a few types of volumes in Kubernetes.
 
 - Volumes
