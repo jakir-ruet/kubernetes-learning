@@ -24,7 +24,7 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
     - replication-controller
     - endpoint-controller
     - service-account-controller
-  - [etcd](https://github.com/jakir-ruet/kubernetes-learning/tree/master/02-kubernetes/02-cluster-management) [Its a Separate Project & may Different Version]
+  - [etcd](https://github.com/jakir-ruet/kubernetes-learning/tree/master/02-cluster-management) [Its a Separate Project & may Different Version]
   - cloud-controller-manager
     - node-controller
     - route-controller
