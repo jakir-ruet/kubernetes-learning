@@ -4,10 +4,19 @@ Resource scheduling in Kubernetes involves allocating resources such as CPU and 
 Ways of resources allocation or scheduling
 - Node Selector
 - Node Affinity & Anti-Affinity
-- Pod Affinity & Anti-Affinity
 - Taints & Tolerations
 - Resource Requests and Limits
-- Priority Classes
+- [Priority Classes](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass)
+
+**Node Selector** allows you to assign  pods to specific node that have specific labels & its working in key-value pairs. For example `disktype:ssd` or `env=production` etc. Limitations
+- Static Scheduling
+- Lack of Affinity/Anti-Affinity Rules
+
+**Node Affinity & Anti-Affinity** A more expressive and flexible way to control pod scheduling based on node labels. Node affinity supports `requiredDuringSchedulingIgnoredDuringExecution` (similar to nodeSelector) and `preferredDuringSchedulingIgnoredDuringExecution` (soft rules or preferences).
+
+**Taints & Tolerations**: Taints and Tolerations are concepts in Kubernetes that help control the scheduling of pods to nodes, ensuring that certain workloads run on specific nodes or are prevented from running on unsuitable ones.
+- **Taints** are markers applied to nodes that repel certain pods from being scheduled on them.
+- **Tolerations** are properties applied to pods that allow them to be scheduled on nodes with specific taints.
   
 Scheduling Process
 - Filtering
