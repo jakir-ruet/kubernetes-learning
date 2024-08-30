@@ -1,18 +1,36 @@
-[Storage](https://kubernetes.io/docs/concepts/storage/) 
+##### [Volumes](https://kubernetes.io/docs/concepts/storage/)
+It is a directory containing data, which can be accessed by containers in a Kubernetes pod. The location of the directory, the storage media that supports it, and its contents, depend on the specific type of volume being used. There are a few types of volumes in Kubernetes.
 
-Container File System
-- Container File System is ephemeral.
-- Files in container File System Exists only as long as the Container Exists.
-- Data in container File System is lost as soon as Container Deleted or recreated.
+- Volumes
+  - Persistent Volumes (PV)
+    is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using `Storage Classes`. It is a resource in the cluster just like a node is a cluster resource. PVs are volume plugins like Volumes, but have a lifecycle independent of any individual Pod that uses the PV.
+  - Persistent Volume Claim (PVC)
+    - It is a request for storage by a user. 
+    - It is similar to a Pod. 
+    - Pods consume node resources and 
+    - PVCs consume PV resources.
+    Pods can request specific levels of resources (CPU and Memory). Claims can request specific `size` and `access` modes (They can be mounted to access mode) 
+      - ReadWriteOnce, 
+      - ReadOnlyMany, 
+      - ReadWriteMany, or 
+      - ReadWriteOncePod
+  - Ephemeral Volumes
+  - EmptyDir Volumes
+  - hostPath Volumes
+  - Volumes ConfigMap 
+- [Storing Volumes](https://kubernetes.io/docs/concepts/storage/storage-classes/) 
+  - NFS (Network File System)
+  - CSI (Container Storage Interface)
 
-***Volumes***
-- Many Application needs a persistent Data.
-- Volumes allows to store Data Outside the Container, while allow container to Access Data at RunTime.
+**StorageClass**
+A StorageClass in Kubernetes is a way to define different types of storage, or "classes," that a cluster administrator offers. It provides a way for cluster administrators to describe the "classes" of storage they offer and allows users to request different types of storage dynamically based on their performance and cost requirements.
 
-***Persistent Volumes***
-- Volumes offer a way to provide external storage to container within the Pod/Container Specification.
-- Persistent Volumes are a bit more advanced than Volumes.
-- Persistent Volumes allow user to treat Storage as an Abstract Resource and consume it using Pods.
+**Features of StorageClass**
+- **Dynamic Provisioning:** A StorageClass enables dynamic provisioning of Persistent Volumes (PVs). When a user creates a Persistent Volume Claim (PVC) that references a StorageClass, Kubernetes automatically provisions a Persistent Volume that matches the desired storage properties defined in the StorageClass.
+- **Abstracts Underlying Storage:** It abstracts the details of the underlying storage infrastructure (such as type, performance, availability zone, etc.). Users only need to specify the required class of storage (e.g., fast, slow, ssd) without needing to know the specifics of how it is implemented.
+- **Supports Different Backends:** StorageClasses can be configured to support various storage backends such as AWS EBS, Google Cloud Persistent Disks, Azure Disks, NFS, Ceph, GlusterFS, and more. This flexibility allows Kubernetes to work with different types of storage solutions.
+- **Customizable Parameters:** Each StorageClass can define a set of parameters that affect how the storage is provisioned. These parameters are specific to the storage backend and can include details such as disk type, IOPS, redundancy level, and more.
+- **Reclaim Policy:** StorageClasses define a reclaim policy that dictates what happens to a dynamically provisioned Persistent Volume when it is released (e.g., deleted). The reclaim policy can be Retain (keep the storage intact), Delete (delete the storage), or Recycle (wipe and reuse the storage).
 
 ***Volume Types***
 - Volume & Persistent Volumes each have a Volume Type.
