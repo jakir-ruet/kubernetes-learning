@@ -407,7 +407,7 @@ A ConfigMap is an API object used to store non-confidential data in key-value pa
 #### [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 It is a workload API object used to manage stateful applications. Unlike a `Deployment`, which is used for stateless applications, a StatefulSet provides unique network identities and stable, persistent storage for each of its pods. A StatefulSet runs a group of Pods, and maintains a sticky identity for each of those Pods. This is useful for managing applications that need persistent storage or a stable, unique network identity.
 
-**Using StatefulSets **
+**Using StatefulSets**
 StatefulSets are valuable for applications that require one or more of the following.
 - Stable, unique network identifiers.
 - Stable, persistent storage.
