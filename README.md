@@ -24,7 +24,7 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
     - replication-controller
     - endpoint-controller
     - service-account-controller
-  - [etcd](https://github.com/jakir-ruet/kubernetes-learning/tree/master/02-cluster-management) [Its a Separate Project & may Different Version]
+  - [etcd](https://github.com/jakir-ruet/kubernetes-learning/tree/master/02-cluster-management) [Its a Separate Project & may Different Version] [Visit](https://etcd.io/)
   - cloud-controller-manager
     - node-controller
     - route-controller
@@ -35,7 +35,7 @@ A Kubernetes cluster consists of a set of worker machines, called **_nodes (vm)_
   - container runtime
 - Kubernetes
   - DNS 
-  - CoreDNS [Its a Separate Project & may Different Version]
+  - [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/coredns/) [Its a Separate Project & may Different Version] [Visit](https://coredns.io/)
   - Kubernetes Dashboard
   - Resource Monitoring
   - Logging
@@ -403,6 +403,69 @@ A StorageClass in Kubernetes is a way to define different types of storage, or "
 
 ##### [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/)
 A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
+
+#### [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+It is a workload API object used to manage stateful applications. Unlike a `Deployment`, which is used for stateless applications, a StatefulSet provides unique network identities and stable, persistent storage for each of its pods. A StatefulSet runs a group of Pods, and maintains a sticky identity for each of those Pods. This is useful for managing applications that need persistent storage or a stable, unique network identity.
+
+**Using StatefulSets **
+StatefulSets are valuable for applications that require one or more of the following.
+- Stable, unique network identifiers.
+- Stable, persistent storage.
+- Ordered, graceful deployment and scaling.
+- Ordered, automated rolling updates.
+
+StatefulSet Example
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: nginx
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: nginx # has to match .spec.template.metadata.labels
+  serviceName: "nginx"
+  replicas: 3 # by default is 1
+  minReadySeconds: 10 # by default is 0
+  template:
+    metadata:
+      labels:
+        app: nginx # has to match .spec.selector.matchLabels
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: nginx
+        image: registry.k8s.io/nginx-slim:0.24
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "my-storage-class"
+      resources:
+        requests:
+          storage: 1Gi
+````
 
 ##### [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
 A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't need to include confidential data in your application code.
