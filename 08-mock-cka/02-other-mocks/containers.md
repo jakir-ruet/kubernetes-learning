@@ -2,6 +2,7 @@ Show the logs from the container and save it to `/doc/nginx.log`.
 - pod name: logs-pod
 - container: nginx-container
 - namespace: dev-team
+
 `Answer`
 ```yaml
 apiVersion: v1
@@ -27,4 +28,5 @@ Create an init container in a pod which creates the file `check.txt` in the `tec
 - pod name: my-check-pod
 - image init container: busybox:1.28
 - image container: alpine
+
 `Answer`

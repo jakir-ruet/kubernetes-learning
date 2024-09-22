@@ -1,4 +1,5 @@
 Create a pod called `mango-pod` with image: redis with CPU request set to 1 CPU and memory request as 200MiB.
+
 `Answer`
 ```yaml
 apiVersion: v1
@@ -30,6 +31,7 @@ Create a new pod called `super-user-pod` with image busybox: 1.28. Allow the pod
 - Pod: super-user-pod
 - Container Image: busybox: 1.28
 - SYS_TIME capabilities for the container?
+
 `Answer`
 ```yaml
 apiVersion: v1
@@ -56,6 +58,7 @@ A pod definition file is created as `/root/use-pv.yaml`. Make use of this manife
 - persistentVolume Claim configured correctly
 - pod using the correct mountPath
 - pod using the persistent volume claim?
+
 `Answer`
 ```bash
 kubectl get pv
@@ -106,6 +109,7 @@ Create a new deployment called nginx-deploy, with image nginx: 1.26 and 1 replic
 - Image: nginx: 1.26.
 - Task Upgrade the version of the deployment to 1.27.
 - Task: Record the changes for the image upgrade.
+
 `Answer`
 ```bash
 kubectl run nginx-deploy --image=nginx:1.26 --replicas=1 --record
@@ -122,6 +126,7 @@ Create an nginx pod called `nginx-resolver` using image `nginx`, expose it inter
 - Pod: nginx-resolver, 
 - Service DNS Resolution recorded correctly
 - Pod DNS resolution recorded correctly
+
 `Answer`
 First Section
 ```bash
@@ -146,6 +151,7 @@ cat /root/nginx.pod
 Create a static pod on `node01` called `nginx-critical` with image `nginx`. Create this pod on `node01` and make sure that it is recreated/restarted automatically in case of failure. Use `/etc/kubernetes/manifests` as the static path for example.
 - kubelet configure for static pods
 - pod nginx-critical-node01 is up and running
+
 `Answer`
 ```bash
 kubectl get nodes
@@ -173,6 +179,7 @@ docker ps | grep -i nginx-critical
 ```
 
 From the pod label environment=process, find all the pods running high CPU workloads and write the name of which is consuming the most CPU to the file `/doc/high-cpu.txt`.
+
 `Answer`
 ```bash
 kubectl get pods -l environment=process
@@ -182,6 +189,7 @@ cat /doc/high-cpu.txt
 ```
 
 Overwrite the label of the pod named `dev-nginx-pod` with the value "env=true"
+
 `Answer`
 ```bash
 kubectl describe pod dev-nginx-pod # label checking
@@ -190,6 +198,7 @@ kubectl describe pod dev-nginx-pod # label checking again
 ```
 
 Find out how which pods are available the label `env=my-green` in the cluster and write them to the file `/doc/available-pods.txt`.
+
 `Answer`
 ```bash
 kubectl get pods -l env=my-green
@@ -198,6 +207,7 @@ cat /doc/available-pods.txt
 ```
 
 The pod `nginx-pod` is failing. Find out why fix the issue.
+
 `Answer`
 ```bash
 kubectl get pods -o wide
@@ -212,6 +222,7 @@ kubectl get pod nginx-pod -o wide
 Create a pod that will only be scheduled on a node with a specific label.
 - pod name: my-pod
 - image: nginx
+
 `Answer`
 ```bash
 kubectl get nodes
@@ -233,12 +244,14 @@ kubectl describe node node01
 Create a pod echo's "Welcome to DevOps" and then exits. The pod should be deleted automatically when its completed.
 - pod name: my-pod
 - image: busybox
+
 `Answer`
 ```bash
 kubectl run my-pod --image=busybox -it --rm --restart=Never -- /bin/sh -c 'echo Welcome to DevOps'
 ```
 
 You just created the pod `my-pod`, but its not scheduling on the node. Troubleshoot and fix the issue.
+
 `Answer`
 ```bash
 kubectl get pod my-pod -o wide
@@ -254,6 +267,7 @@ kubectl describe pod my-pod # pod scheduled
 Create a pod and set `SYS_TIME` sleep 3600.
 - pod name: my-pod
 - image: busybox
+
 `Answer`
 ```bash
 kubectl run my-pod --image=busybox --command sleep 3600 --dry-run=client -o yaml > my-pod.yaml
@@ -272,6 +286,7 @@ kubectl get pod my-pod -o yaml # lets check security context
 ```
 
 Get the IP address of the `my-pod` pod and write it to the file `/doc/ip-address.txt`.
+
 `Answer`
 ```bash
 kubectl get pods
@@ -290,6 +305,7 @@ cat /doc/pods-namespace.txt
 ```
 
 List the `my-pod` pod with the custom columns `POD_STATUS` and `POD_NAME` and write to the file `/doc/status.txt`.
+
 `Answer`
 ```bash
 kubectl get pod my-pod
@@ -301,6 +317,7 @@ cat /doc/status.txt
 For the my-pod, set CPU memory requests and limits.
 - REQUESTS: CPU=20m, memory=40Mi
 - LIMITS: CPU=160m, memory=200Mi
+
 `Answer`
 ```bash
 kubectl get pods
@@ -326,6 +343,7 @@ kubectl describe pod my-pod
 ```
 
 Troubleshoot the failed pod `my-pod` and make it running again.
+
 `Answer`
 ```bash
 kubectl get pod my-pod -o wide # see ErrImagePull
@@ -341,6 +359,7 @@ Expose the `my-pod` pod internally and create a `my-test-pod` for look-up.
 - service name: my-pod-service
 - test pod name: my-test-pod, image: busybox:1.28
 - type: ClusterIP
+
 `Answer`
 ```bash
 kubectl get pods
@@ -352,6 +371,7 @@ kubectl run my-test-pod --image:busybox:1.28 --rm -it --restart=Never -- nslooku
 Create a pod and assign it to the node `node01`.
 - pod name: my-pod
 - image: nginx
+
 `Answer`
 ```bash
 kubectl get node node01 -o wide
@@ -365,6 +385,7 @@ kubectl get pod my-pod -o wide
 ```
 
 Find all the pods with the label `env=dev-team` and write to the file `/doc/all-pod-label.txt`.
+
 `Answer`
 ```bash
 kubectl get pods -l env=dev-team
@@ -373,6 +394,7 @@ cat /doc/all-pod-label.txt
 ```
 
 Check the image version of the `my-pod` pod without using the describe command and write to the file `/doc/image-version-pod.txt`.
+
 `Answer`
 ```bash
 kubectl get pod my-pod -o jsonpath='{.spec.containers[].image}{"\n"}'
@@ -381,6 +403,7 @@ cat /doc/image-version-pod.txt
 ```
 
 Print the pod names and times to the file `/doc/pod-start-time.txt`.
+
 `Answer`
 ```bash
 kubectl get pods -o jsonpath='{range.items[*]}{.metadata.name}{"\t"}{.status.startTime}{"\n"}{end}'
@@ -391,6 +414,7 @@ cat /doc/pod-start-time.txt
 Create a pod and run the command which shows "Welcome to DevOps" and sleeps for 100 seconds.
 - pod name: my-pod
 - image: busybox
+
 `Answer`
 ```bash
 kubectl run my-pod --image=busybox --dry-run=client -o yaml > my-pod.yaml
@@ -415,6 +439,7 @@ Create two pods with different labels.
 - pod 2 name: pod02
 - image: nginx
 - label: env=red
+
 `Answer`
 ```bash
 kubectl run pod01 --image=nginx -l env=green
@@ -424,6 +449,7 @@ kubectl get pods -l env=red
 ```
 
 Delete the `white-shark` pod without any delay.
+
 `Answer`
 ```bash
 kubectl get pods
@@ -432,6 +458,7 @@ kubectl get pods
 ```
 
 Get a list of all the pods which were recently deleted. Write the list to the file `/doc/recent-delete.txt`.
+
 `Answer`
 ```bash
 kubectl get events -o custom-columns=NAME:.metadata.name | cut -d "." -f1
@@ -444,6 +471,7 @@ cat /doc/recent-delete.txt
 ```
 
 There is something wrong with the `dark-blue-pod` pod. Troubleshoot and fix the issue.
+
 `Answer`
 ```bash
 kubectl get pods
@@ -458,6 +486,7 @@ kubectl get pods
 Create a pod and add `runAsUser: 2000` and `fsGroup: 5000`.
 - pod name: sec-pod
 - image: nginx
+
 `Answer`
 ```bash
 kubectl run sec-pod --image=nginx --dry-run=client -o yaml > sec-pod.yaml
@@ -489,6 +518,7 @@ kubectl get pod sec-pod
 ```
 
 Create a pod named `sec-pod` with the image `nginx` and set `NET_ADMIN`.
+
 `Answer`
 ```yaml
 apiVersion: v1
@@ -509,6 +539,7 @@ kubectl get pods
 ```
 
 Delete all the pods with the label `env:orange`
+
 `Answer`
 ```bash
 kubectl get pods -l env=orange
@@ -517,6 +548,7 @@ kubectl get pods -l env=orange
 ```
 
 Replace the `my-pod` pod with the existing yaml file `pod-replace.yaml` and verify after.
+
 `Answer`
 ```bash
 kubectl get pods -o wide
@@ -527,6 +559,7 @@ kubectl describe pod my-pod
 ```
 
 Edit the existing pod `my-nginx` and the command `sleep 3600`.
+
 `Answer`
 ```bash
 kubectl get pod my-nginx -o yaml > my-nginx.yaml
@@ -534,6 +567,7 @@ nano my-nginx.yaml
 ```
 
 Add this section under containers
+
 `Answer`
 ```yaml
 command: ["sleep", "3600"]
@@ -547,6 +581,7 @@ kubectl describe pod my-nginx
 
 Create a pod with the labels, pod name: mango-pod, image: redis:alpine, labels: tier=redis.
 NB: redis:alpine means Redis container will be created using the Redis image built on Alpine Linux
+
 `Answer`
 ```bash
 kubectl run mango-pod --image=redis:alpine -l tier=redis
@@ -556,6 +591,7 @@ kubectl exec -it mango-pod – redis-cli ping
 
 Create a pod in the ‘fruit-ns’ namespace, pod name: banana-pod, image: redis:alpine
 kubectl create namespace fruit-ns
+
 `Answer`
 ```bash
 kubectl run banana-pod --image=redis:alpine -n fruit-ns
@@ -564,6 +600,7 @@ kubectl describe pod banana-pod -n fruit-ns
 ```
 
 Create a pod & expose it where pod name: mango-pod, image: redis:alpine, service name: my-pod-service, port: 8090, target port: 80
+
 `Answer`
 ```bash
 kubectl run mango-pod --image=redis:alpine
@@ -572,6 +609,7 @@ kubectl describe service my-pod-service
 ```
 
 Create a static pod & use the command “sleep 1000”, where pod name: my-static-pod, image: busybox
+
 `Answer`
 ```bash
 kubectl create deployment nginx-deployment --image=nginx:1.26.0 --replicas=3 --dry-run=client -o yaml > nginx-deployment.yaml
@@ -583,6 +621,7 @@ kubectl rollout history deployment nginx-deployment # check history
 ```
 
 Create a static pod and use the command “sleep 1000”, where pod name: static-box, image: busybox
+
 `Answer`
 ```bash
 kubectl get nodes -o wide

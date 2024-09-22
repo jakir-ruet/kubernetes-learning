@@ -1,4 +1,5 @@
 Get a list of all the pods in all the namespaces and write it to the file `/doc/pods-namespaces.txt`.
+
 `Answer`
 ```bash
 kubectl get pods --all-namespaces
@@ -7,6 +8,7 @@ cat /doc/pods-namespaces.txt
 ```
 
 Create a networkpolicy and allow traffic from all the pods in the `dev-team` namespace and from pods with the label `type=review` to the pods matching the label `app=postgres`.
+
 `Answer`
 ```bash
 kubectl label namespace/dev-team app=dev-team
@@ -35,6 +37,7 @@ kubectl create -f allow-dev-team.yaml
 ```
 
 Get all the objects in all the namespaces and write to file `/doc/all-object.txt`.
+
 `Answer`
 ```bash
 kubectl get all --all-namespaces

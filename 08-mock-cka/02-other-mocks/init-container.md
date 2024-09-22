@@ -2,6 +2,7 @@ Create an init container in a pod which creates the file `check.txt` in the `tec
 - pod name: blue-check
 - image init container: busybox:1.28
 - image container: alpine
+
 `Answer`
 ```yaml
 apiVersion: v1

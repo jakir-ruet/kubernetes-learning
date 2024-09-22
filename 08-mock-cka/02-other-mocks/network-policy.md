@@ -1,6 +1,7 @@
 Create a NetworkPolicy that allows all pods in the `ns-pro-deploy` namespace to have communication only on a single port.
 - NetworkPolicy name: ns-pro-deploy
 - Port: 80/TCP
+
 `Answer`
 ```bash
 kubectl label namespace ns-pro-deploy app=ns-pro-deploy
@@ -38,6 +39,7 @@ Create a network policy and allow traffic from the `my-pod` pod to the `finance-
 - finance port: 8080
 - egress allow: data
 - data port: 5432
+
 `Answer`
 ```bash
 nano my-network-policy.yaml
@@ -75,6 +77,7 @@ kubectl create -f my-network-policy.yaml
 ```
 
 Create a NetworkPolicy which denies all the ingress traffic.
+
 `Answer`
 ```yaml
 apiVersion: networking.k8s.io/v1

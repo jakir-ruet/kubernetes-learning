@@ -4,6 +4,7 @@ Create a new service account with the name `pvviewer`. Grant this service accoun
 - ClusterRoleBinding: `pvviewer-role-binding`
 - Pod: `pvviewer`
 - Pod configured to use ServiceAccount pvviewer?
+
 `Answer`
 ```bash
 kubectl get nodes
@@ -35,6 +36,7 @@ kubectl describe pod pvviewer
 Create a service from the `green` pod & run a DNS lookup to check the  service & write to file `/doc/lookup.txt`
 - service name: green-service
 - port: 80
+
 `Answer`
 ```bash
 kubectl get pods

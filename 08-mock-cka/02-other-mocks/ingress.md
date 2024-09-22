@@ -1,6 +1,7 @@
 Create a new ingress resource and expose service `service-ingress` on path `hello-path` by using service port `5487`.
 - name: connect-ingress
 - namespace: dev-host
+
 `Answer`
 ```yaml
 apiVersion: networking.k8s.io/v1

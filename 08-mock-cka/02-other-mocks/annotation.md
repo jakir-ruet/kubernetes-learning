@@ -1,4 +1,5 @@
 Annotate the existing pod `my-pod` and use the value "name=my-annotate-pod".
+
 `Answer`
 ```bash
 kubectl get pods

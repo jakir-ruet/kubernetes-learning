@@ -1,4 +1,5 @@
 List all the persistent volumes sorted by capacity & write to file `/doc/persistent-volume.txt`
+
 `Answer`
 ```bash
 kubectl get pv
@@ -12,6 +13,7 @@ Create a pod which uses a persistent volume for storage.
 - persistent volume name: my-pv-volume
 - persistent volume claim name: my-pvc
 - persistent volume claim size: 100Mi
+
 `Answer`
 ```bash
 kubectl get pv
@@ -65,6 +67,7 @@ kubectl get pvc
 ```
 
 Change the mount path of the nginx container in the `online` statefulset to `/usr/share/nginx/updated-html`.
+
 `Answer`
 ```bash
 kubectl get statefulset -o wide

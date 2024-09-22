@@ -1,6 +1,7 @@
 Create a daemonset.
 - name: my-daemonset
 - image: httpd:alpine
+
 `Answer`
 ```bash
 kubectl get nodes

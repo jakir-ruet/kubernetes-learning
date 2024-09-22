@@ -1,4 +1,5 @@
 Create the replicaset `front-replicaset` with the image `nginx` which has 3 replicas.
+
 `Answer`
 ```bash 
 kubectl create deployment front-replicaset --image=nginx --dry-run=client -o yaml > replicaset.yaml

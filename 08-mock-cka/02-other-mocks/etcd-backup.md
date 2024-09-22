@@ -1,4 +1,5 @@
 Take a backup of the `etcd` cluster and save it to `/tmp/etcd-backup.db`
+
 `Answer`
 ```bash
 kubectl get nodes

@@ -2,6 +2,7 @@ Create a pod with a non-persistent volume.
 - pod name: non-per-pod
 - image: redis
 - mount path: /data/per-redis
+
 `Answer`
 ```yaml
 apiVersion: v1
@@ -28,6 +29,7 @@ kubectl describe pod non-per-pod # check memory type
 Create a pod with a non-persistent storage.
 - pod name: redis-pod
 - image: redis
+
 `Answer`
 ```yaml
 apiVersion: v1

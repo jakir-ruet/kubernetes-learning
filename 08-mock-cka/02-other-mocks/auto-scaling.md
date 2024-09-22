@@ -1,4 +1,5 @@
 Apply autoscaling to the `green-deployment` with a minimum of 5 and maximum of 10 replicas and a target CPU of 75%.
+
 `Answer`
 ```bash
 kubectl get deployment

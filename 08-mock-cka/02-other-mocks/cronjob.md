@@ -1,6 +1,7 @@
 Create a cronjob which prints the date and `Running` every minute.
 - pod name: show-date-job
 - image: busybox
+
 `Answer`
 ```yaml
 apiVersion: batch/v1

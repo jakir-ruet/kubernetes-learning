@@ -1,4 +1,5 @@
 Change the static pod path to /etc/kubernetes/manifests (Install fast if it is not available)
+
 `Answer`
 ```bash
 kubelet --version
@@ -9,6 +10,7 @@ staticPodPath: etc/kubernetes/manifests # It assigns on config.yaml
 
 
 Find the static pod path and copy the location to `/doc/static-pod-path-location.txt`.
+
 `Answer`
 ```bash
 kubectl get nodes

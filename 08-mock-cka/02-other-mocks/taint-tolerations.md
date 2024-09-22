@@ -2,6 +2,7 @@ Taint a node to be unschedulable and test it by creating a pod on the node.
 - Taint: key: env_type, value: production, operator: NoSchedule
 - Pod 1: name: no-redis, image: redis:alpine
 - Pod 2 with tolerations: name: pro-redis, image: redis-alpine
+
 `Answer`
 ```bash
 kubectl get nodes
@@ -40,6 +41,7 @@ kubectl describe pod pro-redis
 ```
 
 Remove the taint added to the node `node01`
+
 `Answer`
 ```bash
 kubectl get nodes
@@ -52,6 +54,7 @@ kubectl describe nodes node01 | grep Taint
 Schedule a pod on the node `node01` by using tolerations
 - pod name: my-pod
 - image: nginx
+
 `Answer`
 ```bash
 kubectl describe node node01 | grep Taint
@@ -89,6 +92,7 @@ Create a pod and set tolerations.
 - pod name: my-pod
 - image: nginx
 - tolerations: spray=red:NoSchedule
+
 `Answer`
 ```bash
 kubectl describe node node01 | grep Taints
@@ -109,6 +113,7 @@ kubectl describe pod my-pod | grep Node:
 ```
 
 Taint a node to be un-schedulable and test it by creating a pod on the node
+
 `Answer`
 ```bash
 kubectl get nodes -o wide

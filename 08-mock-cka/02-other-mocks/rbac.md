@@ -2,6 +2,7 @@ Create a new user called `jasim`. Grant him access to the cluster. Jasim should 
 - CSR: jasim-developer StatusApproved
 - Role Name: developer, Namespace: development, Resource: pods
 - Access User: 'jasim' has appropriate permissions
+
 `Answer`
 **CSR: jasim-developer StatusApproved**
 Create private key & a Certificate Signing Request (CSR) for Jasim user
@@ -79,6 +80,7 @@ kubectl auth can-i watch pods --namespace=development --as=jasim # result no
 ```
 
 A new colleague `jasim` has joined your team. Create a new user and grant him access to the cluster. He should have the permission to create, list, get, update & delete pods in the `dev-team` namespace.
+
 `Answer`
 ```bash
 openssl genrsa -out jasim.key 2048
@@ -145,6 +147,7 @@ Create a clusterrole and a clusterrolebinding which provides `get`, `watch` & `l
 - cluster role name: cluster-administrator
 - cluster role binding name: clusterbinding-administrator
 - service account: admin-sa
+
 `Answer`
 ```bash
 kubectl create clusterrole cluster-administrator --verb=get,watch,list --resource=pods
@@ -155,6 +158,7 @@ kubectl auth can -i list pods --as system:serviceaccount:default:admin-sa # got 
 Create a new clusterrole named `green-clusterrole` which allows you to create deployments.
 - After create a new serviceaccount named `green-sa` in the `tech` namespace.
 - Add finally, bind the clusterrole to the serviceaccount by creating a rolebinding named `green-rb`
+
 `Answer`
 ```bash
 kubectl create clusterrole green-clusterrole --verb=create --resource=deployments

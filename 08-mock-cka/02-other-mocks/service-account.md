@@ -4,6 +4,7 @@ Create a new service account, clusterrole and clusterrolebinding. Make it possib
 - Clusterrolebinding name: pv-binding
 - Pod name: pv-pod
 - Image: redis
+
 `Answer`
 ```bash
 kubectl create serviceaccount my-service-account

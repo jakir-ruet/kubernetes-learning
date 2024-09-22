@@ -1,7 +1,8 @@
 Create a secret & mount it to the pod `secret-pod`.
 - secret name: CkaAdmin
 - secret content: password=Cka@054003
-- `Answer`
+- 
+`Answer`
 ```bash
 kubectl get pods
 kubectl create secret generic pod-for-secret --from-literal=password=Cka@054003
@@ -24,6 +25,7 @@ kubectl describe pod secret-pod
 ```
 
 List all the secrets and configmap in the cluster in all namespaces and write to file `/doc/all-configmap-secret.txt`.
+
 `Answer`
 ```bash
 kubectl get configmap, secrets --all-namespaces

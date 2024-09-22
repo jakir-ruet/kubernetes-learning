@@ -1,6 +1,7 @@
 Create a pod with container port 80. It should check the pod running at endpoint `/healthz` on port 80, verify & delete the pod.
 - pod name: health-pod
 - image: nginx
+
 `Answer`
 ```bash
 kubectl run health-pod --image=nginx --port=80 --restart=Always --dry-run=client -o yaml > health-pod.yaml
@@ -22,6 +23,7 @@ kubectl delete pod health-pod
 ```
 
 Monitor the logs of the pod `my-pod`, extract all the log lines matching with `not found` and write to the file `/doc/failed.log`.
+
 `Answer`
 ```bash
 kubectl logs my-pod | grep "not found"
@@ -30,6 +32,7 @@ cat /doc/failed.log
 ```
 
 List the logs of the pod named `my-pod` and search for the pattern `start` and write it to the file `/doc/pod-start.txt`.
+
 `Answer`
 ```bash
 kubectl get pods
@@ -41,6 +44,7 @@ cat /doc/pod-start.txt
 Add a readiness probe to the existing deployment `ready-deployment`.
 - path: /ready
 - port: 80
+
 `Answer`
 ```bash
 kubectl get deployments

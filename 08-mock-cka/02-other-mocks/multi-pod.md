@@ -1,6 +1,7 @@
 Create a `multi-pod` with two containers & add the command "sleep 3600" to container 2.
 - Name container 1: micro, image: nginx
 - Name container 2: mega, image: busybox
+
 `Answer`
 ```bash
 kubectl run mega --image=busybox --command sleep 3600 --dry-run=client -o yaml > multi-pod.yaml
@@ -37,6 +38,7 @@ Create a multi-pod with three containers:
 - name container 1: container01, image: nginx
 - name container 2: container02, image: redis
 - name container 3: container03, image: alpine
+
 `Answer`
 ```bash
 kubectl run multi-pod --image=nginx --dry-run=client -o yaml > multi-pod.yaml

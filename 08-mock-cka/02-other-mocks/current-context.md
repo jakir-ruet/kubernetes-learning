@@ -1,4 +1,5 @@
 Grep the current context and write it to the file `/doc/current-context.txt`.
+
 `Answer`
 ```bash
 kubectl config current-context
@@ -9,6 +10,7 @@ cat /doc/current-context.txt
 ```
 
 Get all contexts and write it to the file `/doc/all-contexts.txt`.
+
 `Answer`
 ```bash
 cat ~/.kube/config

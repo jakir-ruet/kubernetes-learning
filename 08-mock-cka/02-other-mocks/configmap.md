@@ -2,6 +2,7 @@ Create a configmap and add it to the pod.
 - pod name: my-pod
 - configmap name: data-config
 - data: user: root, password: Root@054003
+
 `Answer`
 ```bash
 kubectl create configmap data-config --from-literal=user=root --from-literal=password=Root@054003
@@ -23,6 +24,7 @@ kubectl exec -it my-pod -- env
 ```
 
 Update the password in the existing configmap `my-configmap` to `NewPass@054003`.
+
 `Answer`
 ```bash
 kubectl describe configmap my-configmap
