@@ -1,4 +1,12 @@
 #### Welcome to Object Management
+Kubernetes objects are persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster. Kubernetes object is also know as `Kubernetes Primitive`.
+- Pods
+- ReplicaSet
+- DaemonSet
+- StatefulSet
+- Job CronJob
+- Deployment
+
 Difference & Comparison of `kubectl apply`  & `kubectl create` 
 | Aspect                | `kubectl apply`                                                                              | `kubectl create`                                                        |
 | --------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
