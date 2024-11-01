@@ -165,7 +165,13 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
-You can download and install Kind using the following command
+You can download and install Kind using the following command for ARM & AMD. In my case ARM.
+```bash
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-arm64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+```
+Or
 ```bash
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
 chmod +x ./kind
