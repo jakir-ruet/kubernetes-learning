@@ -181,7 +181,31 @@ kind version
 
 You can create a new Kubernetes cluster with Kind using:
 ```bash
-kind create cluster
+kind create cluster # Single node created
+kind get clusters # Check clusters
+kubectl cluster-info # cluster information
+grep server ~/.kube/config # Getting server address
+docker exec -it kind-control-plane bash # Access into the control plane
+crictl ps # Checking running containers
+exit # Go back in Ubuntu
+```
+
+Create another cluster
+```bash
+kind create cluster --name my-cluster
+kind get clusters # Check clusters
+grep server ~/.kube/config # Getting server address
+less ~/.kube/config # Check config
+kubectl get nodes --context kind-kind # Checking master/control node
+kubectl get node # Checking worker node
+kubectl get nodes --context kind-my-cluster # Checking worker node
+kubectl config get-contexts # Multiple cluster in a config file
+kubectl delete cluster # Delete cluster
+kind delete cluster --name my-cluster # Delete name cluster
+```
+Multi-node clusters
+```bash
+
 ```
 
 Interact with the Cluster
@@ -192,7 +216,21 @@ sudo snap install kubectl --classic
 ***Minikube:*** is a tool that allows you to run a single-node Kubernetes cluster locally on your machine. It is designed to be a lightweight and easy-to-use solution for developers who want to develop, test, and experiment with Kubernetes applications without the need for a full-scale, multi-node cluster.
 
 ##### kubectl cli vs minikube cli?
-kubectl and minikube are command-line tools used in the Kubernetes ecosystem, they serve different purposes. kubectl is a versatile tool for managing, configuring any Kubernetes cluster on minikube, while minikube is a tool specifically tailored for setting up, deleting and managing a local development cluster. You might use kubectl for broader Kubernetes management tasks, and minikube for local development and testing.
+| Feature                                   | **kubectl CLI**                                                                                 | **minikube CLI**                                                                                                          |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Purpose**                               | The primary command-line tool for interacting with Kubernetes clusters.                         | A tool specifically for managing a local Kubernetes cluster created by Minikube.                                          |
+| **Cluster Scope**                         | Can interact with any Kubernetes cluster, local or remote, as long as kubeconfig is configured. | Primarily used for managing local Kubernetes clusters created by Minikube.                                                |
+| **Command Types**                         | Commands to interact with Kubernetes resources (pods, services, deployments, etc.).             | Commands to manage the Minikube environment (start, stop, status, etc.).                                                  |
+| **Functionality**                         | Used for deployment, troubleshooting, and managing Kubernetes resources.                        | Used for creating, stopping, and configuring Minikube clusters.                                                           |
+| **Cluster Context**                       | Works with any cluster configured in the kubeconfig file.                                       | Works only with the Minikube local cluster, though it can switch between multiple Minikube clusters.                      |
+| **Common Commands**                       | `kubectl get`, `kubectl apply`, `kubectl delete`, `kubectl logs`, `kubectl describe`, etc.      | `minikube start`, `minikube stop`, `minikube status`, `minikube dashboard`, `minikube ssh`, etc.                          |
+| **Configuration**                         | Configuration is typically managed through a `kubeconfig` file.                                 | Configuration is specific to Minikube and stored in Minikube's settings.                                                  |
+| **Cluster Creation**                      | Does not create clusters, only manages existing ones.                                           | Manages the creation of local Kubernetes clusters using VirtualBox, Docker, etc.                                          |
+| **Integration with Kubernetes Resources** | Fully integrated with all Kubernetes resources for cluster management.                          | Provides limited integration as it's focused on managing the local Minikube instance.                                     |
+| **Cluster Management**                    | Requires a cluster to be already set up (can interact with local or cloud-based clusters).      | Fully manages local Kubernetes clusters, including starting, stopping, and inspecting the state of the Minikube cluster.  |
+| **Use Case**                              | For users interacting with any Kubernetes cluster (local, cloud, on-premise).                   | For users working with local Minikube clusters for development or testing.                                                |
+| **Interaction with Docker**               | Interacts with Kubernetes' Docker (or container runtime) for container management.              | Minikube CLI interacts with Docker (if Minikube is set to use Docker) to manage containers in the local Minikube cluster. |
+
 
 ##### Install Minikube & kubectl (You may install as per your operating system.)
 - Minikube [install](https://minikube.sigs.k8s.io/docs/start/) or Microk8s [install](https://microk8s.io) ***Minikube Recommended***. 
