@@ -205,9 +205,31 @@ kind delete cluster --name my-cluster # Delete name cluster
 ```
 Multi-node clusters
 ```bash
-
+nano /tmp/kind.yaml
 ```
-
+```bash
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: control-plane
+- role: control-plane
+- role: worker
+- role: worker
+- role: worker
+```
+```bash
+kind create cluster --config /tmp/kind.yaml
+docker ps
+grep server ~/.kube/config # Getting server address
+kubectl get nodes
+```
+An additional node will be created and tagged to all other nodes.
+```bash
+docker exec -it kind-external-load-balancer sh
+ls
+cat /usr/local/etc/haproxy/haproxy.cfg
+```
 Interact with the Cluster
 ```bash
 sudo snap install kubectl --classic
